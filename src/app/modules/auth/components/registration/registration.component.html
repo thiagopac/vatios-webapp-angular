@@ -1,0 +1,338 @@
+<form
+  class="form w-100 fv-plugins-bootstrap5 fv-plugins-framework"
+  novalidate="novalidate"
+  id="kt_login_signup_form"
+  [formGroup]="registrationForm"
+  (ngSubmit)="submit()"
+>
+  <!--begin::Heading-->
+  <div class="mb-10 text-center">
+    <h1 class="text-dark mb-3">Criar nova conta</h1>
+    <div class="text-gray-400 fw-bold fs-4">
+      Já tem uma conta?
+      <a
+        routerLink="/auth/login"
+        class="link-primary fw-bolder"
+        [style.margin-left]="'5px'"
+        >Faça login?</a
+      >
+    </div>
+  </div>
+  <!--end::Heading-->
+
+  <!-- begin::Alert error-->
+  <ng-container *ngIf="hasError">
+    <div class="mb-lg-15 alert alert-danger">
+      <div class="alert-text font-weight-bold">
+        O formulário de registro contém erros
+      </div>
+    </div>
+  </ng-container>
+  <!-- end::Alert error-->
+
+  <!--begin::Form group-->
+  <div class="row fv-row mb-7">
+    <div class="col-xl-6">
+      <label class="form-label fw-bolder text-dark fs-6">Nome</label>
+      <input
+        class="form-control form-control-lg form-control-solid rounded-4"
+        type="text"
+        name="first_name"
+        formControlName="first_name"
+        placeholder="Nome"
+        autocomplete="off"
+        [ngClass]="{
+          'is-invalid': registrationForm.controls['first_name'].invalid,
+          'is-valid': registrationForm.controls['first_name'].valid
+        }"
+      />
+      <ng-container
+        [ngTemplateOutlet]="formError"
+        [ngTemplateOutletContext]="{
+          validation: 'required',
+          message: 'Preenchimento obrigatório',
+          control: registrationForm.controls['first_name']
+        }"
+      ></ng-container>
+      <ng-container
+        [ngTemplateOutlet]="formError"
+        [ngTemplateOutletContext]="{
+          validation: 'minlength',
+          message: 'Tamanho mínimo de 2 caracteres',
+          control: registrationForm.controls['first_name']
+        }"
+      ></ng-container>
+      <ng-container
+        [ngTemplateOutlet]="formError"
+        [ngTemplateOutletContext]="{
+          validation: 'maxLength',
+          message: 'Tamanho máximo de 100 caracteres',
+          control: registrationForm.controls['first_name']
+        }"
+      ></ng-container>
+    </div>
+    <div class="col-xl-6">
+      <label class="form-label fw-bolder text-dark fs-6">Sobrenome</label>
+      <input
+        class="form-control form-control-lg form-control-solid rounded-4"
+        type="text"
+        name="last_name"
+        formControlName="last_name"
+        placeholder="Sobrenome"
+        autocomplete="off"
+        [ngClass]="{
+          'is-invalid': registrationForm.controls['last_name'].invalid,
+          'is-valid': registrationForm.controls['last_name'].valid
+        }"
+      />
+      <ng-container
+        [ngTemplateOutlet]="formError"
+        [ngTemplateOutletContext]="{
+          validation: 'required',
+          message: 'Preenchimento obrigatório',
+          control: registrationForm.controls['last_name']
+        }"
+      ></ng-container>
+      <ng-container
+        [ngTemplateOutlet]="formError"
+        [ngTemplateOutletContext]="{
+          validation: 'minlength',
+          message: 'Tamanho mínimo de 2 caracteres',
+          control: registrationForm.controls['last_name']
+        }"
+      ></ng-container>
+      <ng-container
+        [ngTemplateOutlet]="formError"
+        [ngTemplateOutletContext]="{
+          validation: 'maxLength',
+          message: 'Tamanho máximo de 100 caracteres',
+          control: registrationForm.controls['last_name']
+        }"
+      ></ng-container>
+    </div>
+  </div>
+  <!--end::Form group-->
+
+  <!--begin::Form group-->
+  <div class="fv-row mb-7">
+    <label class="form-label fw-bolder text-dark fs-6">E-mail</label>
+    <input
+      class="form-control form-control-lg form-control-solid rounded-4"
+      type="email"
+      placeholder="E-mail"
+      name="email"
+      formControlName="email"
+      autocomplete="off"
+      [ngClass]="{
+        'is-invalid': registrationForm.controls['email'].invalid,
+        'is-valid': registrationForm.controls['email'].valid
+      }"
+    />
+    <ng-container
+      [ngTemplateOutlet]="formError"
+      [ngTemplateOutletContext]="{
+        validation: 'required',
+        message: 'O campo e-mail é obrigatório',
+        control: registrationForm.controls['email']
+      }"
+    ></ng-container>
+    <ng-container
+      [ngTemplateOutlet]="formError"
+      [ngTemplateOutletContext]="{
+        validation: 'email',
+        message: 'E-mail inválido',
+        control: registrationForm.controls['email']
+      }"
+    ></ng-container>
+    <ng-container
+      [ngTemplateOutlet]="formError"
+      [ngTemplateOutletContext]="{
+        validation: 'minlength',
+        message: 'O tamanho mínimo é de 6 caracteres',
+        control: registrationForm.controls['email']
+      }"
+    ></ng-container>
+    <ng-container
+      [ngTemplateOutlet]="formError"
+      [ngTemplateOutletContext]="{
+        validation: 'maxLength',
+        message: 'O tamanho máximo é de 360 caracteres',
+        control: registrationForm.controls['email']
+      }"
+    ></ng-container>
+  </div>
+  <!--end::Form group-->
+
+  <!--begin::Form group-->
+  <div class="mb-10 fv-row">
+    <label class="form-label fw-bolder text-dark fs-6">Senha</label>
+    <input
+      class="form-control form-control-lg form-control-solid rounded-4"
+      type="password"
+      placeholder="Senha"
+      name="password"
+      formControlName="password"
+      autocomplete="off"
+      [ngClass]="{
+        'is-invalid': registrationForm.controls['password'].invalid,
+        'is-valid': registrationForm.controls['password'].valid
+      }"
+    />
+    <ng-container
+      [ngTemplateOutlet]="formError"
+      [ngTemplateOutletContext]="{
+        validation: 'required',
+        message: 'Preenchimento obrigatório',
+        control: registrationForm.controls['password']
+      }"
+    ></ng-container>
+    <ng-container
+      [ngTemplateOutlet]="formError"
+      [ngTemplateOutletContext]="{
+        validation: 'minlength',
+        message: 'Tamanho mínimo de 6 caracteres',
+        control: registrationForm.controls['password']
+      }"
+    ></ng-container>
+    <ng-container
+      [ngTemplateOutlet]="formError"
+      [ngTemplateOutletContext]="{
+        validation: 'maxLength',
+        message: 'Tamanho máximo de 100 caracteres',
+        control: registrationForm.controls['password']
+      }"
+    ></ng-container>
+  </div>
+  <!--end::Form group-->
+
+  <!--begin::Form group-->
+  <div class="fv-row mb-5">
+    <label class="form-label fw-bolder text-dark fs-6">Confirme a senha</label>
+    <input
+      class="form-control form-control-lg form-control-solid rounded-4"
+      type="password"
+      placeholder="Confirmação de senha"
+      name="cPassword"
+      autocomplete="off"
+      formControlName="cPassword"
+      [ngClass]="{
+        'is-invalid': registrationForm.controls['cPassword'].invalid,
+        'is-valid': registrationForm.controls['cPassword'].valid
+      }"
+    />
+    <ng-container
+      [ngTemplateOutlet]="formError"
+      [ngTemplateOutletContext]="{
+        validation: 'required',
+        message: 'Preenchimento obrigatório',
+        control: registrationForm.controls['cPassword']
+      }"
+    ></ng-container>
+    <ng-container
+      [ngTemplateOutlet]="formError"
+      [ngTemplateOutletContext]="{
+        validation: 'minlength',
+        message: 'Tamanho mínimo de 6 caracteres',
+        control: registrationForm.controls['cPassword']
+      }"
+    ></ng-container>
+    <ng-container
+      [ngTemplateOutlet]="formError"
+      [ngTemplateOutletContext]="{
+        validation: 'maxLength',
+        message: 'Tamanho máximo de 100 caracteres',
+        control: registrationForm.controls['cPassword']
+      }"
+    ></ng-container>
+    <ng-container
+      *ngIf="
+        registrationForm.controls['cPassword'].errors &&
+        registrationForm.controls['cPassword'].errors.ConfirmPassword
+      "
+    >
+      <div class="fv-plugins-message-container">
+        <div class="fv-help-block">
+          A senha e a confirmação não correspondem
+        </div>
+      </div>
+    </ng-container>
+  </div>
+  <!--end::Form group-->
+
+  <!--begin::Form group-->
+  <div class="fv-row mb-10">
+    <div class="form-check form-check-custom form-check-solid">
+      <input
+        type="checkbox"
+        formControlName="agree"
+        name="agree"
+        class="form-check-input"
+      />
+
+      <label class="form-check-label fw-bold text-gray-700 fs-6">
+        Eu li e concordo com os
+        <a href="./termos-de-uso" target="_blank" class="ms-1 link-primary"
+          >Termos de uso</a
+        >
+        e
+        <a
+          href="./politica-de-privacidade"
+          target="_blank"
+          class="ms-1 link-primary"
+          >Política de privacidade</a
+        >.
+      </label>
+    </div>
+  </div>
+  <!--end::Form group-->
+
+  <!--begin::Form group-->
+  <div class="text-center">
+    <button
+      type="submit"
+      [disabled]="
+        registrationForm.invalid || !registrationForm.controls['agree'].value
+      "
+      class="btn btn-rounded btn-lg btn-primary w-100 mb-5"
+    >
+      <ng-container *ngIf="(isLoading$ | async) === false">
+        <span class="indicator-label">Continuar</span>
+      </ng-container>
+      <ng-container *ngIf="isLoading$ | async">
+        <span class="indicator-progress" [style.display]="'block'">
+          Aguarde...
+          <span
+            class="spinner-border spinner-border-sm align-middle ms-2"
+          ></span>
+        </span>
+      </ng-container>
+    </button>
+    <a
+      routerLink="/auth/login"
+      type="button"
+      class="btn btn-rounded btn-lg btn-light-primary w-100 mb-5"
+    >
+      Cancelar
+    </a>
+  </div>
+  <!--end::Form group-->
+</form>
+
+<ng-template
+  #formError
+  let-control="control"
+  let-message="message"
+  let-validation="validation"
+>
+  <ng-container
+    *ngIf="control.hasError(validation) && (control.dirty || control.touched)"
+  >
+    <div class="fv-plugins-message-container">
+      <div class="fv-help-block">
+        <span role="alert">
+          {{ message }}
+        </span>
+      </div>
+    </div>
+  </ng-container>
+</ng-template>

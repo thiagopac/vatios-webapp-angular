@@ -1,0 +1,46 @@
+<div class="card pt-2 pb-10">
+  <div
+    class="position-absolute top-0 end-0 opacity-25 m-10 pe-2 text-end d-none d-md-block"
+  >
+    <i class="las la-money-check-alt fs-5tx"></i>
+  </div>
+  <div class="card-header border-0">
+    <div class="card-title"></div>
+  </div>
+  <div class="card-body pt-2 pb-10">
+    <div class="row justify-content-center">
+      <div class="col-xl-6">
+        <div class="col-12">
+          <div class="border border-gray-300 border-dashed rounded py-3 px-4">
+            <div class="d-flex align-items-center justify-content-between">
+              <div>
+                <span class="fs-3 text-gray-600 mx-2 text-uppercase"
+                  >Saldo disponível em Dinheiro</span
+                >
+              </div>
+              <div class="d-flex align-items-center">
+                <div class="fs-1 fw-bolder counted">R$ 526,25</div>
+                <span
+                  [inlineSVG]="'./assets/media/icons/duotune/vatios/fiat.svg'"
+                  class="svg-icon svg-icon-4x"
+                >
+                </span>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <app-operation-withdraw-component
+          inputLabel="Valor do saque"
+          inputAsset="R$"
+          [inputMin]="100"
+          [inputMax]="52625"
+          themeColor="dark"
+          actionLabel="Solicitar saque"
+          (triggeredAction)="triggeredActionCaptured($event)"
+        >
+        </app-operation-withdraw-component>
+      </div>
+    </div>
+  </div>
+</div>

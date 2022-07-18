@@ -1,0 +1,95 @@
+<div class="card mb-5 mb-xl-10">
+  <div
+    class="card-header border-0 cursor-pointer"
+    role="button"
+    data-bs-toggle="collapse"
+  >
+    <div class="card-title m-0">
+      <h3 class="fw-bolder m-0">Dados do perfil</h3>
+    </div>
+  </div>
+  <div>
+    <form novalidate="" class="form">
+      <div class="card-body border-top p-9">
+        <div class="row mb-6">
+          <label class="col-lg-4 col-form-label required fw-bold fs-6"
+            >Nome e sobrenome</label
+          >
+          <div class="col-lg-8">
+            <div class="row">
+              <div class="col-lg-6 fv-row">
+                <input
+                  type="text"
+                  class="form-control form-control-lg form-control-solid mb-3 mb-lg-0"
+                  placeholder="First name"
+                  name="fName"
+                  value="John"
+                />
+              </div>
+              <div class="col-lg-6 fv-row">
+                <input
+                  type="text"
+                  class="form-control form-control-lg form-control-solid"
+                  placeholder="Last name"
+                  name="lName"
+                  value="Doe"
+                />
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="row mb-6">
+          <label class="col-lg-4 col-form-label fw-bold fs-6"
+            ><span class="required">Telefone</span></label
+          >
+          <div class="col-lg-8 fv-row">
+            <input
+              type="tel"
+              class="form-control form-control-lg form-control-solid"
+              placeholder="Phone number"
+              name="contactPhone"
+              value="+55 31 9 9999-9999"
+            />
+          </div>
+        </div>
+
+        <div class="row mb-6">
+          <label class="col-lg-4 col-form-label fw-bold fs-6"
+            ><span class="required">País</span></label
+          >
+          <div class="col-lg-8 fv-row">
+            <select
+              class="form-select form-select-solid form-select-lg fw-bold"
+              name="country"
+            >
+              <option value="">Selecione</option>
+              <option value="AF">Afghanistan</option>
+            </select>
+            <!-- <div class="fv-plugins-message-container">
+              <div class="fv-help-block">Country is required</div>
+            </div> -->
+          </div>
+        </div>
+      </div>
+      <div class="card-footer d-flex justify-content-end py-6 px-9">
+        <button
+          type="button"
+          class="btn btn-rounded btn-primary"
+          [disabled]="isLoading"
+          (click)="saveSettings()"
+        >
+          <ng-container *ngIf="!isLoading">Salvar alterações</ng-container>
+          <ng-container *ngIf="isLoading">
+            <span clas="indicator-progress" [style.display]="'block'">
+              Aguarde...{{ ' ' }}
+              <span
+                class="spinner-border spinner-border-sm align-middle ms-2"
+              ></span>
+            </span>
+          </ng-container>
+        </button>
+      </div>
+    </form>
+  </div>
+</div>

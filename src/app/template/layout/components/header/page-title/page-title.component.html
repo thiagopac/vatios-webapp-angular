@@ -1,0 +1,36 @@
+<ng-container *ngIf="title$ | async as title">
+  <ng-container *ngIf="showTitle">
+    <!-- begin::Title -->
+    <div class="page-title d-flex flex-column me-3">
+      <!--begin::Title-->
+      <h1 class="d-flex text-white fw-bolder my-1 fs-3">{{ title }}</h1>
+      <!--end::Title-->
+
+      <!--begin::Breadcrumb-->
+      <ng-container *ngIf="showBC">
+        <ng-container *ngIf="bc$ | async as _bc">
+          <ng-container *ngIf="_bc.length > 0">
+            <ng-container *ngIf="pageTitleDirection === 'row'">
+              <span></span>
+            </ng-container>
+            <ul class="breadcrumb breadcrumb-separatorless fw-bold fs-7 my-1">
+              <li *ngFor="let bc of _bc" class="breadcrumb-item opacity-75">
+                <ng-container *ngIf="!bc.isSeparator">
+                  <span class="text-white">
+                    {{ bc.title }}
+                  </span>
+                </ng-container>
+                <ng-container *ngIf="bc.isSeparator">
+                  <i class="las la-angle-right text-white"></i>
+                </ng-container>
+              </li>
+              <!-- <li class="breadcrumb-item text-white">{{ title }}</li> -->
+            </ul>
+          </ng-container>
+        </ng-container>
+      </ng-container>
+      <!--end::Breadcrumb-->
+    </div>
+    <!-- end::Title -->
+  </ng-container>
+</ng-container>

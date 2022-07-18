@@ -1,0 +1,68 @@
+<div class="row gy-5 g-xl-12">
+  <div class="col-lg-3 d-none d-lg-block">
+    <app-statement-balance-component
+      *ngIf="balance$ | async as _balance"
+      [energyAssetValue]="_balance.energy"
+      [cryptoAssetValue]="_balance.crypto"
+      [fiatAssetValue]="_balance.fiat"
+    >
+    </app-statement-balance-component>
+  </div>
+
+  <div class="col-lg-9">
+    <div class="card">
+      <div class="card-header border-0">
+        <div class="card-title">
+          <h3 class="fw-bolder m-0">Extrato de utilização</h3>
+        </div>
+      </div>
+      <div class="card-body pt-10 pb-10">
+        <div class="row gy-5 g-xl-12">
+          <div class="tab-content">
+            <ng-container
+              *ngIf="transactions$ | async as _transactions; else loading"
+            >
+              <div class="card-body p-0">
+                <div class="timeline">
+                  <app-statement-item-component
+                    *ngFor="let transaction of _transactions"
+                    [transaction]="transaction!"
+                    class="timeline-item"
+                  ></app-statement-item-component>
+                </div>
+                <button
+                  (click)="fetchMore()"
+                  class="btn btn-rounded btn-bg-white btn-color-gray-600 border border-1 w-100 fs-6 px-8 py-4 mt-2 mb-5"
+                >
+                  Ver mais
+                </button>
+              </div>
+            </ng-container>
+            <ng-template #loading>
+              <content-loader viewBox="0 0 400 160">
+                <ng-container *ngFor="let i of [0, 40, 80, 120]">
+                  <svg:rect
+                    x="0"
+                    [attr.y]="i"
+                    rx="3"
+                    ry="3"
+                    width="400"
+                    height="10"
+                  />
+                  <svg:rect
+                    x="20"
+                    [attr.y]="i + 20"
+                    rx="3"
+                    ry="3"
+                    width="360"
+                    height="10"
+                  />
+                </ng-container>
+              </content-loader>
+            </ng-template>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

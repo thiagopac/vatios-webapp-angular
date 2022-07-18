@@ -1,0 +1,169 @@
+<!-- Search toolbar -->
+<div
+  *ngIf="false"
+  class="d-flex align-items-center"
+  [ngClass]="toolbarButtonMarginClass"
+>
+  <div
+    class="btn btn-icon btn-active-light-primary btn-custom btn-custom"
+    [ngClass]="toolbarButtonHeightClass"
+    data-kt-menu-trigger="click"
+    data-kt-menu-attach="parent"
+    data-kt-menu-placement="bottom-end"
+    data-kt-menu-flip="bottom"
+  >
+    <span
+      [inlineSVG]="'./assets/media/icons/duotune/general/gen021.svg'"
+      class="svg-icon"
+      [ngClass]="toolbarButtonIconSizeClass"
+    ></span>
+  </div>
+  <app-search-result-inner></app-search-result-inner>
+</div>
+
+<!-- Activities -->
+<div
+  *ngIf="false"
+  class="d-flex align-items-center"
+  [ngClass]="toolbarButtonMarginClass"
+>
+  <!-- begin::Drawer toggle -->
+  <div
+    class="btn btn-icon btn-active-light-primary btn-custom"
+    [ngClass]="toolbarButtonHeightClass"
+    id="kt_activities_toggle"
+  >
+    <span
+      [inlineSVG]="'./assets/media/icons/duotune/general/gen032.svg'"
+      class="svg-icon"
+      [ngClass]="toolbarButtonIconSizeClass"
+    ></span>
+  </div>
+  <!-- end::Drawer toggle -->
+</div>
+
+<!-- NOTIFICATIONS -->
+<div
+  *ngIf="false"
+  class="d-flex align-items-center"
+  [ngClass]="toolbarButtonMarginClass"
+>
+  <div
+    class="btn btn-icon btn-active-light-primary btn-custom position-relative"
+    [ngClass]="toolbarButtonHeightClass"
+    data-kt-menu-trigger="click"
+    data-kt-menu-attach="parent"
+    data-kt-menu-placement="bottom-end"
+    data-kt-menu-flip="bottom"
+  >
+    <span
+      [inlineSVG]="'./assets/media/icons/duotune/general/gen022.svg'"
+      class="svg-icon"
+      [ngClass]="toolbarButtonIconSizeClass"
+    ></span>
+  </div>
+  <app-notifications-inner></app-notifications-inner>
+</div>
+
+<!-- CHAT -->
+<div
+  *ngIf="false"
+  class="d-flex align-items-center"
+  [ngClass]="toolbarButtonMarginClass"
+>
+  <!-- begin::Menu wrapper -->
+  <div
+    class="btn btn-icon btn-active-light-primary btn-custom position-relative"
+    [ngClass]="toolbarButtonHeightClass"
+    id="kt_drawer_chat_toggle"
+  >
+    <span
+      [inlineSVG]="'./assets/media/icons/duotune/communication/com012.svg'"
+      class="svg-icon"
+      [ngClass]="toolbarButtonIconSizeClass"
+    ></span>
+    <span
+      class="bullet bullet-dot bg-success h-6px w-6px position-absolute translate-middle top-0 start-50 animation-blink"
+    ></span>
+  </div>
+  <!-- end::Menu wrapper -->
+</div>
+
+<!-- Quick links -->
+<div
+  *ngIf="false"
+  class="d-flex align-items-center"
+  [ngClass]="toolbarButtonMarginClass"
+>
+  <div
+    class="btn btn-icon btn-active-light-primary btn-custom"
+    [ngClass]="toolbarButtonHeightClass"
+    data-kt-menu-trigger="click"
+    data-kt-menu-attach="parent"
+    data-kt-menu-placement="bottom-end"
+    data-kt-menu-flip="bottom"
+  >
+    <span
+      [inlineSVG]="'./assets/media/icons/duotune/general/gen025.svg'"
+      class="svg-icon"
+      [ngClass]="toolbarButtonIconSizeClass"
+    ></span>
+  </div>
+  <app-quick-links-inner></app-quick-links-inner>
+</div>
+
+<!-- begin::User -->
+<ng-container *ngIf="user$ | async as _user">
+  <div
+    class="d-flex align-items-center"
+    [ngClass]="toolbarButtonMarginClass"
+    id="kt_header_user_menu_toggle"
+  >
+    <!-- begin::Toggle -->
+    <div
+      class="btn"
+      data-kt-menu-trigger="click"
+      data-kt-menu-attach="parent"
+      data-kt-menu-placement="bottom-end"
+    >
+      <div
+        class="d-flex btn p-1 bg-white bg-opacity-20 btn-outline btn-outline-white btn-active-secondary rounded-pill align-items-center header-username"
+      >
+        <div
+          [ngClass]="toolbarUserAvatarHeightClass"
+          data-kt-menu-trigger="click"
+          data-kt-menu-attach="parent"
+          data-kt-menu-placement="bottom-end"
+          data-kt-menu-flip="bottom"
+        >
+          <div
+            class="symbol-label fs-4 fw-bold bg-gray-800 text-inverse-primary"
+          >
+            {{ _user | userInitials }}
+          </div>
+        </div>
+        <span class="text-nowrap mx-2">{{ _user | userFullname }}</span>
+      </div>
+    </div>
+    <!-- end::Toggle  -->
+    <app-user-inner></app-user-inner>
+  </div>
+</ng-container>
+<!-- end::User -->
+
+<ng-container *ngIf="headerLeft === 'menu'">
+  <div
+    class="d-flex align-items-center d-lg-none ms-2 me-n3"
+    title="Show header menu"
+  >
+    <div
+      class="btn btn-icon btn-active-light-primary btn-custom w-30px h-30px w-md-40px h-md-40px"
+      id="kt_header_menu_mobile_toggle"
+    >
+      <span
+        [inlineSVG]="'./assets/media/icons/duotune/text/txt001.svg'"
+        class="svg-icon svg-icon-1"
+      ></span>
+    </div>
+  </div>
+</ng-container>

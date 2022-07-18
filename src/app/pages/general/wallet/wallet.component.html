@@ -1,0 +1,44 @@
+<!-- begin::Row -->
+<div class="row gy-5 g-xl-8">
+  <div class="col-xxl-4">
+    <app-widget-balance-list
+      *ngIf="assetsFiatValues$ | async as _assetsFiatValues; else loading"
+      class="card card-xl-stretch mb-xl-8"
+      [data]="_assetsFiatValues"
+      color="primary"
+    ></app-widget-balance-list>
+    <ng-template #loading>
+      <div class="card card-xl-stretch mb-xl-8">
+        <content-loader viewBox="0 0 400 400">
+          <ng-container *ngFor="let i of [40, 160, 280]">
+            <svg:rect
+              x="20"
+              [attr.y]="i"
+              rx="3"
+              ry="3"
+              width="360"
+              height="30"
+            />
+            <svg:rect
+              x="40"
+              [attr.y]="i + 60"
+              rx="3"
+              ry="3"
+              width="320"
+              height="30"
+            />
+          </ng-container>
+        </content-loader>
+      </div>
+    </ng-template>
+  </div>
+  <div class="col-xxl-8">
+    <app-widget-savings class="card card-xl-stretch mb-xl-8">
+    </app-widget-savings>
+  </div>
+</div>
+<!-- end::Row -->
+
+<app-last-transactions-component
+  class="card mb-5 mb-xl-8"
+></app-last-transactions-component>

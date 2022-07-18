@@ -1,0 +1,49 @@
+<!-- begin::Header -->
+<div class="card-header border-0 pt-5">
+  <h3 class="card-title align-items-start flex-column">
+    <span class="card-label fw-bolder fs-3 mb-1">Últimas transações</span>
+  </h3>
+</div>
+<!-- end::Header -->
+<!-- begin::Body -->
+<div class="card-body py-3">
+  <!-- begin::Table container -->
+  <div class="table-responsive">
+    <!-- begin::Table -->
+    <table
+      class="table table-row-bordered table-row-gray-100 align-middle gs-0 gy-3 table align-middle table-row-dashed fw-bold text-gray-600 fs-6 gy-5"
+    >
+      <!-- begin::Table body -->
+      <tbody>
+        <ng-container
+          *ngIf="transactions$ | async as _transactions; else loading"
+        >
+          <tr
+            app-last-transactions-cell
+            *ngFor="let transaction of _transactions"
+            [transaction]="transaction"
+          ></tr>
+        </ng-container>
+        <ng-template #loading>
+          <content-loader viewBox="0 0 400 70">
+            <svg:rect x="0" y="0" rx="3" ry="3" width="400" height="10" />
+            <svg:rect x="20" y="20" rx="3" ry="3" width="360" height="10" />
+            <svg:rect x="0" y="40" rx="3" ry="3" width="400" height="10" />
+            <svg:rect x="20" y="60" rx="3" ry="3" width="360" height="10" />
+          </content-loader>
+        </ng-template>
+      </tbody>
+      <!-- end::Table body -->
+    </table>
+    <!-- end::Table -->
+
+    <button
+      routerLink="/general/statement"
+      class="btn btn-rounded btn-bg-white btn-color-gray-600 border border-1 w-100 fs-6 px-8 py-4 mt-2 mb-5"
+    >
+      Ver mais
+    </button>
+  </div>
+  <!-- end::Table container -->
+</div>
+<!-- begin::Body -->

@@ -1,0 +1,92 @@
+<div class="row g-xl-12 mt-10">
+  <div class="col-12">
+    <span class="fs-4 fw-bold text-gray-700 d-block">{{ inputLabel }}</span>
+    <div
+      class="d-flex border border-gray-300 align-items-center min-w-125px rounded px-10 py-2 my-4 justify-content-between"
+    >
+      <span class="fs-1 text-gray-500">{{ inputAsset }}</span>
+      <input
+        type="text"
+        class="form-control border-0 text-end fs-2hx fw-bolder"
+        currencyMask
+        placeholder="0,00"
+        [(ngModel)]="input"
+        (keyup)="updateInput()"
+        (change)="updateInput()"
+        [min]="inputMin"
+        [max]="inputMax"
+      />
+    </div>
+  </div>
+</div>
+
+<div class="row g-xl-12 mt-2">
+  <div class="col-12 d-flex">
+    <button
+      (click)="updateInput(10)"
+      class="btn btn-rounded btn-sm m-1 w-25 fs-4 text-nowrap btn-{{
+        themeColor
+      }}"
+    >
+      + 10
+    </button>
+    <button
+      (click)="updateInput(50)"
+      class="btn btn-rounded btn-sm m-1 w-25 fs-4 text-nowrap btn-{{
+        themeColor
+      }}"
+    >
+      + 50
+    </button>
+    <button
+      (click)="updateInput(100)"
+      class="btn btn-rounded btn-sm m-1 w-25 fs-4 text-nowrap btn-{{
+        themeColor
+      }}"
+    >
+      + 100
+    </button>
+    <button
+      (click)="updateInput(maxAllowed)"
+      class="btn btn-rounded btn-sm m-1 w-25 fs-4 text-nowrap btn-{{
+        themeColor
+      }}"
+    >
+      TOTAL
+    </button>
+  </div>
+</div>
+<div class="row g-xl-12 mt-20">
+  <div class="col-12">
+    <div
+      class="alert alert-warning rounded-4 bg-light-warning d-flex align-items-center p-5 mb-10"
+    >
+      <span
+        inlineSVG="./assets/media/icons/duotune/general/gen044.svg"
+        class="svg-icon svg-icon-3x svg-icon-warning"
+      ></span>
+      <div class="d-flex flex-column">
+        <h4 class="mb-1 text-warning">Atenção</h4>
+        <span
+          >Esta transação poderá levar até 48 horas para ser validada pela sua
+          concessionária de energia</span
+        >
+      </div>
+    </div>
+  </div>
+</div>
+<div class="row g-xl-12 mt-2 mb-5">
+  <div class="col-12">
+    <button
+      [disabled]="checkInvalidInput()"
+      (click)="actionBtnClick()"
+      class="btn btn-rounded w-100 btn-{{ themeColor }}"
+    >
+      <span
+        inlineSVG="./assets/media/icons/duotune/general/gen037.svg"
+        class="svg-icon svg-icon-3x me-4"
+      ></span>
+      {{ actionLabel }}
+    </button>
+  </div>
+</div>

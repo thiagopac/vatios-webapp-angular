@@ -1,0 +1,105 @@
+<ng-container *ngIf="user$ | async as _user">
+  <div class="card mb-5 mb-xl-10">
+    <div class="card-body pt-9 pb-0">
+      <div class="d-flex flex-wrap flex-sm-nowrap mb-3">
+        <div class="me-7 mb-4">
+          <div
+            class="symbol symbol-200px symbol-lg-160px symbol-fixed position-relative d-none d-lg-block"
+          >
+            <div
+              class="symbol-label fs-2 fw-bold bg-primary text-inverse-primary"
+              style="font-size: 5rem !important"
+            >
+              {{ _user | userInitials }}
+            </div>
+          </div>
+        </div>
+
+        <div class="flex-grow-1">
+          <div
+            class="d-flex justify-content-between align-items-start flex-wrap mb-2"
+          >
+            <div class="d-flex flex-column">
+              <div class="d-flex align-items-center mb-2">
+                <a
+                  class="text-gray-800 text-hover-primary fs-2 fw-bolder me-1 cursor-pointer"
+                >
+                  {{ _user | userFullname }}
+                </a>
+              </div>
+
+              <div class="d-flex flex-wrap fw-bold fs-6 mb-4 pe-2">
+                <a
+                  class="d-flex align-items-center text-gray-400 text-hover-primary me-5 mb-2 cursor-pointer"
+                >
+                  <span
+                    [inlineSVG]="
+                      './assets/media/icons/duotune/general/gen018.svg'
+                    "
+                    class="svg-icon svg-icon-4 me-1"
+                  ></span>
+                  Cidade - Estado
+                </a>
+                <a
+                  class="d-flex align-items-center text-gray-400 text-hover-primary mb-2"
+                >
+                  <span
+                    [inlineSVG]="
+                      './assets/media/icons/duotune/communication/com011.svg'
+                    "
+                    class="svg-icon svg-icon-4 me-1"
+                  ></span>
+                  {{ _user.email }}
+                </a>
+              </div>
+            </div>
+          </div>
+
+          <app-account-balance-component
+            *ngIf="balance$ | async as _balance"
+            [energyAssetValue]="_balance.energy"
+            [cryptoAssetValue]="_balance.crypto"
+            [fiatAssetValue]="_balance.fiat"
+          >
+            >
+          </app-account-balance-component>
+        </div>
+      </div>
+
+      <div class="d-flex overflow-auto h-55px">
+        <ul
+          class="nav nav-stretch nav-line-tabs nav-line-tabs-2x border-transparent fs-5 fw-bolder flex-nowrap"
+        >
+          <li class="nav-item">
+            <a
+              class="nav-link text-active-primary me-6"
+              routerLink="/account/overview"
+              routerLinkActive="active"
+            >
+              Resumo do perfil
+            </a>
+          </li>
+          <li class="nav-item">
+            <a
+              class="nav-link text-active-primary me-6"
+              routerLink="/account/settings"
+              routerLinkActive="active"
+            >
+              Configurações
+            </a>
+          </li>
+          <li class="nav-item">
+            <a
+              class="nav-link text-active-primary me-6"
+              routerLink="/account/security"
+              routerLinkActive="active"
+            >
+              Segurança
+            </a>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</ng-container>
+<router-outlet></router-outlet>

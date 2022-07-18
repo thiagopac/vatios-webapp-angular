@@ -1,0 +1,39 @@
+<div>
+  <div class="card card-dashed card-stretch">
+    <div
+      class="card-header border-0 h-100px text-center d-block ribbon ribbon-end ribbon-clip"
+    >
+      <div class="symbol symbol-75px mt-10">
+        <span class="symbol-label bg-lighten">
+          <span
+            [inlineSVG]="
+              './assets/media/icons/duotune/vatios/' + assetType + '.svg'
+            "
+            class="svg-icon svg-icon-4x"
+          ></span>
+        </span>
+      </div>
+    </div>
+    <div
+      class="card-body d-flex justify-content-between text-center flex-column"
+    >
+      <div class="d-flex flex-column mt-4 mb-14">
+        <div class="h-1px"></div>
+        <span class="fw-bold fs-3x text-gray-800 lh-1"
+          >{{ value }} <span class="fs-3 text-gray-500">{{ assetName }}</span>
+        </span>
+        <span class="fw-bold fs-6 text-gray-400 mt-5">{{ description }}</span>
+        <div class="h-1px"></div>
+      </div>
+      <div class="m-0">
+        <a
+          class="btn btn-rounded btn-bg-primary btn-color-white w-100 fs-6 px-8 py-4 mt-2 text-uppercase"
+          routerLinkActive="active"
+          routerLink="{{ buttonLink }}"
+        >
+          {{ buttonText }}
+        </a>
+      </div>
+    </div>
+  </div>
+</div>

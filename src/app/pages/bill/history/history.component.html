@@ -1,0 +1,60 @@
+<div class="card">
+  <div class="card-body pt-6">
+    <div class="table-filter">
+      <label>Buscar:</label>
+      <input
+        class="form-control form-control-solid w-250px rounded-4"
+        placeholder="Filtrar"
+        matInput
+        type="text"
+        (keyup)="applyFilter($event)"
+      />
+    </div>
+
+    <mat-table [dataSource]="dataSource" class="my-4">
+      <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+      <mat-row *matRowDef="let row; columns: displayedColumns"></mat-row>
+
+      <ng-container matColumnDef="due_date">
+        <mat-header-cell *matHeaderCellDef>DATA DE VENCIMENTO</mat-header-cell>
+        <mat-cell *matCellDef="let element">{{ element.due_date }}</mat-cell>
+      </ng-container>
+
+      <ng-container matColumnDef="address">
+        <mat-header-cell *matHeaderCellDef
+          >ENDEREÇO DA INSTALAÇÃO</mat-header-cell
+        >
+        <mat-cell *matCellDef="let element">{{ element.address }}</mat-cell>
+      </ng-container>
+
+      <ng-container matColumnDef="uc">
+        <mat-header-cell *matHeaderCellDef>UNIDADE CONSUMIDORA</mat-header-cell>
+        <mat-cell *matCellDef="let element">{{ element.uc }}</mat-cell>
+      </ng-container>
+
+      <ng-container matColumnDef="value">
+        <mat-header-cell *matHeaderCellDef>VALOR</mat-header-cell>
+        <mat-cell *matCellDef="let element">{{ element.value }}</mat-cell>
+      </ng-container>
+
+      <ng-container matColumnDef="invoice">
+        <mat-header-cell *matHeaderCellDef>VISUALIZAR FATURA</mat-header-cell>
+        <mat-cell *matCellDef="let element">
+          <a href="{{ element.invoice }}">
+            <i class="bi bi-file-earmark-pdf fs-1 text-danger"></i>
+          </a>
+        </mat-cell>
+      </ng-container>
+
+      <ng-container matColumnDef="status">
+        <mat-header-cell *matHeaderCellDef>status</mat-header-cell>
+        <mat-cell *matCellDef="let element">{{ element.status }}</mat-cell>
+      </ng-container>
+    </mat-table>
+
+    <mat-paginator
+      [pageSizeOptions]="[10, 20, 50]"
+      showFirstLastButtons
+    ></mat-paginator>
+  </div>
+</div>

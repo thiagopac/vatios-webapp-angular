@@ -1,0 +1,62 @@
+<div class="card pt-2 pb-10">
+  <div
+    class="position-absolute top-0 end-0 opacity-25 m-10 pe-2 text-end d-none d-md-block"
+  >
+    <i class="las la-shopping-cart fs-5tx"></i>
+  </div>
+  <div class="card-header border-0">
+    <div class="card-title"></div>
+  </div>
+  <div class="card-body pt-2 pb-10">
+    <div class="row justify-content-center">
+      <div class="col-xl-6">
+        <div class="row g-xl-12">
+          <div class="col-12">
+            <div class="border border-gray-300 border-dashed rounded py-3 px-4">
+              <div class="d-flex align-items-center justify-content-between">
+                <div class="d-flex align-items-center">
+                  <span
+                    [inlineSVG]="'./assets/media/icons/duotune/vatios/fiat.svg'"
+                    class="svg-icon svg-icon-4x"
+                  ></span>
+                  <div class="fs-1 fw-bolder counted">R$ 526,25</div>
+                </div>
+                <span class="fs-3 text-gray-600 mx-2 text-uppercase"
+                  >Saldos</span
+                >
+                <div class="d-flex align-items-center">
+                  <div class="fs-1 fw-bolder counted">110</div>
+                  <span class="fs-1 text-gray-500 mx-2">DEC</span>
+                  <span
+                    [inlineSVG]="
+                      './assets/media/icons/duotune/vatios/crypto.svg'
+                    "
+                    class="svg-icon svg-icon-4x"
+                  ></span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <app-operation-exchange-component
+          firstInputLabel="Quantidade a vender"
+          firstInputAsset="DEC"
+          [firstInputMin]="0"
+          [firstInputMax]="110"
+          [firstInputDecimals]="0"
+          firstInputMask="99999"
+          secondInputLabel="Valor total da venda"
+          secondInputAsset="R$"
+          [secondInputDecimals]="2"
+          [operationRatio]="0.75"
+          icon="./assets/media/icons/duotune/ecommerce/ecm001.svg"
+          iconColor="gray"
+          themeColor="warning"
+          actionLabel="Solicitar venda"
+        >
+        </app-operation-exchange-component>
+      </div>
+    </div>
+  </div>
+</div>

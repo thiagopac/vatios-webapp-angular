@@ -1,0 +1,14 @@
+<div class="border border-gray-300 border-dashed rounded text-center">
+  <div class="fw-bold text-gray-400 py-2">
+    <div
+      class="d-inline-flex mx-1 align-items-center text-{{
+        getEventColor(event)
+      }}"
+      *ngFor="let event of events"
+    >
+      <span class="mx-1 fs-8">{{ getEventSymbol(event) }}</span>
+      {{ event.value | intToCurrency: event.asset !== 'fiat' }}
+      {{ event.asset | assetDescToAbbr }}
+    </div>
+  </div>
+</div>

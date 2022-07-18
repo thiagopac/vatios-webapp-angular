@@ -1,0 +1,58 @@
+<ng-container *ngIf="user$ | async as _user">
+  <div class="card mb-5 mb-xl-10" id="kt_profile_details_view">
+    <div class="card-header cursor-pointer">
+      <div class="card-title m-0">
+        <h3 class="fw-bolder m-0">Dados do perfil</h3>
+      </div>
+
+      <a
+        routerLink="/account/settings"
+        class="btn btn-rounded btn-primary align-self-center"
+      >
+        Alterar dados
+      </a>
+    </div>
+
+    <div class="card-body p-9">
+      <div class="row mb-7">
+        <label class="col-lg-4 fw-bold text-muted">Nome completo</label>
+
+        <div class="col-lg-8">
+          <span class="fw-bolder fs-6 text-dark">{{
+            _user | userFullname
+          }}</span>
+        </div>
+      </div>
+
+      <div class="row mb-7">
+        <label class="col-lg-4 fw-bold text-muted"
+          >Endereço da carteira de tokens</label
+        >
+
+        <div class="col-lg-8 fv-row">
+          <span class="fw-bold fs-6">xyz</span>
+        </div>
+      </div>
+
+      <div class="row mb-7">
+        <label class="col-lg-4 fw-bold text-muted"> Telefone </label>
+
+        <div class="col-lg-8 d-flex align-items-center">
+          <span class="fw-bolder fs-6 me-2">999</span>
+
+          <span class="badge badge-success">Verificado</span>
+        </div>
+      </div>
+
+      <div class="row mb-7">
+        <label class="col-lg-4 fw-bold text-muted"> Localidade </label>
+
+        <div class="col-lg-8">
+          <span class="fw-bolder fs-6 text-dark"
+            >Belo Horizonte - Minas Gerais - Brasil</span
+          >
+        </div>
+      </div>
+    </div>
+  </div>
+</ng-container>

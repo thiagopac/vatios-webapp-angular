@@ -1,0 +1,121 @@
+<div class="row g-xl-12 mt-10">
+  <div class="col-12 d-lg-flex">
+    <div class="col-lg-5">
+      <div class="text-center">
+        <span class="fs-4 fw-bold text-gray-700 d-block">{{
+          firstInputLabel
+        }}</span>
+        <div
+          class="d-flex border border-gray-300 align-items-center min-w-125px rounded px-10 py-2 my-4 justify-content-between"
+        >
+          <input
+            appInputRestriction="noSpecialChars"
+            type="number"
+            class="form-control gray-800 border-0 text-end fs-2hx fw-bolder"
+            [min]="firstInputMin"
+            [max]="maxAllowed"
+            placeholder="0"
+            [(ngModel)]="firstInput"
+            (keyup)="updateFirstInput()"
+            (change)="updateFirstInput()"
+          />
+          <span class="fs-3 text-gray-500">{{ firstInputAsset }}</span>
+        </div>
+      </div>
+    </div>
+    <div class="col-2 d-none d-lg-block m-auto mb-8">
+      <div class="text-center align-self-baseline">
+        <span
+          [inlineSVG]="icon"
+          class="svg-icon svg-icon-4x svg-icon-{{ iconColor }}"
+        ></span>
+      </div>
+    </div>
+    <div class="col-lg-5">
+      <div class="text-center">
+        <span class="fs-4 fw-bold text-gray-700 d-block">{{
+          secondInputLabel
+        }}</span>
+        <div
+          class="d-flex border border-gray-300 bg-lighten align-items-center min-w-125px rounded px-10 py-2 my-4 justify-content-between"
+        >
+          <span
+            class="form-control border-0 bg-transparent text-end fs-2hx pe-7 fw-bolder"
+            >{{ secondInputStr }}</span
+          >
+          <span class="fs-3 text-gray-500">{{ secondInputAsset }}</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<div class="row g-xl-12 mt-2">
+  <div class="col-12 d-flex">
+    <button
+      (click)="updateFirstInput(10)"
+      class="btn btn-rounded btn-sm m-1 w-25 fs-4 text-nowrap btn-{{
+        themeColor
+      }}"
+    >
+      + 10
+    </button>
+    <button
+      (click)="updateFirstInput(50)"
+      class="btn btn-rounded btn-sm m-1 w-25 fs-4 text-nowrap btn-{{
+        themeColor
+      }}"
+    >
+      + 50
+    </button>
+    <button
+      (click)="updateFirstInput(100)"
+      class="btn btn-rounded btn-sm m-1 w-25 fs-4 text-nowrap btn-{{
+        themeColor
+      }}"
+    >
+      + 100
+    </button>
+    <button
+      (click)="updateFirstInput(maxAllowed)"
+      class="btn btn-rounded btn-sm m-1 w-25 fs-4 text-nowrap btn-{{
+        themeColor
+      }}"
+    >
+      TOTAL
+    </button>
+  </div>
+</div>
+<div class="row g-xl-12 mt-20">
+  <div class="col-12">
+    <div
+      class="alert alert-warning rounded-4 bg-light-warning d-flex align-items-center p-5 mb-10"
+    >
+      <span
+        inlineSVG="./assets/media/icons/duotune/general/gen044.svg"
+        class="svg-icon svg-icon-3x svg-icon-warning me-3"
+      ></span>
+      <div class="d-flex flex-column">
+        <h4 class="mb-1 text-warning">Atenção</h4>
+        <span
+          >Esta transação poderá levar até 48 horas para ser validada pela sua
+          concessionária de energia</span
+        >
+      </div>
+    </div>
+  </div>
+</div>
+<div class="row g-xl-12 mt-2 mb-5">
+  <div class="col-12">
+    <button
+      [disabled]="checkInvalidInput()"
+      (click)="actionBtnClick()"
+      class="btn btn-rounded w-100 btn-{{ themeColor }}"
+    >
+      <span
+        inlineSVG="./assets/media/icons/duotune/general/gen037.svg"
+        class="svg-icon svg-icon-3x me-4"
+      ></span>
+      {{ actionLabel }}
+    </button>
+  </div>
+</div>

@@ -1,0 +1,66 @@
+//
+// To make future updates easier consider overriding the global variables from _variables.bootstrap.scss and _variables.custom.scss for current demo in this file.
+// Note that this file is included first and variables defined in _variables.bootstrap.scss and _variables.custom.scss
+// are not accessible in this file but you can override any global variable as shown below:
+//
+
+// Theme colors
+// Primary
+$primary: if(isDarkMode(), #3699ff, #31abcc);
+$primary-active: if(isDarkMode(), #187de4, darken($primary, 5%));
+$primary-light: if(isDarkMode(), #212e48, #f1faff);
+$primary-inverse: #ffffff;
+
+// Success
+$success: if(isDarkMode(), #0bb783, #0bb783);
+$success-active: if(isDarkMode(), #04aa77, darken($success, 5%));
+$success-light: if(isDarkMode(), #1c3238, #e8fff3);
+$success-inverse: #ffffff;
+
+// Info
+$info: if(isDarkMode(), #8950fc, #8950fc);
+$info-active: if(isDarkMode(), #7337ee, darken($info, 5%));
+$info-light: if(isDarkMode(), #2f264f, #f8f5ff);
+$info-inverse: #ffffff;
+
+// Danger
+$danger: if(isDarkMode(), #f64e60, #f64e60);
+$danger-active: if(isDarkMode(), #ee2d41, darken($danger, 5%));
+$danger-light: if(isDarkMode(), #3a2434, #fff5f8);
+$danger-inverse: #ffffff;
+
+// Warning
+$warning: if(isDarkMode(), #ffa800, #ffa800);
+$warning-active: if(isDarkMode(), #ee9d01, darken($warning, 5%));
+$warning-light: if(isDarkMode(), #392f28, #fff8dd);
+$warning-inverse: #ffffff;
+
+// Dark
+$dark: #181c32;
+$dark-active: darken($dark, 5%);
+$dark-light: #eff2f5;
+$dark-inverse: #ffffff;
+
+// Card
+$card-border-radius: 2rem;
+
+// Forms
+//$form-label-font-weight:                          600;
+//$form-label-font-size:                            1.05rem;
+
+//$input-btn-font-weight                            500;
+//$input-btn-font-size:                             1rem;
+//$input-btn-font-size-sm:                          0.95rem;
+//$input-btn-font-size-lg:                          1.1rem;
+
+// Buttons
+//$btn-font-weight:                                 $input-btn-font-weight;
+//$btn-font-size:                                   $input-btn-font-size;
+//$btn-font-size-sm:                                $input-btn-font-size-sm;
+//$btn-font-size-lg:                                $input-btn-font-size-lg;
+
+// Inputs
+//$input-font-weight:                               $input-btn-font-weight;
+//$input-font-size:                                 $input-btn-font-size;
+//$input-font-size-sm:                              $input-btn-font-size-sm;
+//$input-font-size-lg:                              $input-btn-font-size-lg;

@@ -1,0 +1,58 @@
+<!-- begin::Header -->
+<div class="card-header border-0 pt-5">
+  <h3 class="card-title align-items-start flex-column">
+    <span class="card-label fw-bolder fs-3 mb-1">Acompanhe sua economia</span>
+
+    <span class="text-muted fw-bold fs-7">01 Jan - 18 Jan / 22</span>
+  </h3>
+
+  <!-- begin::Toolbar -->
+  <div class="card-toolbar" data-kt-buttons="true">
+    <a
+      class="btn btn-sm btn-color-muted btn-active btn-active-primary active px-4 me-1"
+      id="kt_charts_widget_3_year_btn"
+    >
+      Anual
+    </a>
+
+    <a
+      class="btn btn-sm btn-color-muted btn-active btn-active-primary px-4 me-1"
+      id="kt_charts_widget_3_month_btn"
+    >
+      Mensal
+    </a>
+
+    <a
+      class="btn btn-sm btn-color-muted btn-active btn-active-primary px-4"
+      id="kt_charts_widget_3_week_btn"
+    >
+      Semanal
+    </a>
+  </div>
+  <!-- end::Toolbar -->
+</div>
+<!-- end::Header -->
+
+<!-- begin::Body -->
+<div class="card-body mb-4 mt-n8">
+  <!-- begin::Chart -->
+  <div [style.height]="'300px'">
+    <apx-chart
+      [series]="chartOptions.series"
+      [chart]="chartOptions.chart"
+      [xaxis]="chartOptions.xaxis"
+      [yaxis]="chartOptions.yaxis"
+      [dataLabels]="chartOptions.dataLabels"
+      [stroke]="chartOptions.stroke"
+      [legend]="chartOptions.legend"
+      [fill]="chartOptions.fill"
+      [states]="chartOptions.states"
+      [tooltip]="chartOptions.tooltip"
+      [colors]="chartOptions.colors"
+      [markers]="chartOptions.markers"
+      [plotOptions]="chartOptions.plotOptions"
+    ></apx-chart>
+  </div>
+  <!-- end::Chart -->
+</div>
+<!-- end::Body -->

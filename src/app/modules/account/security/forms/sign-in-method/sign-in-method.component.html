@@ -1,0 +1,157 @@
+<div class="card mb-5 mb-xl-10">
+  <div
+    class="card-header border-0 cursor-pointer"
+    role="button"
+    data-bs-toggle="collapse"
+    data-bs-target="#kt_account_signin_method"
+  >
+    <div class="card-title m-0">
+      <h3 class="fw-bolder m-0">Dados de login</h3>
+    </div>
+  </div>
+  <div>
+    <div class="card-body border-top p-9">
+      <ng-container *ngIf="!showChangeEmailForm">
+        <div class="d-flex flex-wrap align-items-center">
+          <div id="kt_signin_email" class="false">
+            <div class="fs-6 fw-bolder mb-1">E-mail</div>
+            <div class="fw-bold text-gray-600">meu@email.com.br</div>
+          </div>
+        </div>
+      </ng-container>
+
+      <div class="separator separator-dashed my-6"></div>
+
+      <ng-container *ngIf="!showChangePasswordForm">
+        <div class="d-flex flex-wrap align-items-center mb-10">
+          <div id="kt_signin_password" class="false">
+            <div class="fs-6 fw-bolder mb-1">Senha</div>
+            <div class="fw-bold text-gray-600">************</div>
+          </div>
+          <div id="kt_signin_password_button" class="ms-auto false">
+            <button
+              class="btn btn-rounded btn-light btn-active-light-primary"
+              (click)="togglePasswordForm(true)"
+            >
+              Alterar senha
+            </button>
+          </div>
+        </div>
+      </ng-container>
+
+      <ng-container *ngIf="showChangePasswordForm">
+        <div class="d-flex flex-wrap align-items-center mb-10">
+          <div id="kt_signin_password_edit" class="flex-row-fluid false">
+            <form id="kt_signin_change_password" class="form" novalidate="">
+              <div class="row mb-1">
+                <div class="col-lg-4">
+                  <div class="fv-row mb-0">
+                    <label
+                      for="currentpassword"
+                      class="form-label fs-6 fw-bolder mb-3"
+                      >Senha atual</label
+                    ><input
+                      type="password"
+                      class="form-control rounded-4 form-control-lg form-control-solid"
+                      id="currentpassword"
+                      name="currentPassword"
+                    />
+                  </div>
+                </div>
+                <div class="col-lg-4">
+                  <div class="fv-row mb-0">
+                    <label
+                      for="newpassword"
+                      class="form-label fs-6 fw-bolder mb-3"
+                      >Nova senha</label
+                    ><input
+                      type="password"
+                      class="form-control rounded-4 form-control-lg form-control-solid"
+                      id="newpassword"
+                      name="newPassword"
+                    />
+                  </div>
+                </div>
+                <div class="col-lg-4">
+                  <div class="fv-row mb-0">
+                    <label
+                      for="confirmpassword"
+                      class="form-label fs-6 fw-bolder mb-3"
+                      >Confirme a nova senha</label
+                    ><input
+                      type="password"
+                      class="form-control rounded-4 form-control-lg form-control-solid"
+                      id="confirmpassword"
+                      name="passwordConfirmation"
+                    />
+                  </div>
+                </div>
+              </div>
+              <div class="form-text mb-5">
+                Utilize 8 caracteres ou mais, incluindo letras, números e
+                símbolos
+              </div>
+              <div class="d-flex">
+                <button
+                  type="button"
+                  class="btn btn-rounded btn-primary me-2 px-6"
+                  (click)="savePassword()"
+                >
+                  <ng-container *ngIf="!isLoading"
+                    >Salvar alterações</ng-container
+                  >
+                  <ng-container *ngIf="isLoading">
+                    <span class="indicator-progress" [style.display]="'block'">
+                      Aguarde...{{ ' ' }}
+                      <span
+                        class="spinner-border spinner-border-sm align-middle ms-2"
+                      ></span>
+                    </span>
+                  </ng-container></button
+                ><button
+                  type="button"
+                  class="btn btn-rounded btn-color-gray-400 btn-active-light-primary px-6"
+                  (click)="togglePasswordForm(false)"
+                >
+                  Cancelar
+                </button>
+              </div>
+            </form>
+          </div>
+          <div id="kt_signin_password_button" class="ms-auto d-none">
+            <button class="btn btn-light btn-active-light-primary">
+              Reset Password
+            </button>
+          </div>
+        </div>
+      </ng-container>
+
+      <div
+        *ngIf="false"
+        class="notice d-flex bg-light-primary rounded-4 border-primary border border-dashed p-6"
+      >
+        <span
+          class="svg-icon svg-icon-2tx svg-icon-primary me-4"
+          [inlineSVG]="'./assets/media/icons/duotune/general/gen048.svg'"
+        >
+        </span>
+        <div class="d-flex flex-stack flex-grow-1 flex-wrap flex-md-nowrap">
+          <div class="mb-3 mb-md-0 fw-bold">
+            <h4 class="text-gray-800 fw-bolder">
+              Autenticação de dois fatores (2FA)
+            </h4>
+            <div class="fs-6 text-gray-600 pe-7">
+              A AUTENTICAÇÃO DE DOIS FATORES ou VERIFICAÇÃO EM DUAS ETAPAS,
+              adiciona uma camada extra de segurança à sua conta. Para fazer
+              login, você também precisará fornecer um código de 6 dígitos.
+            </div>
+          </div>
+          <a
+            class="btn btn-rounded btn-primary px-6 align-self-center text-nowrap cursor-pointer"
+            >Ativar</a
+          >
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

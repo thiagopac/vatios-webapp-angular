@@ -1,0 +1,56 @@
+/* You can add global styles to this file, and also import other style files */
+@import './assets/sass/style';
+
+// Replace above style with this SCSS file to enable dark mode styles
+//@import "./assets/sass/style.dark";
+
+@import './assets/sass/style.angular.scss';
+
+html,
+body {
+  height: 100%;
+}
+
+mat-table {
+  font-family: Poppins, Helvetica, 'sans-serif' !important;
+}
+
+mat-header-cell {
+  color: $gray-400 !important;
+  text-align: center !important;
+  font-weight: 600 !important;
+  text-transform: uppercase !important;
+  font-size: 0.95rem !important;
+  justify-content: center;
+  overflow: visible !important;
+  white-space: nowrap !important;
+}
+
+mat-row,
+mat-header-row,
+mat-footer-row {
+  display: flex !important;
+  border-width: 0 !important;
+  border-bottom-width: 1px !important;
+  border-style: dashed !important;
+  align-items: center !important;
+  box-sizing: border-box !important;
+  border-color: $gray-300 !important;
+  padding: 4px 0 !important;
+  text-align: center !important;
+}
+
+mat-cell {
+  display: flex;
+  text-align: center !important;
+  justify-content: center;
+}
+
+.table-filter {
+  text-align: right;
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  margin: 10px 0;
+  gap: 10px;
+}

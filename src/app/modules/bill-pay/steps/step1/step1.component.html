@@ -1,0 +1,63 @@
+<div class="pb-10">
+  <h2 class="fw-bolder d-flex align-items-center text-dark">
+    Unidade consumidora
+  </h2>
+
+  <div
+    class="alert rounded-4 bg-light-primary border border-primary d-flex flex-column flex-sm-row w-100 mt-10 p-5"
+  >
+    <span
+      [inlineSVG]="'./assets/media/icons/duotune/general/gen045.svg'"
+      class="svg-icon svg-icon-3x svg-icon-primary me-3"
+    >
+    </span>
+    <div class="d-flex flex-column pe-0 pe-sm-10">
+      <h5 class="mb-2">UNIDADES CONSUMIDORAS</h5>
+      <span>
+        Número que define uma unidade residencial, comercial, industrial ou
+        pública que consome energia elétrica. Se você quiser entender mais sobre
+        Unidades consumidoras, verifique nossa
+        <a href="#" class="link-primary fw-bolder">página de ajuda</a>.
+      </span>
+    </div>
+  </div>
+</div>
+
+<div class="fv-row" [formGroup]="form">
+  <label class="d-flex align-items-center form-label mb-5 fs-5">
+    Selecione a unidade consumidora referente à conta de energia que você deseja
+    pagar
+  </label>
+
+  <div class="row">
+    <div class="col-lg-6" *ngFor="let item of [1, 2, 3]">
+      <input
+        formControlName="accountType"
+        name="accountType"
+        type="radio"
+        class="btn-check"
+        id="uc_{{ item }}"
+        value="{{ item }}"
+      />
+      <label
+        class="btn btn-rounded btn-outline btn-outline-dashed btn-outline-default p-7 d-flex align-items-center mb-10"
+        for="uc_{{ item }}"
+      >
+        <i class="bi bi-house fs-1 me-2 opacity-75"></i>
+        <span class="d-block fw-bold text-start">
+          <span class="text-dark fw-bolder d-block fs-4 mb-2">
+            Minha casa {{ item }}
+            <span class="fs-sm-8 text-gray-400 d-flex">1/1111111111-1</span>
+          </span>
+          <span class="text-gray-400 fw-bold fs-6">
+            Rua Dr. Júlio Otaviano Ferreira 1048, Belo Horizonte/MG
+          </span>
+        </span>
+      </label>
+    </div>
+
+    <div class="fv-plugins-message-container invalid-feedback">
+      <!-- <ErrorMessage name='accountType' /> -->
+    </div>
+  </div>
+</div>

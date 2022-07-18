@@ -1,0 +1,59 @@
+<div class="pb-8 pb-lg-10">
+  <h2 class="fw-bolder text-dark">Estamos quase lá!</h2>
+</div>
+
+<div class="mb-0">
+  <label class="d-flex align-items-center form-label mb-5 fs-5">
+    Escolha um meio de pagamento para concluir
+  </label>
+
+  <div class="row mt-20 mb-10">
+    <div class="col-lg-6">
+      <input
+        formControlName="accountType"
+        name="accountType"
+        type="radio"
+        class="btn-check"
+        id="type_boleto"
+        value="bankslip"
+      />
+      <label
+        class="btn btn-rounded btn-outline btn-outline-dashed btn-outline-default p-7 d-flex align-items-center"
+        for="type_boleto"
+      >
+        <img
+          class="w-35px h-35px me-5"
+          src="https://cdn-icons-png.flaticon.com/128/3481/3481266.png"
+        />
+
+        <span class="d-block fw-bold text-start">
+          <span class="text-dark fw-bolder d-block fs-4">Boleto</span>
+        </span>
+      </label>
+    </div>
+
+    <div class="col-lg-6">
+      <input
+        formControlName="accountType"
+        name="accountType"
+        type="radio"
+        class="btn-check"
+        id="type_pix"
+        value="pix"
+      />
+      <label
+        class="btn btn-rounded btn-outline btn-outline-dashed btn-outline-default p-7 d-flex align-items-center"
+        for="type_pix"
+      >
+        <img
+          class="w-35px h-35px me-5"
+          src="https://logospng.org/download/pix/logo-pix-icone-512.png"
+        />
+
+        <span class="d-block fw-bold text-start">
+          <span class="text-dark fw-bolder d-block fs-4">PIX</span>
+        </span>
+      </label>
+    </div>
+  </div>
+</div>

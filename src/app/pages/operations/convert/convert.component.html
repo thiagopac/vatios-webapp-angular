@@ -1,0 +1,58 @@
+<div class="card pt-2 pb-10">
+  <div
+    class="position-absolute top-0 end-0 opacity-25 m-10 pe-2 text-end d-none d-md-block"
+  >
+    <i class="las la-exchange-alt fs-5tx"></i>
+  </div>
+  <div class="card-header border-0">
+    <div class="card-title"></div>
+  </div>
+  <div class="card-body pt-2 pb-10">
+    <div class="row justify-content-center">
+      <div class="col-xl-6">
+        <div class="row g-xl-12">
+          <div class="col-12">
+            <div class="border border-gray-300 border-dashed rounded py-3 px-4">
+              <div class="d-flex align-items-center justify-content-between">
+                <div>
+                  <span class="fs-3 text-gray-600 mx-2 text-uppercase"
+                    >Saldo disponível para conversão</span
+                  >
+                </div>
+                <div class="d-flex align-items-center">
+                  <div class="fs-1 fw-bolder counted">140</div>
+                  <span class="fs-3 text-gray-500 mx-2">kWh</span>
+                  <span
+                    [inlineSVG]="
+                      './assets/media/icons/duotune/vatios/energy.svg'
+                    "
+                    class="svg-icon svg-icon-4x"
+                  ></span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <app-operation-exchange-component
+          firstInputLabel="Créditos para conversão"
+          firstInputAsset="kWh"
+          [firstInputMin]="10"
+          [firstInputMax]="140"
+          [firstInputDecimals]="0"
+          firstInputMask="99999"
+          secondInputLabel="Saldo equivalente"
+          secondInputAsset="DEC"
+          [secondInputDecimals]="0"
+          [operationRatio]="1"
+          icon="./assets/media/icons/duotune/arrows/arr080.svg"
+          iconColor="warning"
+          themeColor="primary"
+          actionLabel="Solicitar conversão"
+          (triggeredAction)="triggeredActionCaptured($event)"
+        >
+        </app-operation-exchange-component>
+      </div>
+    </div>
+  </div>
+</div>

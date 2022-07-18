@@ -1,0 +1,192 @@
+<!--begin::Form-->
+<form
+  class="form w-100"
+  [formGroup]="loginForm"
+  novalidate="novalidate"
+  id="kt_login_signin_form"
+  (ngSubmit)="submit()"
+>
+  <!--begin::Heading-->
+  <div class="text-center mb-10">
+    <h1 class="text-dark mb-3">Entrar</h1>
+    <div class="text-gray-400 fw-bold fs-4">
+      Não tem conta?
+      <a
+        routerLink="/auth/registration"
+        id="kt_login_signup"
+        class="link-primary fw-bolder"
+        >{{ 'AUTH.GENERAL.SIGNUP_BUTTON' | translate }}</a
+      >
+    </div>
+  </div>
+  <!--end::Heading-->
+
+  <!-- begin::Alert error-->
+  <ng-container *ngIf="hasError">
+    <div class="mb-lg-15 alert alert-danger">
+      <div class="alert-text font-weight-bold">Credenciais incorretas</div>
+    </div>
+  </ng-container>
+  <!-- end::Alert error-->
+
+  <!--begin::Form group-->
+  <div class="fv-row mb-15">
+    <label class="form-label fs-6 fw-bolder text-dark">E-mail</label>
+    <input
+      class="form-control form-control-lg form-control-solid rounded-4"
+      type="email"
+      name="email"
+      formControlName="email"
+      autocomplete="off"
+      [ngClass]="{
+        'is-invalid': loginForm.controls['email'].invalid,
+        'is-valid': loginForm.controls['email'].valid
+      }"
+    />
+    <ng-container
+      [ngTemplateOutlet]="formError"
+      [ngTemplateOutletContext]="{
+        validation: 'required',
+        message: 'Preenchimento obrigatório',
+        control: loginForm.controls['email']
+      }"
+    ></ng-container>
+    <ng-container
+      [ngTemplateOutlet]="formError"
+      [ngTemplateOutletContext]="{
+        validation: 'email',
+        message: 'E-mail inválido',
+        control: loginForm.controls['email']
+      }"
+    ></ng-container>
+    <ng-container
+      [ngTemplateOutlet]="formError"
+      [ngTemplateOutletContext]="{
+        validation: 'minLength',
+        message: 'O tamanho mínimo de 6 caracteres',
+        control: loginForm.controls['email']
+      }"
+    ></ng-container>
+    <ng-container
+      [ngTemplateOutlet]="formError"
+      [ngTemplateOutletContext]="{
+        validation: 'maxLength',
+        message: 'O tamanho máximo de 360 caracteres',
+        control: loginForm.controls['email']
+      }"
+    ></ng-container>
+  </div>
+  <!--end::Form group-->
+
+  <!--begin::Form group-->
+  <div class="fv-row mb-10">
+    <div class="justify-content-between mt-n5">
+      <div class="d-flex flex-stack mb-2">
+        <label class="form-label fw-bolder text-dark fs-6 mb-0">Senha</label>
+        <a
+          routerLink="/auth/forgot-password"
+          class="link-primary fs-6 fw-bolder"
+          id="kt_login_forgot"
+          [style.margin-left]="'5px'"
+          tabindex="-1"
+        >
+          Esqueceu a senha ?
+        </a>
+      </div>
+    </div>
+
+    <input
+      class="form-control form-control-lg form-control-solid rounded-4"
+      type="password"
+      name="password"
+      autocomplete="off"
+      formControlName="password"
+      [ngClass]="{
+        'is-invalid': loginForm.controls['password'].invalid,
+        'is-valid': loginForm.controls['password'].valid
+      }"
+    />
+    <ng-container
+      [ngTemplateOutlet]="formError"
+      [ngTemplateOutletContext]="{
+        validation: 'required',
+        message: 'Preencha o campo senha',
+        control: loginForm.controls['password']
+      }"
+    ></ng-container>
+    <ng-container
+      [ngTemplateOutlet]="formError"
+      [ngTemplateOutletContext]="{
+        validation: 'minlength',
+        message: 'Tamanho mínimo de 4 caracteres',
+        control: loginForm.controls['password']
+      }"
+    ></ng-container>
+    <ng-container
+      [ngTemplateOutlet]="formError"
+      [ngTemplateOutletContext]="{
+        validation: 'maxLength',
+        message: 'Tamanho máximo de 100 caracteres',
+        control: loginForm.controls['password']
+      }"
+    ></ng-container>
+  </div>
+  <!--end::Form group-->
+
+  <!--begin::Form group-->
+  <div class="fv-row mb-10">
+    <div class="form-check form-check-custom form-check-solid">
+      <input
+        type="checkbox"
+        formControlName="remember"
+        name="remember"
+        class="form-check-input"
+      />
+
+      <label for="remember" class="form-check-label fw-bold text-gray-700 fs-6">
+        Manter conectado
+      </label>
+    </div>
+  </div>
+  <!--end::Form group-->
+
+  <!--begin::Action-->
+  <div class="text-center">
+    <button
+      type="submit"
+      class="btn btn-rounded btn-lg btn-primary w-100 mb-5"
+      [disabled]="loginForm.invalid"
+    >
+      <ng-container *ngIf="isLoading$ | async">
+        <span class="indicator-progress" [style.display]="'block'">
+          Aguarde...
+          <span
+            class="spinner-border spinner-border-sm align-middle ms-2"
+          ></span>
+        </span>
+      </ng-container>
+      <ng-container *ngIf="(isLoading$ || null | async) === false">
+        <span class="indicator-label">Continuar</span>
+      </ng-container>
+    </button>
+  </div>
+  <!--end::Action-->
+</form>
+<!--end::Form-->
+
+<ng-template
+  #formError
+  let-control="control"
+  let-message="message"
+  let-validation="validation"
+>
+  <ng-container
+    *ngIf="control.hasError(validation) && (control.dirty || control.touched)"
+  >
+    <div class="fv-plugins-message-container">
+      <span role="alert">
+        {{ message }}
+      </span>
+    </div>
+  </ng-container>
+</ng-template>

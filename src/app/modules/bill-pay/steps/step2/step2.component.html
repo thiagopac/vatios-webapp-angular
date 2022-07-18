@@ -1,0 +1,35 @@
+<div class="pb-10 pb-lg-15">
+  <h2 class="fw-bolder text-dark">Conta de energia</h2>
+</div>
+<div [formGroup]="form">
+  <div class="mb-0 fv-row">
+    <label class="d-flex align-items-center form-label mb-5 fs-5">
+      Selecione a fatura deseja pagar
+    </label>
+    <div class="mb-0">
+      <label
+        class="d-flex flex-stack mb-5 cursor-pointer"
+        *ngFor="let item of [1, 2, 3]"
+        ><span class="d-flex align-items-center me-2"
+          ><span class="symbol symbol-50px me-6"
+            ><span class="symbol-label">
+              <i
+                class="bi bi-file-earmark-pdf fs-1 text-danger"
+              ></i> </span></span
+          ><span class="d-flex flex-column"
+            ><span class="fw-bolder text-gray-800 text-hover-primary fs-5"
+              >R$ 746,70</span
+            ><span class="fs-6 fw-bold text-gray-400"
+              >Vencimento: Abr 10, 2022</span
+            ></span
+          ></span
+        ><span class="form-check form-check-custom form-check-solid"
+          ><input
+            formControlName="accountPlan"
+            class="form-check-input"
+            type="radio"
+            value="{{ item }}" /></span
+      ></label>
+    </div>
+  </div>
+</div>

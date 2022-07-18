@@ -1,0 +1,187 @@
+<!--begin::Wrapper-->
+<div data-kt-search-element="wrapper">
+  <!--begin::Form-->
+  <form
+    data-kt-search-element="form"
+    class="w-100 position-relative mb-3"
+    autocomplete="off"
+  >
+    <!--begin::Icon-->
+    <span
+      [inlineSVG]="'./assets/media/icons/duotune/general/gen021.svg'"
+      class="svg-icon svg-icon-2 svg-icon-lg-1 svg-icon-gray-500 position-absolute top-50 translate-middle-y ms-0"
+    ></span>
+    <!--end::Icon-->
+
+    <!--begin::Input-->
+    <input
+      type="text"
+      class="form-control form-control-flush ps-10"
+      name="search"
+      value=""
+      placeholder="Search..."
+      data-kt-search-element="input"
+      [ngModel]="keyword"
+      (ngModelChange)="search($event)"
+    />
+    <!--end::Input-->
+
+    <!--begin::Spinner-->
+    <span
+      class="position-absolute top-50 end-0 translate-middle-y lh-0 me-1"
+      data-kt-search-element="spinner"
+      [ngClass]="searching ? '' : 'd-none'"
+    >
+      <span
+        class="spinner-border h-15px w-15px align-middle text-gray-400"
+      ></span>
+    </span>
+    <!--end::Spinner-->
+
+    <!--begin::Reset-->
+    <span
+      class="btn btn-flush btn-active-color-primary position-absolute top-50 end-0 translate-middle-y lh-0"
+      data-kt-search-element="clear"
+      [ngClass]="searching || keyword.length === 0 ? 'd-none' : ''"
+      (click)="clearSearch()"
+    >
+      <span
+        [inlineSVG]="'./assets/media/icons/duotune/arrows/arr061.svg'"
+        class="svg-icon svg-icon-2 svg-icon-lg-1 me-0"
+      ></span>
+    </span>
+    <!--end::Reset-->
+
+    <!--begin::Toolbar-->
+    <div
+      class="position-absolute top-50 end-0 translate-middle-y"
+      data-kt-search-element="toolbar"
+      [ngClass]="searching || keyword.length > 0 ? 'd-none' : ''"
+    >
+      <!--begin::Preferences toggle-->
+      <div
+        data-kt-search-element="preferences-show"
+        class="btn btn-icon w-20px btn-sm btn-active-color-primary me-1"
+        data-bs-toggle="tooltip"
+        title="Show search preferences"
+      >
+        <span
+          [inlineSVG]="'./assets/media/icons/duotune/coding/cod001.svg'"
+          class="svg-icon svg-icon-1"
+        ></span>
+      </div>
+      <!--end::Preferences toggle-->
+
+      <!--begin::Advanced search toggle-->
+      <div
+        data-kt-search-element="advanced-options-form-show"
+        class="btn btn-icon w-20px btn-sm btn-active-color-primary"
+        data-bs-toggle="tooltip"
+        title="Show more search options"
+      >
+        <span
+          [inlineSVG]="'./assets/media/icons/duotune/arrows/arr072.svg'"
+          class="svg-icon svg-icon-2"
+        ></span>
+      </div>
+      <!--end::Advanced search toggle-->
+    </div>
+    <!--end::Toolbar-->
+  </form>
+  <!--end::Form-->
+
+  <!--begin::Separator-->
+  <div class="separator border-gray-200 mb-6"></div>
+  <!--end::Separator-->
+
+  <!--begin::Recently viewed-->
+  <div
+    data-kt-search-element="results"
+    [ngClass]="searching || keyword.length === 0 ? 'd-none' : ''"
+  >
+    <!--begin::Items-->
+    <div class="scroll-y mh-200px mh-lg-325px">
+      <!--begin::Category title-->
+      <h3
+        class="fs-5 text-muted m-0 pb-5"
+        data-kt-search-element="category-title"
+      >
+        Users
+      </h3>
+      <!--end::Category title-->
+
+      <!--begin::Item-->
+      <a
+        href="#"
+        *ngFor="let item of resultModels"
+        class="d-flex text-dark text-hover-primary align-items-center mb-5"
+      >
+        <!--begin::Symbol-->
+        <div class="symbol symbol-40px me-4">
+          <img src="{{ item.image }}" alt="" />
+        </div>
+        <!--end::Symbol-->
+
+        <!--begin::Title-->
+        <div class="d-flex flex-column justify-content-start fw-bold">
+          <span class="fs-6 fw-bold">{{ item.title }}</span>
+          <span class="fs-7 fw-bold text-muted">{{ item.description }}</span>
+        </div>
+        <!--end::Title-->
+      </a>
+      <!--end::Item-->
+    </div>
+    <!--end::Items-->
+  </div>
+  <!--end::Recently viewed-->
+
+  <!--begin::Recently viewed-->
+  <div
+    data-kt-search-element="results"
+    [ngClass]="keyword.length > 0 ? 'd-none' : ''"
+  >
+    <!--begin::Items-->
+    <div class="scroll-y mh-200px mh-lg-325px">
+      <!--begin::Category title-->
+      <h3
+        class="fs-5 text-muted m-0 pb-5"
+        data-kt-search-element="category-title"
+      >
+        Recently Searched
+      </h3>
+      <!--end::Category title-->
+
+      <!--begin::Item-->
+      <a
+        href="#"
+        *ngFor="let item of recentlySearchedModels"
+        class="d-flex text-dark text-hover-primary align-items-center mb-5"
+      >
+        <!--begin::Symbol-->
+        <div class="symbol symbol-40px me-4">
+          <img *ngIf="item.image" src="{{ item.image }}" alt="" />
+
+          <span class="symbol-label bg-light">
+            <span
+              *ngIf="item.icon"
+              [inlineSVG]="item.icon"
+              class="svg-icon svg-icon-2 svg-icon-primary"
+            ></span>
+          </span>
+        </div>
+        <!--end::Symbol-->
+
+        <!--begin::Title-->
+        <div class="d-flex flex-column justify-content-start fw-bold">
+          <span class="fs-6 fw-bold">{{ item.title }}</span>
+          <span class="fs-7 fw-bold text-muted">{{ item.description }}</span>
+        </div>
+        <!--end::Title-->
+      </a>
+      <!--end::Item-->
+    </div>
+    <!--end::Items-->
+  </div>
+  <!--end::Recently viewed-->
+</div>
+<!--end::Wrapper-->

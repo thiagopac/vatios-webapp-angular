@@ -1,0 +1,73 @@
+<div class="card mb-5 mb-xl-8">
+  <div class="card-header border-0">
+    <div class="card-title">
+      <h3 class="fw-bolder m-0">Saldo de ativos</h3>
+    </div>
+  </div>
+  <div class="card-body pt-2">
+    <div class="py-2">
+      <div class="d-flex flex-stack">
+        <div class="d-flex">
+          <div class="symbol symbol-45px w-40px me-5">
+            <span class="symbol-label bg-lighten">
+              <span
+                [inlineSVG]="'./assets/media/icons/duotune/vatios/energy.svg'"
+                class="svg-icon svg-icon-2x"
+              ></span>
+            </span>
+          </div>
+          <div class="d-flex flex-column">
+            <span class="fw-boldest fs-2 text-gray-800 lh-1">
+              {{ energyAssetValue | intToCurrency: true }}
+              <span class="fs-4 text-gray-500 fw-normal">{{
+                'energy' | assetDescToAbbr
+              }}</span>
+            </span>
+          </div>
+        </div>
+      </div>
+      <div class="separator separator-dashed my-5"></div>
+      <div class="d-flex flex-stack">
+        <div class="d-flex">
+          <div class="symbol symbol-45px w-40px me-5">
+            <span class="symbol-label bg-lighten">
+              <span
+                [inlineSVG]="'./assets/media/icons/duotune/vatios/crypto.svg'"
+                class="svg-icon svg-icon-2x"
+              ></span>
+            </span>
+          </div>
+          <div class="d-flex flex-column">
+            <span class="fw-boldest fs-2 text-gray-800 lh-1">
+              {{ cryptoAssetValue | intToCurrency: true }}
+              <span class="fs-4 text-gray-500 fw-normal">{{
+                'crypto' | assetDescToAbbr
+              }}</span>
+            </span>
+          </div>
+        </div>
+      </div>
+      <div class="separator separator-dashed my-5"></div>
+      <div class="d-flex flex-stack">
+        <div class="d-flex">
+          <div class="symbol symbol-45px w-40px me-5">
+            <span class="symbol-label bg-lighten">
+              <span
+                [inlineSVG]="'./assets/media/icons/duotune/vatios/fiat.svg'"
+                class="svg-icon svg-icon-2x"
+              ></span>
+            </span>
+          </div>
+          <div class="d-flex flex-column">
+            <span class="fw-boldest fs-2 text-gray-800 lh-1">
+              {{ fiatAssetValue | intToCurrency: false }}
+              <span class="fs-4 text-gray-500 fw-normal">{{
+                'fiat' | assetDescToAbbr
+              }}</span>
+            </span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

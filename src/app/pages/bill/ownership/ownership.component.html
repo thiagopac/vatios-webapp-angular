@@ -1,0 +1,58 @@
+<div class="card">
+  <div class="card-header border-0">
+    <div class="card-title">
+      <h3 class="fw-bolder m-0">Unidades consumidoras</h3>
+    </div>
+  </div>
+
+  <div class="card-body pt-2 pb-10">
+    <div class="row gx-9 gy-6">
+      <div class="col-xl-6" *ngFor="let item of [0, 1, 2]">
+        <div
+          class="card card-dashed h-xl-100 flex-row flex-stack flex-wrap p-6"
+        >
+          <div class="d-flex flex-column py-2">
+            <div class="d-flex align-items-center fs-5 fw-bolder mb-5">
+              <i class="bi bi-house fs-2 me-2 text-primary"></i>Minha casa
+            </div>
+            <div class="fs-6 fw-bold text-gray-600 align-items-baseline">
+              <p>UC 1/1111111111-1</p>
+              <p>
+                Rua Dr. Júlio Otaviano Ferreira, 1048 <br />Belo Horizonte/MG
+              </p>
+            </div>
+          </div>
+          <div class="d-flex align-items-center py-2">
+            <button class="btn btn-sm btn-light btn-active-light-primary me-3">
+              Apagar
+            </button>
+            <button class="btn btn-sm btn-light btn-active-light-primary">
+              Editar
+            </button>
+          </div>
+        </div>
+      </div>
+
+      <div class="col-xl-6">
+        <div
+          class="card card-dashed h-xl-100 flex-row flex-stack flex-wrap p-6 bg-light-primary border border-primary border-dashed"
+        >
+          <div class="d-flex flex-stack flex-grow-1 flex-wrap flex-md-nowrap">
+            <div class="mb-3 mb-md-0 fw-bold">
+              <h4 class="text-gray-900 fw-bolder">
+                Adicionar nova Unidade consumidora
+              </h4>
+              <div class="fs-6 text-gray-700 pe-7">
+                Todas as Unidades consumidoras cadastradas precisam ser de sua
+                titularidade
+              </div>
+            </div>
+            <button class="btn btn-primary px-6 align-self-center text-nowrap">
+              Cadastrar
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

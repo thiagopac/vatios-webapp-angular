@@ -1,0 +1,44 @@
+<div class="d-flex flex-column flex-root">
+  <div class="page d-flex flex-row flex-column-fluid">
+    <div class="wrapper d-flex flex-column flex-row-fluid" id="kt_wrapper">
+      <app-header
+        id="kt_header"
+        [ngClass]="headerCSSClasses"
+        class="header align-items-stretch"
+        data-kt-sticky="true"
+        data-kt-sticky-name="header"
+        data-kt-sticky-offset="{default: '200px', lg: '300px'}"
+        #ktHeader
+      ></app-header>
+
+      <ng-container *ngIf="toolbarDisplay">
+        <app-toolbar class="toolbar py-5" id="kt_toolbar"></app-toolbar>
+      </ng-container>
+
+      <app-content
+        id="kt_content_container"
+        class="d-flex flex-column-fluid align-items-start"
+        [ngClass]="contentContainerClasses"
+      ></app-content>
+
+      <app-footer
+        class="footer py-4 d-flex flex-lg-column"
+        id="kt_footer"
+      ></app-footer>
+    </div>
+  </div>
+</div>
+
+<app-scripts-init></app-scripts-init>
+<app-scroll-top></app-scroll-top>
+
+<!-- begin:: Drawers -->
+<app-activity-drawer></app-activity-drawer>
+<app-messenger-drawer></app-messenger-drawer>
+<!-- end:: Drawers -->
+
+<!-- begin:: Modals -->
+<app-main-modal></app-main-modal>
+<app-invite-users-modal></app-invite-users-modal>
+<app-upgrade-plan-modal></app-upgrade-plan-modal>
+<!-- end:: Modals -->

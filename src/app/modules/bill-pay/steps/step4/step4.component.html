@@ -1,0 +1,101 @@
+<div class="pb-10 pb-lg-15">
+  <h2 class="fw-bolder text-dark">Resumo</h2>
+</div>
+
+<div>
+  <div class="flex-grow-1 mb-15">
+    <div class="table-responsive border-bottom mb-4">
+      <table class="table mb-3">
+        <thead>
+          <tr class="border-bottom fs-6 fw-bolder text-muted">
+            <th class="min-w-175px pb-2">Descrição</th>
+            <th class="min-w-100px text-end pb-2">Valor</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr class="fw-bolder text-gray-700 fs-5 text-end">
+            <td class="text-start">Valor total da fatura de energia</td>
+            <td class="text-dark fw-boldest">R$ 746,70</td>
+          </tr>
+          <tr class="fw-bolder text-gray-700 fs-5 text-end">
+            <td class="text-start">Consumo compensável da fatura</td>
+            <td class="text-dark fw-boldest">635 kWh</td>
+          </tr>
+          <tr>
+            <td></td>
+          </tr>
+          <tr class="fw-bolder text-gray-700 fs-5 text-end">
+            <td class="text-start">Saldo de DEC utilizado</td>
+            <td class="text-dark fw-boldest balance-crypto">110 DEC</td>
+          </tr>
+          <tr class="fw-bolder text-gray-700 fs-5 text-end">
+            <td class="text-start">DEC complementares</td>
+            <td class="text-dark fw-boldest complementary-crypto">525 DEC</td>
+          </tr>
+          <tr>
+            <td></td>
+          </tr>
+          <tr class="fw-bolder text-gray-700 fs-5 text-end">
+            <td class="text-start">Custo dos DEC complementares</td>
+            <td class="text-dark fw-boldest">R$ 498,75</td>
+          </tr>
+          <tr class="fw-bolder text-gray-700 fs-5 text-end">
+            <td class="text-start">
+              Taxas não compensáveis da fatura de energia
+            </td>
+            <td class="text-dark fw-boldest">R$ 35,50</td>
+          </tr>
+          <tr>
+            <td></td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+    <div class="d-flex justify-content-between mb-10">
+      <div class="d-flex align-items-center fs-1 fw-boldest text-gray-900">
+        Total a pagar
+      </div>
+      <div class="fs-1 text-dark fw-boldest total-payable">R$ 534,25</div>
+    </div>
+    <div class="d-flex justify-content-end">
+      <div class="mw-300px">
+        <div class="d-flex flex-stack mb-3">
+          <div class="fw-bold pe-10 text-gray-600 fs-7">
+            Custo do kWh nesta fatura:
+          </div>
+          <div class="text-end fw-bolder fs-6 text-gray-800">R$ 1,12</div>
+        </div>
+        <div class="d-flex flex-stack mb-3">
+          <div class="fw-bold pe-10 text-gray-600 fs-7">
+            Preço médio dos seus DECs:
+          </div>
+          <div class="text-end fw-bolder fs-6 text-gray-800">R$ 0,95</div>
+        </div>
+        <div class="d-flex flex-stack mb-3">
+          <div class="my-2 fw-bold text-gray-600 fs-7 text-gray-500">
+            Pague R$ 0,86 por DEC no plano anual de créditos.
+            <a
+              href="http://127.0.0.1:8000/operations/plan"
+              class="fw-bolder"
+              target="_blank"
+              >Saiba mais</a
+            >
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="alert bg-light-info d-flex align-items-center p-5 mb-5">
+    <span
+      [inlineSVG]="'./assets/media/icons/duotune/ecommerce/ecm008.svg'"
+      class="svg-icon svg-icon-3x svg-icon-info pe-3"
+    ></span>
+    <div class="d-flex flex-column">
+      <h4 class="mb-1 text-info">Parabéns!</h4>
+      <span
+        >Ao pagar esta fatura de energia com DECs, você economizará
+        <span class="fw-boldest">R$ 107,95</span>
+      </span>
+    </div>
+  </div>
+</div>

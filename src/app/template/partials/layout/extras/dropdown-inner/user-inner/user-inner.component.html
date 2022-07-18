@@ -1,0 +1,43 @@
+<ng-container *ngIf="user$ | async as _user">
+  <div class="menu-item px-3">
+    <div class="menu-content d-flex align-items-center px-3">
+      <div class="symbol symbol-50px me-5">
+        <!-- <img alt="Logo" [src]="_user.pic" /> -->
+        <div class="symbol-label fs-2 fw-bold bg-primary text-inverse-primary">
+          {{ _user | userInitials }}
+        </div>
+      </div>
+
+      <div class="d-flex flex-column">
+        <div class="fw-bolder d-flex align-items-center fs-5">
+          {{ _user | userFullname }}
+        </div>
+        <a class="fw-bold text-muted text-hover-primary fs-7 cursor-pointer">
+          {{ _user.email }}
+        </a>
+      </div>
+    </div>
+  </div>
+
+  <div class="separator my-2"></div>
+
+  <div class="menu-item px-5">
+    <a routerLink="/account/overview" class="menu-link px-5">
+      Resumo do perfil
+    </a>
+  </div>
+
+  <div class="menu-item px-5">
+    <a routerLink="/account/settings" class="menu-link px-5"> Configurações </a>
+  </div>
+
+  <div class="menu-item px-5">
+    <a routerLink="/account/security" class="menu-link px-5"> Segurança </a>
+  </div>
+
+  <div class="separator my-2"></div>
+
+  <div class="menu-item px-5">
+    <a (click)="logout()" class="menu-link px-5 cursor-pointer"> Sair </a>
+  </div>
+</ng-container>

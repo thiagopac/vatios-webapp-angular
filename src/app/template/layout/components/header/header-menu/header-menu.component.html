@@ -1,0 +1,243 @@
+<!-- VISÃO GERAL -->
+<div
+  class="menu-item menu-lg-down-accordion me-lg-1"
+  data-kt-menu-trigger="click"
+  data-kt-menu-placement="bottom-start"
+>
+  <span
+    class="menu-link py-3"
+    [ngClass]="calculateMenuItemCssClass('/general')"
+  >
+    <span class="menu-title">Visão geral</span>
+    <span class="menu-arrow d-lg-none"></span>
+  </span>
+  <div
+    class="menu-sub menu-sub-lg-down-accordion menu-sub-lg-dropdown menu-rounded-0 py-lg-4 w-lg-225px"
+    data-kt-menu-dismiss="true"
+  >
+    <!-- CARTEIRA -->
+    <div class="menu-item me-lg-1">
+      <a
+        class="menu-link py-3"
+        routerLinkActive="active"
+        routerLink="/general/wallet"
+      >
+        <span class="menu-icon">
+          <i class="las la-wallet fs-1"></i>
+        </span>
+        <span class="menu-title" data-link="/general/wallet"> Carteira </span>
+      </a>
+    </div>
+    <!-- /CARTEIRA -->
+
+    <!-- SALDO -->
+    <div class="menu-item me-lg-1">
+      <a
+        class="menu-link py-3"
+        routerLinkActive="active"
+        routerLink="/general/balance"
+      >
+        <span class="menu-icon">
+          <i class="las la-boxes fs-1"></i>
+        </span>
+        <span class="menu-title">Saldo por ativos</span>
+      </a>
+    </div>
+    <!-- /SALDO -->
+
+    <!-- EXTRATO -->
+    <div class="menu-item me-lg-1">
+      <a
+        class="menu-link py-3"
+        routerLinkActive="active"
+        routerLink="/general/statement"
+      >
+        <span class="menu-icon">
+          <i class="las la-receipt fs-1"></i>
+        </span>
+        <span class="menu-title">Extrato de utilização</span>
+      </a>
+    </div>
+    <!-- /EXTRATO -->
+  </div>
+</div>
+<!-- /VISÃO GERAL -->
+
+<!-- OPERAÇÕES -->
+<div
+  class="menu-item menu-lg-down-accordion me-lg-1"
+  data-kt-menu-trigger="click"
+  data-kt-menu-placement="bottom-start"
+>
+  <span
+    class="menu-link py-3"
+    [ngClass]="calculateMenuItemCssClass('/operations')"
+  >
+    <span class="menu-title">Operações</span>
+    <span class="menu-arrow d-lg-none"></span>
+  </span>
+  <div
+    class="menu-sub menu-sub-lg-down-accordion menu-sub-lg-dropdown menu-rounded-0 py-lg-4 w-lg-225px"
+    data-kt-menu-dismiss="true"
+  >
+    <!-- COVERTER -->
+    <div class="menu-item me-lg-1">
+      <a
+        class="menu-link py-3"
+        routerLinkActive="active"
+        routerLink="/operations/convert"
+      >
+        <span class="menu-icon">
+          <i class="las la-exchange-alt fs-1"></i>
+        </span>
+        <span class="menu-title" data-link="/general/wallet"> Converter </span>
+      </a>
+    </div>
+    <!-- /COVERTER -->
+
+    <!-- COMERCIALIZAR -->
+    <div
+      class="menu-item menu-accordion me-lg-1 showing"
+      data-kt-menu-trigger="{default:'click', lg: 'click'}"
+      data-kt-menu-placement="bottom"
+    >
+      <span
+        class="menu-link py-3"
+        [ngClass]="calculateMenuItemCssClass('/operations/negotiate')"
+      >
+        <span class="menu-icon">
+          <i class="las la-shopping-cart fs-1"></i>
+        </span>
+        <span class="menu-title" data-link="/operations/negotiate">
+          Comercializar
+        </span>
+        <span class="menu-arrow"></span>
+      </span>
+      <div
+        class="menu-sub menu-sub-accordion py-0 w-lg-225px show"
+        data-kt-menu-dismiss="false"
+      >
+        <div class="menu-item me-lg-1">
+          <a
+            class="menu-link py-3"
+            routerLinkActive="active"
+            routerLink="/operations/negotiate/purchase"
+          >
+            <span class="menu-icon">
+              <i class="las la-angle-right"></i>
+            </span>
+            <span class="menu-title">Compra</span>
+          </a>
+        </div>
+        <div class="menu-item me-lg-1">
+          <a
+            class="menu-link py-3"
+            routerLinkActive="active"
+            routerLink="/operations/negotiate/sale"
+          >
+            <span class="menu-icon">
+              <i class="las la-angle-right"></i>
+            </span>
+            <span class="menu-title">Venda</span></a
+          >
+        </div>
+      </div>
+    </div>
+    <!-- /COMERCIALIZAR -->
+
+    <!-- SACAR -->
+    <div class="menu-item me-lg-1">
+      <a
+        class="menu-link py-3"
+        routerLinkActive="active"
+        routerLink="/operations/withdraw"
+      >
+        <span class="menu-icon">
+          <i class="las la-money-check-alt fs-1"></i>
+        </span>
+        <span class="menu-title">Sacar</span>
+      </a>
+    </div>
+    <!-- /SACAR -->
+
+    <!-- PLANO MENSAL -->
+    <div class="menu-item me-lg-1">
+      <a
+        class="menu-link py-3"
+        routerLinkActive="active"
+        routerLink="/operations/plans"
+      >
+        <span class="menu-icon">
+          <i class="las la-calculator fs-1"></i>
+        </span>
+        <span class="menu-title">Plano mensal</span>
+      </a>
+    </div>
+    <!-- /PLANO MENSAL -->
+  </div>
+</div>
+<!-- /OPERAÇÕES -->
+
+<!-- CONTA DE LUZ -->
+<div
+  class="menu-item menu-lg-down-accordion me-lg-1"
+  data-kt-menu-trigger="click"
+  data-kt-menu-placement="bottom-start"
+>
+  <span class="menu-link py-3" [ngClass]="calculateMenuItemCssClass('/bill')">
+    <span class="menu-title">Conta de luz</span>
+    <span class="menu-arrow d-lg-none"></span>
+  </span>
+  <div
+    class="menu-sub menu-sub-lg-down-accordion menu-sub-lg-dropdown menu-rounded-0 py-lg-4 w-lg-225px"
+    data-kt-menu-dismiss="true"
+  >
+    <!-- HISTÓRICO DE FATURAS -->
+    <div class="menu-item me-lg-1">
+      <a
+        class="menu-link py-3"
+        routerLinkActive="active"
+        routerLink="/bill/history"
+      >
+        <span class="menu-icon">
+          <i class="las la-history fs-1"></i>
+        </span>
+        <span class="menu-title" data-link="/general/wallet">
+          Histórico de faturas
+        </span>
+      </a>
+    </div>
+    <!-- /HISTÓRICO DE FATURAS -->
+
+    <!-- TITULARIDADE DE CONTAS -->
+    <div class="menu-item me-lg-1">
+      <a
+        class="menu-link py-3"
+        routerLinkActive="active"
+        routerLink="/bill/ownership"
+      >
+        <span class="menu-icon">
+          <i class="las la-map-marked-alt fs-1"></i>
+        </span>
+        <span class="menu-title">Titularidade de contas</span>
+      </a>
+    </div>
+    <!-- /TITULARIDADE DE CONTAS -->
+
+    <!-- PAGAR CONTA DE LUZ -->
+    <div class="menu-item me-lg-1">
+      <a
+        class="menu-link py-3"
+        routerLinkActive="active"
+        routerLink="/bill/pay"
+      >
+        <span class="menu-icon">
+          <i class="las la-money-bill-wave fs-1"></i>
+        </span>
+        <span class="menu-title">Pagar conta de luz</span>
+      </a>
+    </div>
+    <!-- /PAGAR CONTA DE LUZ -->
+  </div>
+</div>
+<!-- /CONTA DE LUZ -->

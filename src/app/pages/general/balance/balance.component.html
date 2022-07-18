@@ -1,0 +1,192 @@
+<div class="row gy-5 g-xl-12">
+  <div class="col-lg-3">
+    <div class="card mb-5 mb-xl-8">
+      <div class="card-header border-0">
+        <div class="card-title">
+          <h3 class="fw-bolder m-0">Utilize seu saldo para</h3>
+        </div>
+      </div>
+      <div class="card-body pt-2">
+        <div class="py-2">
+          <div class="d-flex flex-stack">
+            <div class="d-flex">
+              <div class="symbol symbol-45px w-40px me-5">
+                <span class="symbol-label bg-lighten">
+                  <span
+                    [inlineSVG]="
+                      './assets/media/icons/duotune/arrows/arr031.svg'
+                    "
+                    class="svg-icon svg-icon-2x"
+                  ></span>
+                </span>
+              </div>
+              <div class="d-flex flex-column">
+                <a
+                  class="fs-5 text-dark text-hover-primary fw-bolder"
+                  routerLinkActive="active"
+                  routerLink="/operations/convert"
+                >
+                  Converter
+                </a>
+                <div class="fs-6 fw-bold text-muted">
+                  Transforme seus créditos energéticos em DEC
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="separator separator-dashed my-5"></div>
+          <div class="d-flex flex-stack">
+            <div class="d-flex">
+              <div class="symbol symbol-45px w-40px me-5">
+                <span class="symbol-label bg-lighten">
+                  <span
+                    [inlineSVG]="
+                      './assets/media/icons/duotune/ecommerce/ecm001.svg'
+                    "
+                    class="svg-icon svg-icon-2x"
+                  ></span>
+                </span>
+              </div>
+              <div class="d-flex flex-column">
+                <a
+                  class="fs-5 text-dark text-hover-primary fw-bolder"
+                  routerLinkActive="active"
+                  routerLink="/operations/negotiate/purchase"
+                >
+                  Comercializar
+                </a>
+                <div class="fs-6 fw-bold text-muted">
+                  Compre ou venda tokens DEC
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="separator separator-dashed my-5"></div>
+          <div class="d-flex flex-stack">
+            <div class="d-flex">
+              <div class="symbol symbol-45px w-40px me-5">
+                <span class="symbol-label bg-lighten">
+                  <span
+                    [inlineSVG]="
+                      './assets/media/icons/duotune/general/gen016.svg'
+                    "
+                    class="svg-icon svg-icon-2x"
+                  ></span>
+                </span>
+              </div>
+              <div class="d-flex flex-column">
+                <a
+                  class="fs-5 text-dark text-hover-primary fw-bolder"
+                  routerLinkActive="active"
+                  routerLink="/operations/withdraw"
+                >
+                  Sacar
+                </a>
+                <div class="fs-6 fw-bold text-muted">
+                  Transfira o saldo para sua conta bancária
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="separator separator-dashed my-5"></div>
+          <div class="d-flex flex-stack">
+            <div class="d-flex">
+              <div class="symbol symbol-45px w-40px me-5">
+                <span class="symbol-label bg-lighten">
+                  <span
+                    [inlineSVG]="
+                      './assets/media/icons/duotune/finance/fin003.svg'
+                    "
+                    class="svg-icon svg-icon-2x"
+                  ></span>
+                </span>
+              </div>
+              <div class="d-flex flex-column">
+                <a
+                  class="fs-5 text-dark text-hover-primary fw-bolder"
+                  routerLinkActive="active"
+                  routerLink="/bill/pay"
+                >
+                  Pagar contas
+                </a>
+                <div class="fs-6 fw-bold text-muted">
+                  Utilize seu saldo para pagar a conta de luz
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="col-lg-9">
+    <div class="card">
+      <div class="card-header border-0">
+        <div class="card-title">
+          <h3 class="fw-bolder m-0">Seus ativos</h3>
+        </div>
+      </div>
+      <div class="card-body pt-2 pb-10">
+        <div class="row gy-5 g-xl-12">
+          <ng-container *ngIf="balance$ | async as _balance; else loading">
+            <div class="col-lg-4">
+              <app-asset-component
+                value="{{ _balance.energy | intToCurrency: true }}"
+                assetName="kWh"
+                assetType="energy"
+                description="Créditos em kWh disponíveis para conversão em DEC"
+                buttonLink="/operations/convert"
+                buttonText="Converter créditos"
+              >
+              </app-asset-component>
+            </div>
+            <div class="col-lg-4">
+              <app-asset-component
+                value="{{ _balance.crypto | intToCurrency: true }}"
+                assetName="DEC"
+                assetType="crypto"
+                description="Disponível para venda ou abatimentos da conta de luz"
+                buttonLink="/operations/negotiate/sale"
+                buttonText="Comercializar"
+              >
+              </app-asset-component>
+            </div>
+            <div class="col-lg-4">
+              <app-asset-component
+                value="{{ _balance.fiat | intToCurrency: false }}"
+                assetName="BRL"
+                assetType="fiat"
+                description="Disponível para saque ou pagamento de contas"
+                buttonLink="/operations/withdraw"
+                buttonText="Sacar"
+              >
+              </app-asset-component>
+            </div>
+          </ng-container>
+          <ng-template #loading>
+            <content-loader viewBox="0 0 400 164">
+              <ng-container *ngFor="let i of [20, 120, 240]">
+                <svg:rect
+                  x="20"
+                  [attr.y]="i"
+                  rx="3"
+                  ry="3"
+                  width="360"
+                  height="25"
+                />
+                <svg:rect
+                  x="40"
+                  [attr.y]="i + 50"
+                  rx="3"
+                  ry="3"
+                  width="320"
+                  height="25"
+                />
+              </ng-container>
+            </content-loader>
+          </ng-template>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
