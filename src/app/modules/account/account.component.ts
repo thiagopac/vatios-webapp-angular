@@ -1,8 +1,8 @@
+import { BalanceType } from './../../services/general/general.service';
 import { Component, OnInit, OnDestroy } from '@angular/core';
 import { Observable, Subscription } from 'rxjs';
 import { AuthService, UserType } from 'src/app/modules/auth';
 import {
-  Balance,
   GeneralService,
 } from 'src/app/services/general/general.service';
 
@@ -12,7 +12,7 @@ import {
 })
 export class AccountComponent implements OnInit, OnDestroy {
   user$: Observable<UserType>;
-  balance$: Observable<Balance>;
+  balance$: Observable<BalanceType>;
   private unsubscribe: Subscription[] = [];
 
   constructor(

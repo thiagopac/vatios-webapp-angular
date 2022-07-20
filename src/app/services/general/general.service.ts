@@ -9,8 +9,8 @@ import { AuthService } from 'src/app/modules/auth';
 
 const API_GENERAL_URL = `${environment.apiUrl}/general`;
 
-export type Balance = IBalance | undefined;
-export type Transaction = ITransaction | undefined;
+export type BalanceType = IBalance | undefined;
+export type TransactionType = ITransaction | undefined;
 export type WalletFiduciaryValuesType = IWalletFiduciaryValuesDTO | undefined;
 
 @Injectable({
@@ -19,14 +19,14 @@ export type WalletFiduciaryValuesType = IWalletFiduciaryValuesDTO | undefined;
 export class GeneralService {
   constructor(private http: HttpClient, private authService: AuthService) {}
 
-  getUserBalance(): Observable<IBalance> {
-    return this.http.get<IBalance>(`${API_GENERAL_URL}/balance`, {
+  getUserBalance(): Observable<BalanceType> {
+    return this.http.get<BalanceType>(`${API_GENERAL_URL}/balance`, {
       headers: this.authService.headerSigned(),
     });
   }
 
-  getUserTransactions(page: number): Observable<ITransaction[]> {
-    return this.http.get<ITransaction[]>(
+  getUserTransactions(page: number): Observable<TransactionType[]> {
+    return this.http.get<TransactionType[]>(
       `${API_GENERAL_URL}/statement/${page}`,
       {
         headers: this.authService.headerSigned(),

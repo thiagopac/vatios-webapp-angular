@@ -6,6 +6,9 @@
 
 @import './assets/sass/style.angular.scss';
 
+// @import "~@ng-select/ng-select/themes/default.theme.css";
+
+
 html,
 body {
   height: 100%;
@@ -53,4 +56,67 @@ mat-cell {
   align-items: center;
   margin: 10px 0;
   gap: 10px;
+}
+
+.mat-dialog-title {
+  font-family: Poppins, Helvetica, "sans-serif" !important;
+}
+
+mat-divider {
+  margin: 0px -24px 15px -24px !important; 
+}
+
+mat-dialog-actions {
+  padding: 0 0 15px 0 !important;
+}
+
+button.close-button {
+  margin-top: -55px !important;
+}
+
+mat-select, mat-option, .mat-select-value {
+  font-family: Poppins, Helvetica, "sans-serif" !important;
+  font-weight: 500 !important;
+  color: #5e6278 !important;
+}
+
+ng-select {
+
+  display: block;
+  width: 100%;
+  padding: 0.75rem 1rem;
+  font-size: 1.1rem;
+  font-weight: 500;
+  line-height: 1.5;
+  color: #181c32;
+  background-color: #ffffff;
+  background-clip: padding-box;
+  border: 1px solid #e4e6ef;
+  -webkit-appearance: none;
+  appearance: none;
+  background-color: #f5f8fa;
+  border-color: #f5f8fa;
+  color: #5e6278;
+  transition: color 0.2s ease, background-color 0.2s ease;
+
+  border-radius: 2rem !important;  
+}
+
+.ng-dropdown-panel {
+  border-bottom-color: #e6e6e6;
+  border-radius: 0.5rem !important;
+  margin-bottom: -1px;
+  background-color: white !important;
+  border: 1px solid #ccc;
+  box-shadow: 0 1px 0 rgb(0 0 0 / 6%);
+  font-size: 14px !important;
+  font-family: Poppins, Helvetica, "sans-serif" !important;
+  font-weight: 500 !important;
+  color: #5e6278 !important;
+  padding: 6px !important;
+  line-height: 28px !important;
+}
+
+.ng-select .ng-clear-wrapper {
+  top: 2px !important;
 }

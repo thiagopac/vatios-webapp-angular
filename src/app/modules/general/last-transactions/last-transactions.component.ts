@@ -2,7 +2,7 @@ import { Component, OnInit, OnDestroy } from '@angular/core';
 import { Observable, Subscription } from 'rxjs';
 import {
   GeneralService,
-  Transaction,
+  TransactionType,
 } from 'src/app/services/general/general.service';
 
 @Component({
@@ -13,7 +13,7 @@ export class LastTransactionsComponent implements OnInit, OnDestroy {
   constructor(private generalService: GeneralService) {}
 
   private unsubscribe: Subscription[] = [];
-  transactions$: Observable<Transaction[]>;
+  transactions$: Observable<TransactionType[]>;
 
   ngOnInit(): void {
     this.transactions$ = this.generalService.getUserLastTransactions(1);

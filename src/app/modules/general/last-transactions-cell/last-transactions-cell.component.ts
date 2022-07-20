@@ -1,7 +1,7 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { IEvent } from 'src/app/models/event';
 import { ITransaction } from 'src/app/models/transaction';
-import { Transaction } from 'src/app/services/general/general.service';
+import { TransactionType } from 'src/app/services/general/general.service';
 
 @Component({
   // eslint-disable-next-line @angular-eslint/component-selector
@@ -16,7 +16,7 @@ export class LastTransactionsCellComponent implements OnInit {
   date: string;
   events: IEvent[];
 
-  @Input() transaction: Transaction;
+  @Input() transaction: TransactionType;
 
   constructor() {}
 

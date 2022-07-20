@@ -2,9 +2,9 @@ import { Component, OnInit } from '@angular/core';
 import { BehaviorSubject, combineLatest, Observable, switchMap } from 'rxjs';
 import { scan } from 'rxjs/operators';
 import {
-  Balance,
+  BalanceType,
   GeneralService,
-  Transaction,
+  TransactionType,
 } from 'src/app/services/general/general.service';
 
 @Component({
@@ -13,8 +13,8 @@ import {
   styleUrls: ['./statement.component.scss'],
 })
 export class StatementComponent implements OnInit {
-  balance$: Observable<Balance>;
-  public transactions$: Observable<Transaction[]>;
+  balance$: Observable<BalanceType>;
+  public transactions$: Observable<TransactionType[]>;
   private fetch$ = new BehaviorSubject<void>(undefined);
 
   constructor(private generalService: GeneralService) {}

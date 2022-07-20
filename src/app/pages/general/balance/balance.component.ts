@@ -1,18 +1,17 @@
 import {
+  BalanceType,
   GeneralService,
-  Balance,
 } from 'src/app/services/general/general.service';
-import { Component, OnInit, OnDestroy } from '@angular/core';
-import { Observable, Subscription } from 'rxjs';
+import { Component, OnInit } from '@angular/core';
+import { Observable } from 'rxjs';
 
 @Component({
   selector: 'app-balance',
   templateUrl: './balance.component.html',
   styleUrls: ['./balance.component.scss'],
 })
-export class BalanceComponent implements OnInit, OnDestroy {
-  private unsubscribe: Subscription[] = [];
-  balance$: Observable<Balance>;
+export class BalanceComponent implements OnInit {
+  balance$: Observable<BalanceType>;
 
   constructor(private generalService: GeneralService) {}
 
@@ -20,16 +19,4 @@ export class BalanceComponent implements OnInit, OnDestroy {
     this.balance$ = this.generalService.getUserBalance();
   }
 
-  // loadData(): void {
-
-  //   this.spinner.show();
-  //   this.generalService
-  //     .getUserBalance()
-  //     .subscribe()
-  //     .add(() => this.spinner.hide());
-  // }
-
-  ngOnDestroy() {
-    this.unsubscribe.forEach((sb) => sb.unsubscribe());
-  }
 }

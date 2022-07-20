@@ -1,0 +1,142 @@
+<div class="dialog-header">
+  <h2 mat-dialog-title>Unidade Consumidora</h2>
+  <button
+    class="btn btn-sm btn-icon btn-active-color-primary close-button"
+    tabindex="-1"
+    (click)="close()"
+    [ngStyle]="{ float: 'right', top: '-10px', right: '-10px' }"
+  >
+    <mat-icon class="close-icon">close</mat-icon>
+  </button>
+</div>
+<mat-divider></mat-divider>
+<mat-dialog-content [formGroup]="fg">
+  <div class="p-5">
+    <div class="row mb-5">
+      <div class="col-md-6 fv-row">
+        <label class="required fs-5 fw-bold mb-2"
+        >
+          Identificador amigável
+        </label>
+        <input
+          type="text"
+          class="form-control form-control-solid rounded-4"
+          placeholder="Ex: Casa, loja, sítio, etc"
+          mat-input
+          formControlName="name"
+        />
+        <mat-error *ngIf="fg.get('name')?.errors?.required && fg.get('name')?.dirty">
+          Campo obrigatório
+        </mat-error>
+      </div>
+      <div class="col-md-6 fv-row">
+        <label class="required fs-5 fw-bold mb-2">Tipo</label>
+        <ng-select formControlName="type"
+        >
+          <ng-option value="residence">Residencial</ng-option>
+          <ng-option value="business">Comercial</ng-option>
+          <ng-option value="property">Propriedade em geral</ng-option>
+        </ng-select>
+        <mat-error *ngIf="fg.get('type')?.errors?.required && fg.get('type')?.dirty">
+          Campo obrigatório
+        </mat-error>
+      </div>
+    </div>
+    <div class="row mb-5">
+      <div class="col-md-12 fv-row">
+        <label class="required fs-5 fw-bold mb-2"
+          >Código da Unidade Consumidora
+          <small class="text-gray-600">(Vide fatura de energia)</small>
+        </label>
+        <input
+          type="text"
+          class="form-control form-control-solid rounded-4"
+          mask="0/0000000000-0"
+          [showMaskTyped]="true"
+          mat-input
+          formControlName="code"
+        />
+        <mat-error *ngIf="fg.get('code')?.errors?.required && fg.get('code')?.dirty">
+          Campo obrigatório
+        </mat-error>
+      </div>
+    </div>
+    <div class="row mb-5">
+      <div class="col-md-8 fv-row">
+        <label class="required fs-5 fw-bold mb-2"
+          >Endereço <small class="text-gray-600">(Rua/Avenida)</small>
+        </label>
+        <input
+          type="text"
+          class="form-control form-control-solid rounded-4"
+          placeholder="Ex: Rua São Paulo"
+          mat-input
+          formControlName="address"
+        />
+        <mat-error *ngIf="fg.get('address')?.errors?.required && fg.get('address')?.dirty">
+          Campo obrigatório
+        </mat-error>
+      </div>
+      <div class="col-md-4 fv-row">
+        <label class="required fs-5 fw-bold mb-2">Número</label>
+        <input
+          type="text"
+          class="form-control form-control-solid rounded-4"
+          placeholder="Ex: 100"
+          mat-input
+          formControlName="number"
+        />
+        <mat-error *ngIf="fg.get('number')?.errors?.required && fg.get('number')?.dirty">
+          Campo obrigatório
+        </mat-error>
+      </div>
+    </div>
+    <div class="row mb-5">
+      <div class="col-md-6 fv-row">
+        <label class="required fs-5 fw-bold mb-2">Estado</label>
+        <ng-select
+          [items]="states$ | async"
+          bindLabel="name"
+          bindValue="id"
+          (change)="selectedState($event)"
+          formControlName="state_id"
+        >
+        </ng-select>
+        <mat-error *ngIf="fg.get('state_id')?.errors?.required && fg.get('state_id')?.dirty">
+          Campo obrigatório
+        </mat-error>
+      </div>
+      <div class="col-md-6 fv-row">
+        <label class="required fs-5 fw-bold mb-2">Cidade</label>
+        <ng-select
+          [items]="cities$ | async"
+          bindLabel="name"
+          bindValue="id"
+          formControlName="city_id"
+        >
+        </ng-select>
+        <mat-error *ngIf="fg.get('city_id')?.errors?.required && fg.get('city_id')?.dirty">
+          Campo obrigatório
+        </mat-error>
+      </div>
+    </div>
+  </div>
+</mat-dialog-content>
+<mat-divider></mat-divider>
+<mat-dialog-actions align="end">
+  <button
+    class="btn btn-rounded btn-white me-3"
+    tabindex="-1"
+    (click)="close()"
+  >
+    Cancelar
+  </button>
+  <button 
+    class="btn btn-rounded btn-primary"
+    type="submit"
+    (click)="submit()"
+    [disabled]="!fg.valid"
+  >
+    Salvar
+  </button>
+</mat-dialog-actions>
