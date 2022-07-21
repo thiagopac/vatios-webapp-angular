@@ -14,8 +14,7 @@
   <div class="p-5">
     <div class="row mb-5">
       <div class="col-md-6 fv-row">
-        <label class="required fs-5 fw-bold mb-2"
-        >
+        <label class="required fs-5 fw-bold mb-2">
           Identificador amigável
         </label>
         <input
@@ -25,19 +24,22 @@
           mat-input
           formControlName="name"
         />
-        <mat-error *ngIf="fg.get('name')?.errors?.required && fg.get('name')?.dirty">
+        <mat-error
+          *ngIf="fg.get('name')?.errors?.required && fg.get('name')?.dirty"
+        >
           Campo obrigatório
         </mat-error>
       </div>
       <div class="col-md-6 fv-row">
         <label class="required fs-5 fw-bold mb-2">Tipo</label>
-        <ng-select formControlName="type"
-        >
+        <ng-select formControlName="type">
           <ng-option value="residence">Residencial</ng-option>
           <ng-option value="business">Comercial</ng-option>
           <ng-option value="property">Propriedade em geral</ng-option>
         </ng-select>
-        <mat-error *ngIf="fg.get('type')?.errors?.required && fg.get('type')?.dirty">
+        <mat-error
+          *ngIf="fg.get('type')?.errors?.required && fg.get('type')?.dirty"
+        >
           Campo obrigatório
         </mat-error>
       </div>
@@ -56,7 +58,9 @@
           mat-input
           formControlName="code"
         />
-        <mat-error *ngIf="fg.get('code')?.errors?.required && fg.get('code')?.dirty">
+        <mat-error
+          *ngIf="fg.get('code')?.errors?.required && fg.get('code')?.dirty"
+        >
           Campo obrigatório
         </mat-error>
       </div>
@@ -73,7 +77,11 @@
           mat-input
           formControlName="address"
         />
-        <mat-error *ngIf="fg.get('address')?.errors?.required && fg.get('address')?.dirty">
+        <mat-error
+          *ngIf="
+            fg.get('address')?.errors?.required && fg.get('address')?.dirty
+          "
+        >
           Campo obrigatório
         </mat-error>
       </div>
@@ -86,7 +94,9 @@
           mat-input
           formControlName="number"
         />
-        <mat-error *ngIf="fg.get('number')?.errors?.required && fg.get('number')?.dirty">
+        <mat-error
+          *ngIf="fg.get('number')?.errors?.required && fg.get('number')?.dirty"
+        >
           Campo obrigatório
         </mat-error>
       </div>
@@ -102,7 +112,11 @@
           formControlName="state_id"
         >
         </ng-select>
-        <mat-error *ngIf="fg.get('state_id')?.errors?.required && fg.get('state_id')?.dirty">
+        <mat-error
+          *ngIf="
+            fg.get('state_id')?.errors?.required && fg.get('state_id')?.dirty
+          "
+        >
           Campo obrigatório
         </mat-error>
       </div>
@@ -115,7 +129,11 @@
           formControlName="city_id"
         >
         </ng-select>
-        <mat-error *ngIf="fg.get('city_id')?.errors?.required && fg.get('city_id')?.dirty">
+        <mat-error
+          *ngIf="
+            fg.get('city_id')?.errors?.required && fg.get('city_id')?.dirty
+          "
+        >
           Campo obrigatório
         </mat-error>
       </div>
@@ -131,7 +149,7 @@
   >
     Cancelar
   </button>
-  <button 
+  <button
     class="btn btn-rounded btn-primary"
     type="submit"
     (click)="submit()"

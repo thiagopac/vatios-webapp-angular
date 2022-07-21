@@ -1,21 +1,32 @@
+import { ICity } from 'src/app/models/city';
 import { AuthModel } from './auth';
 
 export interface IUserModel {
   uuid: string;
   email: string;
   password: string;
-  first_name: string;
-  last_name: string;
   created_at: Date;
   updated_at: Date;
+  info: IInfo;
+}
+
+export interface IInfo {
+  uuid: string;
+  first_name: string;
+  last_name: string;
+  phone: string;
+  wallet_address: string;
+  city_id: string;
+  created_at: Date;
+  updated_at: Date;
+  city: ICity;
 }
 
 export class UserModel extends AuthModel implements IUserModel {
   public uuid: string;
   public email: string;
   public password: string;
-  public first_name: string;
-  public last_name: string;
+  public info: IInfo;
   created_at: Date;
   updated_at: Date;
 
@@ -24,8 +35,6 @@ export class UserModel extends AuthModel implements IUserModel {
     this.uuid = user.uuid;
     this.email = user.email || '';
     this.password = user.password || '';
-    this.first_name = user.first_name || '';
-    this.last_name = user.last_name || '';
     this.created_at = user.created_at || '';
     this.updated_at = user.updated_at || '';
   }

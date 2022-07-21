@@ -1,4 +1,4 @@
-import { ICity } from "src/app/models/city";
+import { ICity } from 'src/app/models/city';
 
 export interface IConsumerUnit {
   uuid: string;

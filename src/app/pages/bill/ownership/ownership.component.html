@@ -7,27 +7,39 @@
 
   <div class="card-body pt-2 pb-10">
     <div class="row gx-9 gy-6">
-      
-      <div class="col-xl-6" *ngFor="let _consumerUnit of consumerUnits$ | async">
+      <div
+        class="col-xl-6"
+        *ngFor="let _consumerUnit of consumerUnits$ | async"
+      >
         <div
           class="card card-dashed h-xl-100 flex-row flex-stack flex-wrap p-6"
         >
           <div class="d-flex flex-column py-2">
             <div class="d-flex align-items-center fs-5 fw-bolder mb-5">
-              <i class="fa-solid fa-hashtag fs-4 me-2 text-primary"></i>{{ _consumerUnit?.name }}
+              <i class="fa-solid fa-hashtag fs-4 me-2 text-primary"></i
+              >{{ _consumerUnit?.name }}
             </div>
             <div class="fs-6 fw-bold text-gray-600 align-items-baseline">
               <p>UC {{ _consumerUnit?.code }}</p>
               <p>
-                {{ _consumerUnit?.address }},  {{ _consumerUnit?.number }} <br />{{ _consumerUnit?.city?.name }}/{{ _consumerUnit?.city?.state_letter }}
+                {{ _consumerUnit?.address }}, {{ _consumerUnit?.number }}
+                <br />{{ _consumerUnit?.city?.name }}/{{
+                  _consumerUnit?.city?.state_letter
+                }}
               </p>
             </div>
           </div>
           <div class="d-flex align-items-center py-2">
-            <button class="btn btn-rounded btn-sm btn-light btn-active-light-primary me-3" (click)="deleteConfirmation(_consumerUnit)">
+            <button
+              class="btn btn-rounded btn-sm btn-light btn-active-light-primary me-3"
+              (click)="deleteConfirmation(_consumerUnit)"
+            >
               Apagar
             </button>
-            <button (click)="openDialog(_consumerUnit)" class="btn btn-rounded btn-sm btn-light btn-active-light-primary">
+            <button
+              (click)="openDialog(_consumerUnit)"
+              class="btn btn-rounded btn-sm btn-light btn-active-light-primary"
+            >
               Editar
             </button>
           </div>
@@ -48,7 +60,10 @@
                 titularidade
               </div>
             </div>
-            <button (click)="openDialog()" class="btn btn-primary px-6 align-self-center text-nowrap">
+            <button
+              (click)="openDialog()"
+              class="btn btn-primary px-6 align-self-center text-nowrap"
+            >
               Cadastrar
             </button>
           </div>

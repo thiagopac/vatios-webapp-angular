@@ -18,5 +18,4 @@ export class BalanceComponent implements OnInit {
   ngOnInit(): void {
     this.balance$ = this.generalService.getUserBalance();
   }
-
 }

@@ -6,4 +6,5 @@ export interface ICity {
   class: string;
   state_letter: string;
   status: boolean;
+  state_id: number;
 }

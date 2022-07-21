@@ -1,10 +1,13 @@
+import { AlertMessageService } from './../../../services/alert-message.service';
 import { Observable, BehaviorSubject, switchMap } from 'rxjs';
 import { Component, OnInit } from '@angular/core';
-import { BillService, ConsumerUnit } from 'src/app/services/bill/bill.service';
+import {
+  BillService,
+  ConsumerUnitType,
+} from 'src/app/services/bill/bill.service';
 import { MatDialog, MatDialogConfig } from '@angular/material/dialog';
 import { ConsumerUnitDialogComponent } from 'src/app/pages/bill/ownership/consumer-unit-dialog/consumer-unit-dialog.component';
 import { auto } from '@popperjs/core';
-import Swal from 'sweetalert2'
 
 @Component({
   selector: 'app-ownership',
@@ -12,63 +15,56 @@ import Swal from 'sweetalert2'
   styleUrls: ['./ownership.component.scss'],
 })
 export class OwnershipComponent implements OnInit {
-
-  consumerUnits$: Observable<ConsumerUnit[]>
+  consumerUnits$: Observable<ConsumerUnitType[]>;
   refreshConsumerUnits = new BehaviorSubject<boolean>(true);
 
   constructor(
     private billService: BillService,
+    private alertMessageService: AlertMessageService,
     private dialog: MatDialog
   ) {}
 
   ngOnInit(): void {
-    this.consumerUnits$ = this.refreshConsumerUnits.pipe(switchMap(_ => this.billService.getUserConsumerUnits()));
+    this.consumerUnits$ = this.refreshConsumerUnits.pipe(
+      switchMap((_) => this.billService.getUserConsumerUnits())
+    );
   }
-  
-  openDialog(element: ConsumerUnit = undefined) {
+
+  openDialog(element: ConsumerUnitType = undefined) {
     const dialogConfig = new MatDialogConfig();
     dialogConfig.disableClose = true;
     dialogConfig.autoFocus = true;
     dialogConfig.height = auto;
-    dialogConfig.width = '550px'
+    dialogConfig.width = '550px';
 
     dialogConfig.data = {
-        consumerUnit: element
+      consumerUnit: element,
     };
-    
-    const dialogRef = this.dialog.open(ConsumerUnitDialogComponent, dialogConfig);
-    dialogRef.afterClosed().subscribe(() => this.refreshConsumerUnits.next(true));
+
+    const dialogRef = this.dialog.open(
+      ConsumerUnitDialogComponent,
+      dialogConfig
+    );
+    dialogRef
+      .afterClosed()
+      .subscribe(() => this.refreshConsumerUnits.next(true));
   }
 
-  deleteConsumerUnit(element: ConsumerUnit) {
-
+  deleteConsumerUnit(element: ConsumerUnitType) {
     this.billService.deleteConsumerUnit(element).subscribe(() => {
-      Swal.fire(
-        {
-          text: 'Unidade consumidora apagda com sucesso',
-          icon: 'success',
-          confirmButtonText: 'OK',
-          confirmButtonColor: '#31abcc'
-        }
-      )
-
-      this.refreshConsumerUnits.next(true)
+      this.alertMessageService.showToast(
+        'Unidade consumidora apagada com sucesso',
+        'success'
+      );
+      this.refreshConsumerUnits.next(true);
     });
   }
 
-  deleteConfirmation(element: ConsumerUnit) {
-    Swal.fire({
-      text: 'Tem certeza de que deseja apagar esta Unidade consumidora?',
-      icon: 'error',
-      showCancelButton: true,
-      cancelButtonText: 'Cancelar',
-      confirmButtonText: 'Sim',
-      confirmButtonColor: '#31abcc'
-
-    }).then((result) => {
-      if(result.isConfirmed ) this.deleteConsumerUnit(element);
-    })
+  deleteConfirmation(element: ConsumerUnitType) {
+    this.alertMessageService.alertWithHandler(
+      'Tem certeza de que deseja apagar esta Unidade consumidora?',
+      'error',
+      () => this.deleteConsumerUnit(element)
+    );
   }
-
 }
-

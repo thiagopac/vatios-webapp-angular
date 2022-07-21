@@ -9,13 +9,10 @@ import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
 import { MatDividerModule } from '@angular/material/divider';
 import { MatIconModule } from '@angular/material/icon';
-import { MatAutocompleteModule } from '@angular/material/autocomplete';
-import { MatSelectModule } from '@angular/material/select';
 import { NgSelectModule } from '@ng-select/ng-select';
-import { NgxMaskModule, IConfig } from 'ngx-mask'
+import { NgxMaskModule, IConfig } from 'ngx-mask';
 
 export const options: Partial<IConfig> | (() => Partial<IConfig>) = {};
-
 
 @NgModule({
   declarations: [OwnershipComponent, ConsumerUnitDialogComponent],
@@ -34,11 +31,8 @@ export const options: Partial<IConfig> | (() => Partial<IConfig>) = {};
     MatInputModule,
     MatDividerModule,
     MatIconModule,
-    MatAutocompleteModule,
-    MatSelectModule,
     NgSelectModule,
     NgxMaskModule.forRoot(),
-    
   ],
 })
 export class OwnershipModule {}

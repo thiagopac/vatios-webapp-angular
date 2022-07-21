@@ -5,8 +5,11 @@
 export const environment = {
   production: true,
   appVersion: 'v1.0.0',
-  USERDATA_KEY: 'authf649fc9a5f55',
-  apiUrl: 'http://localhost:3333/api',
+  userDataKey: 'user-data-key-em-prod',
+  hostUrl: 'https://url-do-app-em-prod/',
+  apiUrl: 'https://url-da-api-em-prod:3333/api',
+  binanceExplorerUrl: 'https://bscscan.com',
+  smartContractAddress: '',
 };
 
 /*

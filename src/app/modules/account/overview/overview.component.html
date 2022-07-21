@@ -1,4 +1,4 @@
-<ng-container *ngIf="user$ | async as _user">
+<ng-container *ngIf="user">
   <div class="card mb-5 mb-xl-10" id="kt_profile_details_view">
     <div class="card-header cursor-pointer">
       <div class="card-title m-0">
@@ -19,7 +19,7 @@
 
         <div class="col-lg-8">
           <span class="fw-bolder fs-6 text-dark">{{
-            _user | userFullname
+            user | userFullname
           }}</span>
         </div>
       </div>
@@ -30,7 +30,11 @@
         >
 
         <div class="col-lg-8 fv-row">
-          <span class="fw-bold fs-6">xyz</span>
+          <span class="fw-bold fs-6"
+            ><a href="{{ tokenUserTransfersUrl }}" target="_blank">{{
+              user.info.wallet_address
+            }}</a></span
+          >
         </div>
       </div>
 
@@ -38,9 +42,9 @@
         <label class="col-lg-4 fw-bold text-muted"> Telefone </label>
 
         <div class="col-lg-8 d-flex align-items-center">
-          <span class="fw-bolder fs-6 me-2">999</span>
+          <span class="fw-bolder fs-6 me-2">{{ user?.info?.phone }}</span>
 
-          <span class="badge badge-success">Verificado</span>
+          <!-- <span class="badge badge-success">Verificado</span> -->
         </div>
       </div>
 
@@ -49,7 +53,8 @@
 
         <div class="col-lg-8">
           <span class="fw-bolder fs-6 text-dark"
-            >Belo Horizonte - Minas Gerais - Brasil</span
+            >{{ user?.info?.city?.name }} -
+            {{ user?.info?.city?.state_letter }}</span
           >
         </div>
       </div>

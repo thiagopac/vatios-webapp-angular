@@ -1,10 +1,10 @@
+import { EnvironmentService } from './../environment.service';
 import { Injectable, OnDestroy } from '@angular/core';
 import { Observable, BehaviorSubject, of, Subscription } from 'rxjs';
 import { map, catchError, switchMap, finalize } from 'rxjs/operators';
 import { IUserModel, UserModel } from 'src/app/models/user';
-import { AuthModel } from 'src/app/models/auth';
+import { AuthModel, AuthRegisterModel } from 'src/app/models/auth';
 import { AuthHTTPService } from './auth-http.service';
-import { environment } from 'src/environments/environment';
 import { Router } from '@angular/router';
 import { HttpHeaders } from '@angular/common/http';
 
@@ -16,7 +16,7 @@ export type UserType = IUserModel | undefined;
 export class AuthService implements OnDestroy {
   // private fields
   private unsubscribe: Subscription[] = [];
-  private authLocalStorageToken = `${environment.appVersion}-${environment.USERDATA_KEY}`;
+  private authLocalStorageToken = `${this.environmentService.getVersion()}-${this.environmentService.getUserDataKey()}`;
 
   // public fields
   currentUser$: Observable<UserType>;
@@ -34,19 +34,17 @@ export class AuthService implements OnDestroy {
 
   constructor(
     private authHttpService: AuthHTTPService,
-    private router: Router
+    private router: Router,
+    private environmentService: EnvironmentService
   ) {
     this.isLoadingSubject = new BehaviorSubject<boolean>(false);
     this.currentUserSubject = new BehaviorSubject<UserType>(undefined);
     this.currentUser$ = this.currentUserSubject.asObservable();
     this.isLoading$ = this.isLoadingSubject.asObservable();
-    const subscr = this.getUserByToken().subscribe();
-    this.unsubscribe.push(subscr);
   }
 
   headerSigned(): HttpHeaders {
     const auth = this.getAuthFromLocalStorage();
-    if (!auth || !auth.token) this.logout();
     return new HttpHeaders({ Authorization: `Bearer ${auth?.token}` });
   }
 
@@ -96,7 +94,7 @@ export class AuthService implements OnDestroy {
   }
 
   // need create new user then login
-  registration(user: IUserModel): Observable<any> {
+  registration(user: AuthRegisterModel): Observable<any> {
     this.isLoadingSubject.next(true);
     return this.authHttpService.createUser(user).pipe(
       map(() => {

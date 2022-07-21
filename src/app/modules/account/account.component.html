@@ -1,4 +1,4 @@
-<ng-container *ngIf="user$ | async as _user">
+<ng-container *ngIf="user">
   <div class="card mb-5 mb-xl-10">
     <div class="card-body pt-9 pb-0">
       <div class="d-flex flex-wrap flex-sm-nowrap mb-3">
@@ -10,7 +10,7 @@
               class="symbol-label fs-2 fw-bold bg-primary text-inverse-primary"
               style="font-size: 5rem !important"
             >
-              {{ _user | userInitials }}
+              {{ user | userInitials }}
             </div>
           </div>
         </div>
@@ -24,7 +24,7 @@
                 <a
                   class="text-gray-800 text-hover-primary fs-2 fw-bolder me-1 cursor-pointer"
                 >
-                  {{ _user | userFullname }}
+                  {{ user | userFullname }}
                 </a>
               </div>
 
@@ -38,7 +38,8 @@
                     "
                     class="svg-icon svg-icon-4 me-1"
                   ></span>
-                  Cidade - Estado
+                  {{ user?.info?.city?.name }} -
+                  {{ user?.info?.city?.state_letter }}
                 </a>
                 <a
                   class="d-flex align-items-center text-gray-400 text-hover-primary mb-2"
@@ -49,7 +50,7 @@
                     "
                     class="svg-icon svg-icon-4 me-1"
                   ></span>
-                  {{ _user.email }}
+                  {{ user.email }}
                 </a>
               </div>
             </div>

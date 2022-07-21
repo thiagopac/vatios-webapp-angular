@@ -9,6 +9,6 @@ import { Injectable, Pipe, PipeTransform } from '@angular/core';
 })
 export class UserFullnamePipe implements PipeTransform {
   transform(user: IUserModel): string {
-    return `${user.first_name} ${user.last_name}`;
+    return `${user.info.first_name} ${user.info.last_name}`;
   }
 }

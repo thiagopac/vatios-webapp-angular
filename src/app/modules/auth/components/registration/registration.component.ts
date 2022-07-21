@@ -1,3 +1,5 @@
+import { AuthRegisterModel } from 'src/app/models/auth';
+import { UserModel } from 'src/app/models/user';
 import { Component, OnInit, OnDestroy } from '@angular/core';
 import {
   UntypedFormGroup,
@@ -8,7 +10,6 @@ import { Subscription, Observable } from 'rxjs';
 import { Router } from '@angular/router';
 import { AuthService } from '../../../../services/auth';
 import { ConfirmPasswordValidator } from './confirm-password.validator';
-import { UserModel } from 'src/app/models/user';
 import { first } from 'rxjs/operators';
 import { UserType } from '../..';
 
@@ -106,10 +107,10 @@ export class RegistrationComponent implements OnInit, OnDestroy {
     Object.keys(this.f).forEach((key) => {
       result[key] = this.f[key].value;
     });
-    const newUser = new UserModel();
-    newUser.setUser(result);
+    const authRegisterModel = new AuthRegisterModel();
+    authRegisterModel.setAuthRegister(result);
     const registrationSubscr = this.authService
-      .registration(newUser)
+      .registration(authRegisterModel)
       .pipe(first())
       .subscribe((user: UserType) => {
         if (user) {

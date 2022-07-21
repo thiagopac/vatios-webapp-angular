@@ -8,7 +8,7 @@ import { AuthService, UserType } from 'src/app/modules/auth';
   templateUrl: './topbar.component.html',
   styleUrls: ['./topbar.component.scss'],
 })
-export class TopbarComponent implements OnInit, OnDestroy {
+export class TopbarComponent implements OnInit {
   toolbarButtonMarginClass = 'ms-1 ms-lg-3';
   toolbarButtonHeightClass = 'w-30px h-30px w-md-40px h-md-40px';
   toolbarUserAvatarHeightClass = 'symbol symbol-circle symbol-35px';
@@ -24,9 +24,5 @@ export class TopbarComponent implements OnInit, OnDestroy {
   ngOnInit(): void {
     this.headerLeft = this.layout.getProp('header.left') as string;
     this.user$ = this.auth.currentUserSubject.asObservable();
-  }
-
-  ngOnDestroy() {
-    this.unsubscribe.forEach((sb) => sb.unsubscribe());
   }
 }

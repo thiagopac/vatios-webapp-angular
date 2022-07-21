@@ -11,11 +11,11 @@
   </div>
   <div>
     <div class="card-body border-top p-9">
-      <ng-container *ngIf="!showChangeEmailForm">
+      <ng-container>
         <div class="d-flex flex-wrap align-items-center">
           <div id="kt_signin_email" class="false">
             <div class="fs-6 fw-bolder mb-1">E-mail</div>
-            <div class="fw-bold text-gray-600">meu@email.com.br</div>
+            <div class="fw-bold text-gray-600">{{ user?.email }}</div>
           </div>
         </div>
       </ng-container>
@@ -28,7 +28,7 @@
             <div class="fs-6 fw-bolder mb-1">Senha</div>
             <div class="fw-bold text-gray-600">************</div>
           </div>
-          <div id="kt_signin_password_button" class="ms-auto false">
+          <div class="ms-auto false">
             <button
               class="btn btn-rounded btn-light btn-active-light-primary"
               (click)="togglePasswordForm(true)"
@@ -42,34 +42,56 @@
       <ng-container *ngIf="showChangePasswordForm">
         <div class="d-flex flex-wrap align-items-center mb-10">
           <div id="kt_signin_password_edit" class="flex-row-fluid false">
-            <form id="kt_signin_change_password" class="form" novalidate="">
+            <form [formGroup]="fg">
               <div class="row mb-1">
                 <div class="col-lg-4">
                   <div class="fv-row mb-0">
                     <label
-                      for="currentpassword"
+                      for="current_password"
                       class="form-label fs-6 fw-bolder mb-3"
                       >Senha atual</label
                     ><input
                       type="password"
                       class="form-control rounded-4 form-control-lg form-control-solid"
-                      id="currentpassword"
-                      name="currentPassword"
+                      formControlName="current_password"
                     />
+                    <mat-error
+                      *ngIf="
+                        f.current_password.touched && f.current_password.invalid
+                      "
+                    >
+                      <span *ngIf="f.current_password.errors?.minlength">
+                        A senha deve conter no mínimo 6 caracteres
+                      </span>
+                      <span *ngIf="f.current_password.errors?.required">
+                        É necessário informar sua senha atual
+                      </span>
+                    </mat-error>
                   </div>
                 </div>
                 <div class="col-lg-4">
                   <div class="fv-row mb-0">
                     <label
-                      for="newpassword"
+                      for="new_password"
                       class="form-label fs-6 fw-bolder mb-3"
                       >Nova senha</label
                     ><input
                       type="password"
                       class="form-control rounded-4 form-control-lg form-control-solid"
-                      id="newpassword"
-                      name="newPassword"
+                      formControlName="new_password"
                     />
+                    <mat-error
+                      *ngIf="
+                        f.current_password.touched && f.new_password.invalid
+                      "
+                    >
+                      <span *ngIf="f.new_password.errors?.minlength">
+                        A nova senha deve conter no mínimo 6 caracteres
+                      </span>
+                      <span *ngIf="f.current_password.errors?.required">
+                        É necessário informar sua nova senha
+                      </span>
+                    </mat-error>
                   </div>
                 </div>
                 <div class="col-lg-4">
@@ -81,14 +103,31 @@
                     ><input
                       type="password"
                       class="form-control rounded-4 form-control-lg form-control-solid"
-                      id="confirmpassword"
-                      name="passwordConfirmation"
+                      formControlName="password_confirmation"
                     />
+
+                    <mat-error
+                      *ngIf="
+                        f.password_confirmation.touched &&
+                        f.password_confirmation.invalid
+                      "
+                    >
+                      <span *ngIf="f.password_confirmation.errors?.required">
+                        A confirmação da nova senha é obrigatória
+                      </span>
+                      <span
+                        *ngIf="
+                          f.password_confirmation.errors?.passwordMatchValitador
+                        "
+                      >
+                        A nova senha e a confirmação precisam ser iguais
+                      </span>
+                    </mat-error>
                   </div>
                 </div>
               </div>
               <div class="form-text mb-5">
-                Utilize 8 caracteres ou mais, incluindo letras, números e
+                Utilize 6 caracteres ou mais, incluindo letras, números e
                 símbolos
               </div>
               <div class="d-flex">
@@ -96,6 +135,7 @@
                   type="button"
                   class="btn btn-rounded btn-primary me-2 px-6"
                   (click)="savePassword()"
+                  [disabled]="!fg.valid"
                 >
                   <ng-container *ngIf="!isLoading"
                     >Salvar alterações</ng-container
@@ -117,11 +157,6 @@
                 </button>
               </div>
             </form>
-          </div>
-          <div id="kt_signin_password_button" class="ms-auto d-none">
-            <button class="btn btn-light btn-active-light-primary">
-              Reset Password
-            </button>
           </div>
         </div>
       </ng-container>

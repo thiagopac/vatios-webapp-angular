@@ -1,5 +1,5 @@
 import { SpinnerInterceptor } from './services/spinner.interceptor';
-import { NgModule, APP_INITIALIZER } from '@angular/core';
+import { NgModule, APP_INITIALIZER, ErrorHandler } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
@@ -11,6 +11,7 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { AuthService } from './services/auth';
 import { NgxSpinnerModule } from 'ngx-spinner';
+import { GlobalErrorHandlerService } from 'src/app/services/global-error-handler.service';
 
 function appInitializer(authService: AuthService) {
   return () => {
@@ -45,6 +46,10 @@ function appInitializer(authService: AuthService) {
       provide: HTTP_INTERCEPTORS,
       multi: true,
       useClass: SpinnerInterceptor,
+    },
+    {
+      provide: ErrorHandler,
+      useClass: GlobalErrorHandlerService,
     },
   ],
   bootstrap: [AppComponent],

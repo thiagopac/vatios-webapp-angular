@@ -29,5 +29,4 @@ export class LocationService {
       headers: this.authService.headerSigned(),
     });
   }
-  
 }
