@@ -2,8 +2,6 @@
 <form
   class="form w-100"
   [formGroup]="loginForm"
-  novalidate="novalidate"
-  id="kt_login_signin_form"
   (ngSubmit)="submit()"
 >
   <!--begin::Heading-->
@@ -13,7 +11,6 @@
       Não tem conta?
       <a
         routerLink="/auth/registration"
-        id="kt_login_signup"
         class="link-primary fw-bolder"
         >{{ 'AUTH.GENERAL.SIGNUP_BUTTON' | translate }}</a
       >
@@ -86,7 +83,6 @@
         <a
           routerLink="/auth/forgot-password"
           class="link-primary fs-6 fw-bolder"
-          id="kt_login_forgot"
           [style.margin-left]="'5px'"
           tabindex="-1"
         >

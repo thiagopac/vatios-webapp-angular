@@ -1,18 +1,13 @@
 <div class="card">
   <div
-    class="card-header border-0 cursor-pointer"
-    role="button"
-    data-bs-toggle="collapse"
-    data-bs-target="#kt_account_deactivate"
-    aria-expanded="true"
-    aria-controls="kt_account_deactivate"
+    class="card-header border-0"
   >
     <div class="card-title m-0">
       <h3 class="fw-bolder m-0">Deactivate Account</h3>
     </div>
   </div>
-  <div id="kt_account_deactivate" class="collapse show">
-    <form id="kt_account_deactivate_form" class="form">
+  <div class="collapse show">
+    <form class="form">
       <div class="card-body border-top p-9">
         <div
           class="notice d-flex bg-light-warning rounded border-warning border border-dashed mb-9 p-6"
@@ -51,7 +46,6 @@
       </div>
       <div class="card-footer d-flex justify-content-end py-6 px-9">
         <button
-          id="kt_account_deactivate_account_submit"
           type="button"
           class="btn btn-danger fw-bold"
           (click)="saveSettings()"

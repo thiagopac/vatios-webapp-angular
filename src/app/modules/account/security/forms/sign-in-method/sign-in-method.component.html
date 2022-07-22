@@ -1,9 +1,6 @@
 <div class="card mb-5 mb-xl-10">
   <div
-    class="card-header border-0 cursor-pointer"
-    role="button"
-    data-bs-toggle="collapse"
-    data-bs-target="#kt_account_signin_method"
+    class="card-header border-0"
   >
     <div class="card-title m-0">
       <h3 class="fw-bolder m-0">Dados de login</h3>
@@ -13,7 +10,7 @@
     <div class="card-body border-top p-9">
       <ng-container>
         <div class="d-flex flex-wrap align-items-center">
-          <div id="kt_signin_email" class="false">
+          <div>
             <div class="fs-6 fw-bolder mb-1">E-mail</div>
             <div class="fw-bold text-gray-600">{{ user?.email }}</div>
           </div>
@@ -24,11 +21,11 @@
 
       <ng-container *ngIf="!showChangePasswordForm">
         <div class="d-flex flex-wrap align-items-center mb-10">
-          <div id="kt_signin_password" class="false">
+          <div>
             <div class="fs-6 fw-bolder mb-1">Senha</div>
             <div class="fw-bold text-gray-600">************</div>
           </div>
-          <div class="ms-auto false">
+          <div class="ms-auto">
             <button
               class="btn btn-rounded btn-light btn-active-light-primary"
               (click)="togglePasswordForm(true)"
@@ -41,7 +38,7 @@
 
       <ng-container *ngIf="showChangePasswordForm">
         <div class="d-flex flex-wrap align-items-center mb-10">
-          <div id="kt_signin_password_edit" class="flex-row-fluid false">
+          <div class="flex-row-fluid">
             <form [formGroup]="fg">
               <div class="row mb-1">
                 <div class="col-lg-4">
