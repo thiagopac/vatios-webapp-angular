@@ -1,7 +1,7 @@
 <td>
-  <span [innerHtml]="transaction!.status | friendlyTransactionStatus"></span>
+  <span [innerHtml]="transaction!.status | friendlyTransactionStatusPipe"></span>
 </td>
-<td [innerHtml]="transaction!.type | friendlyTransactionDescription"></td>
+<td [innerHtml]="transaction!.type | friendlyTransactionDescriptionPipe"></td>
 <td>
   <app-last-transactions-events
     [events]="transaction?.events"

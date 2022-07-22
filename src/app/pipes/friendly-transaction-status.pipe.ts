@@ -1,12 +1,12 @@
 import { Injectable, Pipe, PipeTransform } from '@angular/core';
 
 @Pipe({
-  name: 'friendlyTransactionStatus',
+  name: 'friendlyTransactionStatusPipe',
 })
 @Injectable({
   providedIn: 'root',
 })
-export class FriendlyTransactionStatus implements PipeTransform {
+export class FriendlyTransactionStatusPipe implements PipeTransform {
   transform(status: string): string {
     let output: string = '';
 

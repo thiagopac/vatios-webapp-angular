@@ -2,7 +2,7 @@ import { IUserModel } from 'src/app/models/user';
 import { Injectable, Pipe, PipeTransform } from '@angular/core';
 
 @Pipe({
-  name: 'userFullname',
+  name: 'userFullnamePipe',
 })
 @Injectable({
   providedIn: 'root',

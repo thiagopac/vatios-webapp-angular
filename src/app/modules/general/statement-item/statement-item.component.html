@@ -10,13 +10,13 @@
 <div class="timeline-content mt-0">
   <div class="pe-3 mb-5">
     <div class="fs-5 fw-bold mb-2 d-flex justify-content-between">
-      <span [innerHtml]="transaction!.type | friendlyTransactionDescription"></span>
+      <span [innerHtml]="transaction!.type | friendlyTransactionDescriptionPipe"></span>
       <div class="text-muted me-2 fs-7 text-nowrap">
         {{ transaction?.created_at | date: 'dd/MM/yyyy HH:mm' }}
       </div>
     </div>
     <div class="d-flex align-items-center mt-n2 fs-6">
-      <span [innerHtml]="transaction!.status | friendlyTransactionStatus"></span>
+      <span [innerHtml]="transaction!.status | friendlyTransactionStatusPipe"></span>
     </div>
   </div>
   <div class="overflow-auto pb-5">
