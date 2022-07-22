@@ -17,19 +17,15 @@
 
       <ng-container matColumnDef="due_date">
         <mat-header-cell *matHeaderCellDef>DATA DE VENCIMENTO</mat-header-cell>
-        <mat-cell *matCellDef="let element">{{
-          element.due_date
-        }}</mat-cell>
+        <mat-cell *matCellDef="let element">{{ element.due_date }}</mat-cell>
       </ng-container>
 
       <ng-container matColumnDef="address">
         <mat-header-cell *matHeaderCellDef
           >ENDEREÇO DA INSTALAÇÃO</mat-header-cell
         >
-        <mat-cell style="text-align: left !important;"  *matCellDef="let element"
-          >{{ element.address }},
-          {{ element.number }},
-          {{ element.name }}/{{
+        <mat-cell style="text-align: left !important" *matCellDef="let element"
+          >{{ element.address }}, {{ element.number }}, {{ element.name }}/{{
             element.state_letter
           }}</mat-cell
         >
@@ -37,12 +33,16 @@
 
       <ng-container matColumnDef="uc">
         <mat-header-cell *matHeaderCellDef>UNIDADE CONSUMIDORA</mat-header-cell>
-        <mat-cell *matCellDef="let element">{{ element.code | mask:'0/0000000000-0' }}</mat-cell>
+        <mat-cell *matCellDef="let element">{{
+          element.code | mask: '0/0000000000-0'
+        }}</mat-cell>
       </ng-container>
 
       <ng-container matColumnDef="value">
         <mat-header-cell *matHeaderCellDef>VALOR</mat-header-cell>
-        <mat-cell *matCellDef="let element">R$ {{ element.value | intToCurrency }}</mat-cell>
+        <mat-cell *matCellDef="let element"
+          >R$ {{ element.value | intToCurrency }}</mat-cell
+        >
       </ng-container>
 
       <ng-container matColumnDef="invoice">
@@ -56,7 +56,10 @@
 
       <ng-container matColumnDef="status">
         <mat-header-cell *matHeaderCellDef>status</mat-header-cell>
-        <mat-cell *matCellDef="let element" [innerHtml]="element.payment"></mat-cell>
+        <mat-cell
+          *matCellDef="let element"
+          [innerHtml]="element.payment"
+        ></mat-cell>
       </ng-container>
     </mat-table>
 

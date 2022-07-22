@@ -23,6 +23,6 @@ import { NgxMaskModule } from 'ngx-mask';
     NgxMaskModule.forRoot(),
   ],
   schemas: [CUSTOM_ELEMENTS_SCHEMA],
-  providers: [DatePipe]
+  providers: [DatePipe],
 })
 export class HistoryModule {}

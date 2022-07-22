@@ -2,21 +2,29 @@
 <div class="timeline-icon symbol symbol-circle symbol-40px me-4">
   <div class="symbol-label bg-light">
     <span
-      inlineSVG="{{ icon }}"
-      class="svg-icon svg-icon-2x svg-icon-{{ statusColor }}"
+      inlineSVG="{{
+        (transaction.status | friendlyTransactionStatusIconPipe).icon
+      }}"
+      class="svg-icon svg-icon-2x svg-icon-{{
+        (transaction.status | friendlyTransactionStatusIconPipe).color
+      }}"
     ></span>
   </div>
 </div>
 <div class="timeline-content mt-0">
   <div class="pe-3 mb-5">
     <div class="fs-5 fw-bold mb-2 d-flex justify-content-between">
-      <span [innerHtml]="transaction!.type | friendlyTransactionDescriptionPipe"></span>
+      <span
+        [innerHtml]="transaction!.type | friendlyTransactionDescriptionPipe"
+      ></span>
       <div class="text-muted me-2 fs-7 text-nowrap">
         {{ transaction?.created_at | date: 'dd/MM/yyyy HH:mm' }}
       </div>
     </div>
     <div class="d-flex align-items-center mt-n2 fs-6">
-      <span [innerHtml]="transaction!.status | friendlyTransactionStatusPipe"></span>
+      <span
+        [innerHtml]="transaction!.status | friendlyTransactionStatusPipe"
+      ></span>
     </div>
   </div>
   <div class="overflow-auto pb-5">

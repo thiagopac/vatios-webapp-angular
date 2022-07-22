@@ -1,5 +1,7 @@
 <td>
-  <span [innerHtml]="transaction!.status | friendlyTransactionStatusPipe"></span>
+  <span
+    [innerHtml]="transaction!.status | friendlyTransactionStatusPipe"
+  ></span>
 </td>
 <td [innerHtml]="transaction!.type | friendlyTransactionDescriptionPipe"></td>
 <td>

@@ -3,7 +3,7 @@ import {
   ConsumerUnitType,
   BillService,
 } from 'src/app/services/bill/bill.service';
-import { Component, Inject, OnInit } from '@angular/core';
+import { Component, Inject, OnInit, OnDestroy } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
 import {
@@ -19,7 +19,7 @@ import { NgSelectConfig } from '@ng-select/ng-select';
   templateUrl: './consumer-unit-dialog.component.html',
   styleUrls: ['./consumer-unit-dialog.component.scss'],
 })
-export class ConsumerUnitDialogComponent implements OnInit {
+export class ConsumerUnitDialogComponent implements OnInit, OnDestroy {
   fg: FormGroup;
   consumerUnit: ConsumerUnitType;
 

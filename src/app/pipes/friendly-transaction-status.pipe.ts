@@ -36,7 +36,7 @@ export class FriendlyTransactionStatusPipe implements PipeTransform {
     return output;
   }
 
-  getBadge(color:string, status: string): string {
-    return `<div class="badge badge-light-${color} fw-bold">${status}</div>`
+  getBadge(color: string, status: string): string {
+    return `<div class="badge badge-light-${color} fw-bold">${status}</div>`;
   }
 }

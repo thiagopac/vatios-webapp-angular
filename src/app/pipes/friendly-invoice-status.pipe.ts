@@ -27,7 +27,7 @@ export class FriendlyInvoiceStatusPipe implements PipeTransform {
     return output;
   }
 
-  getBadge(color:string, status: string): string {
-    return `<div class="badge badge-light-${color} fw-bolder">${status}</div>`
+  getBadge(color: string, status: string): string {
+    return `<div class="badge badge-light-${color} fw-bolder">${status}</div>`;
   }
 }

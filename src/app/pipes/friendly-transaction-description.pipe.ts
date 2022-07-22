@@ -32,5 +32,4 @@ export class FriendlyTransactionDescriptionPipe implements PipeTransform {
 
     return output;
   }
-
 }
