@@ -304,9 +304,9 @@ export class GlobalErrorHandlerService extends ErrorHandler {
       if (this._errorCode === CODE_TOKEN_INVALIDO) {
         this._userMessage = 'Sessão Expirada! Por favor, faça login novamente.';
       } else if (this._errorCode === CODE_MISSING_AUTHORIZATION) {
-        this._userMessage = 'É necessário fazer login para acessar os dados!';
+        this._userMessage = 'É necessário fazer login para acessar a plataforma.';
       } else {
-        this._userMessage = 'Acesso negado. Faça login para acessar os dados!';
+        this._userMessage = 'Sessão Expirada! Por favor, faça login novamente.';
       }
     }
 

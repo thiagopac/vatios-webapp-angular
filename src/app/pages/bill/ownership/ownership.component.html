@@ -20,7 +20,7 @@
               >{{ _consumerUnit?.name }}
             </div>
             <div class="fs-6 fw-bold text-gray-600 align-items-baseline">
-              <p>UC {{ _consumerUnit?.code }}</p>
+              <p>UC {{ _consumerUnit!.code | mask:'0/0000000000-0' }}</p>
               <p>
                 {{ _consumerUnit?.address }}, {{ _consumerUnit?.number }}
                 <br />{{ _consumerUnit?.city?.name }}/{{

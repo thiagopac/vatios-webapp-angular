@@ -1,3 +1,4 @@
+import { IUserInvoice } from './../../models/user_invoice';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { HttpClient } from '@angular/common/http';
@@ -8,6 +9,7 @@ import { IConsumerUnit } from 'src/app/models/consumer_unit';
 const API_BILL_URL = `${environment.apiUrl}/bill`;
 
 export type ConsumerUnitType = IConsumerUnit | undefined;
+export type UserInvoiceType = IUserInvoice | undefined;
 
 @Injectable({
   providedIn: 'root',
@@ -54,5 +56,11 @@ export class BillService {
         headers: this.authService.headerSigned(),
       }
     );
+  }
+
+  getUserInvoices(): Observable<UserInvoiceType[]> {
+    return this.http.get<UserInvoiceType[]>(`${API_BILL_URL}/invoice`, {
+      headers: this.authService.headerSigned(),
+    });
   }
 }

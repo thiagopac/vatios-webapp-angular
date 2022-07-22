@@ -17,30 +17,38 @@
 
       <ng-container matColumnDef="due_date">
         <mat-header-cell *matHeaderCellDef>DATA DE VENCIMENTO</mat-header-cell>
-        <mat-cell *matCellDef="let element">{{ element.due_date }}</mat-cell>
+        <mat-cell *matCellDef="let element">{{
+          element.due_date | date: 'dd/MM/yyyy'
+        }}</mat-cell>
       </ng-container>
 
       <ng-container matColumnDef="address">
         <mat-header-cell *matHeaderCellDef
           >ENDEREÇO DA INSTALAÇÃO</mat-header-cell
         >
-        <mat-cell *matCellDef="let element">{{ element.address }}</mat-cell>
+        <mat-cell style="text-align: left !important;"  *matCellDef="let element"
+          >{{ element.consumerUnit.address }},
+          {{ element.consumerUnit.number }},
+          {{ element.consumerUnit.city.name }}/{{
+            element.consumerUnit.city.state_letter
+          }}</mat-cell
+        >
       </ng-container>
 
       <ng-container matColumnDef="uc">
         <mat-header-cell *matHeaderCellDef>UNIDADE CONSUMIDORA</mat-header-cell>
-        <mat-cell *matCellDef="let element">{{ element.uc }}</mat-cell>
+        <mat-cell *matCellDef="let element">{{ element.consumerUnit.code }}</mat-cell>
       </ng-container>
 
       <ng-container matColumnDef="value">
         <mat-header-cell *matHeaderCellDef>VALOR</mat-header-cell>
-        <mat-cell *matCellDef="let element">{{ element.value }}</mat-cell>
+        <mat-cell *matCellDef="let element">R$ {{ element.value | intToCurrency }}</mat-cell>
       </ng-container>
 
       <ng-container matColumnDef="invoice">
         <mat-header-cell *matHeaderCellDef>VISUALIZAR FATURA</mat-header-cell>
         <mat-cell *matCellDef="let element">
-          <a href="{{ element.invoice }}">
+          <a href="{{ element.file }}" target="_blank">
             <i class="bi bi-file-earmark-pdf fs-1 text-danger"></i>
           </a>
         </mat-cell>
@@ -48,7 +56,7 @@
 
       <ng-container matColumnDef="status">
         <mat-header-cell *matHeaderCellDef>status</mat-header-cell>
-        <mat-cell *matCellDef="let element">{{ element.status }}</mat-cell>
+        <mat-cell *matCellDef="let element" [innerHtml]="element.payment | friendlyInvoiceStatus"></mat-cell>
       </ng-container>
     </mat-table>
 

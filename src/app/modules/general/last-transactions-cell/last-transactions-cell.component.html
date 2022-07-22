@@ -1,7 +1,7 @@
 <td>
-  <span class="badge badge-light-{{ statusColor }}">{{ statusName }}</span>
+  <span [innerHtml]="transaction!.status | friendlyTransactionStatus"></span>
 </td>
-<td>{{ description }}</td>
+<td [innerHtml]="transaction!.type | friendlyTransactionDescription"></td>
 <td>
   <app-last-transactions-events
     [events]="transaction?.events"

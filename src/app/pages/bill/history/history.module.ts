@@ -4,6 +4,7 @@ import { HistoryComponent } from './history.component';
 import { RouterModule } from '@angular/router';
 import { MatTableModule } from '@angular/material/table';
 import { MatPaginatorModule } from '@angular/material/paginator';
+import { PipesModule } from 'src/app/pipes/pipes.module';
 
 @NgModule({
   declarations: [HistoryComponent],
@@ -17,6 +18,7 @@ import { MatPaginatorModule } from '@angular/material/paginator';
     ]),
     MatTableModule,
     MatPaginatorModule,
+    PipesModule,
   ],
   schemas: [CUSTOM_ELEMENTS_SCHEMA],
 })
