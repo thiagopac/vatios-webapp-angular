@@ -1,3 +1,4 @@
+import { PipesModule } from 'src/app/pipes/pipes.module';
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { InlineSVGModule } from 'ng-inline-svg-2';
@@ -38,6 +39,7 @@ export const CustomCurrencyMaskConfig: CurrencyMaskConfig = {
     NgxMaskModule.forRoot(options),
     CurrencyMaskModule,
     RouterModule,
+    PipesModule,
   ],
   exports: [OperationExchangeComponent, OperationWithdrawComponent],
   providers: [

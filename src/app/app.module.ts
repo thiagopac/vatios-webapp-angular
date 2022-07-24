@@ -1,4 +1,4 @@
-import { SpinnerInterceptor } from './services/spinner.interceptor';
+import { SpinnerInterceptor } from './services/spinner/spinner.interceptor';
 import { NgModule, APP_INITIALIZER, ErrorHandler } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';

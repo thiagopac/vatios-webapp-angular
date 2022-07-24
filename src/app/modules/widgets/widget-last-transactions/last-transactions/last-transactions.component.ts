@@ -3,7 +3,7 @@ import { Observable, Subscription } from 'rxjs';
 import {
   GeneralService,
   TransactionType,
-} from 'src/app/services/general/general.service';
+} from 'src/app/services/general.service';
 
 @Component({
   selector: 'app-last-transactions-component',

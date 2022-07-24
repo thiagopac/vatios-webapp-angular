@@ -1,5 +1,4 @@
 import { AuthRegisterModel } from 'src/app/models/auth';
-import { UserModel } from 'src/app/models/user';
 import { Component, OnInit, OnDestroy } from '@angular/core';
 import {
   UntypedFormGroup,
@@ -8,7 +7,7 @@ import {
 } from '@angular/forms';
 import { Subscription, Observable } from 'rxjs';
 import { Router } from '@angular/router';
-import { AuthService } from '../../../../services/auth';
+import { AuthService } from 'src/app/services/auth';
 import { ConfirmPasswordValidator } from './confirm-password.validator';
 import { first } from 'rxjs/operators';
 import { UserType } from '../..';

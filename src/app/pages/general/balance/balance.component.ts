@@ -1,7 +1,4 @@
-import {
-  BalanceType,
-  GeneralService,
-} from 'src/app/services/general/general.service';
+import { BalanceType, GeneralService } from 'src/app/services/general.service';
 import { Component, OnInit } from '@angular/core';
 import { Observable } from 'rxjs';
 

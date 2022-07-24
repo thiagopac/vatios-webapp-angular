@@ -1,8 +1,8 @@
-import { BalanceType } from './../../services/general/general.service';
-import { Component, OnInit, OnDestroy } from '@angular/core';
-import { Observable, Subscription } from 'rxjs';
+import { BalanceType } from 'src/app/services/general.service';
+import { Component, OnInit } from '@angular/core';
+import { Observable } from 'rxjs';
 import { AuthService, UserType } from 'src/app/modules/auth';
-import { GeneralService } from 'src/app/services/general/general.service';
+import { GeneralService } from 'src/app/services/general.service';
 import { AsyncPipe } from '@angular/common';
 
 @Component({

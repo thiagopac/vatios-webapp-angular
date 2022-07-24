@@ -7,7 +7,7 @@
   <div class="card-header border-0">
     <div class="card-title"></div>
   </div>
-  <div class="card-body pt-2 pb-10">
+  <div class="card-body pt-2 pb-10" *ngIf="balance$ | async as _balance">
     <div class="row justify-content-center">
       <div class="col-xl-6">
         <div class="col-12">
@@ -19,7 +19,9 @@
                 >
               </div>
               <div class="d-flex align-items-center">
-                <div class="fs-1 fw-bolder counted">R$ 526,25</div>
+                <div class="fs-1 fw-bolder counted">
+                  R$ {{ _balance.fiat | intToCurrency: false }}
+                </div>
                 <span
                   [inlineSVG]="'./assets/media/icons/duotune/vatios/fiat.svg'"
                   class="svg-icon svg-icon-4x"
@@ -33,8 +35,8 @@
         <app-operation-withdraw-component
           inputLabel="Valor do saque"
           inputAsset="R$"
-          [inputMin]="100"
-          [inputMax]="52625"
+          [inputMin]="5000"
+          [inputMax]="_balance.fiat"
           themeColor="dark"
           actionLabel="Solicitar saque"
           (triggeredAction)="triggeredActionCaptured($event)"

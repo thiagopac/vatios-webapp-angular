@@ -1,19 +1,13 @@
 <!--begin::Form-->
-<form
-  class="form w-100"
-  [formGroup]="loginForm"
-  (ngSubmit)="submit()"
->
+<form class="form w-100" [formGroup]="loginForm" (ngSubmit)="submit()">
   <!--begin::Heading-->
   <div class="text-center mb-10">
     <h1 class="text-dark mb-3">Entrar</h1>
     <div class="text-gray-400 fw-bold fs-4">
       Não tem conta?
-      <a
-        routerLink="/auth/registration"
-        class="link-primary fw-bolder"
-        >{{ 'AUTH.GENERAL.SIGNUP_BUTTON' | translate }}</a
-      >
+      <a routerLink="/auth/registration" class="link-primary fw-bolder">{{
+        'AUTH.GENERAL.SIGNUP_BUTTON' | translate
+      }}</a>
     </div>
   </div>
   <!--end::Heading-->

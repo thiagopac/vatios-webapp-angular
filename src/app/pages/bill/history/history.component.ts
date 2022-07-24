@@ -2,10 +2,7 @@ import { FriendlyInvoiceStatusPipe } from './../../../pipes/friendly-invoice-sta
 import { FlatObjectPipe } from 'src/app/pipes/flat-object.pipe';
 import { pipe, Subscription } from 'rxjs';
 import { tap, mergeAll } from 'rxjs/operators';
-import {
-  BillService,
-  UserInvoiceType,
-} from 'src/app/services/bill/bill.service';
+import { BillService, UserInvoiceType } from 'src/app/services/bill.service';
 import { Component, OnInit, ViewChild, OnDestroy } from '@angular/core';
 import { MatTableDataSource } from '@angular/material/table';
 import { MatPaginator } from '@angular/material/paginator';

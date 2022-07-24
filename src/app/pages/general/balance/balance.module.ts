@@ -1,5 +1,5 @@
 import { PipesModule } from 'src/app/pipes/pipes.module';
-import { GeneralService } from 'src/app/services/general/general.service';
+import { GeneralService } from 'src/app/services/general.service';
 import { GeneralComponentsModule } from 'src/app/modules/general/general-components.module';
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';

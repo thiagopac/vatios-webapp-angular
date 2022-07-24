@@ -1,10 +1,7 @@
 import { AlertMessageService } from 'src/app/services/alert-message.service';
 import { Observable, BehaviorSubject, switchMap } from 'rxjs';
 import { Component, OnInit } from '@angular/core';
-import {
-  BillService,
-  ConsumerUnitType,
-} from 'src/app/services/bill/bill.service';
+import { BillService, ConsumerUnitType } from 'src/app/services/bill.service';
 import { MatDialog, MatDialogConfig } from '@angular/material/dialog';
 import { ConsumerUnitDialogComponent } from 'src/app/pages/bill/ownership/consumer-unit-dialog/consumer-unit-dialog.component';
 import { auto } from '@popperjs/core';

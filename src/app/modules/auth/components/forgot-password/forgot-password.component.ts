@@ -5,7 +5,7 @@ import {
   Validators,
 } from '@angular/forms';
 import { Observable, Subscription } from 'rxjs';
-import { AuthService } from '../../../../services/auth';
+import { AuthService } from 'src/app/services/auth';
 import { first } from 'rxjs/operators';
 
 enum ErrorStates {

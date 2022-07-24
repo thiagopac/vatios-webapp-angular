@@ -5,7 +5,7 @@ import {
   BalanceType,
   GeneralService,
   TransactionType,
-} from 'src/app/services/general/general.service';
+} from 'src/app/services/general.service';
 
 @Component({
   selector: 'app-statement',

@@ -1,4 +1,9 @@
+import { ExchangeRateType } from 'src/app/services/asset.service';
+import { BalanceType } from 'src/app/services/general.service';
+import { Observable } from 'rxjs';
+import { GeneralService } from 'src/app/services/general.service';
 import { Component, OnInit } from '@angular/core';
+import { AssetService } from 'src/app/services/asset.service';
 
 @Component({
   selector: 'app-convert',
@@ -6,9 +11,18 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./convert.component.scss'],
 })
 export class ConvertComponent implements OnInit {
-  constructor() {}
+  balance$: Observable<BalanceType>;
+  energyToCrypto$: Observable<ExchangeRateType>;
 
-  ngOnInit(): void {}
+  constructor(
+    private generalService: GeneralService,
+    private assetService: AssetService
+  ) {}
+
+  ngOnInit(): void {
+    this.balance$ = this.generalService.getUserBalance();
+    this.energyToCrypto$ = this.assetService.getRateByPair('energy-crypto');
+  }
 
   triggeredActionCaptured(content: number): void {
     console.log('triggeredActionCaptured - content:', content);

@@ -6,10 +6,9 @@ import {
 } from '@angular/forms';
 import { Subscription, Observable } from 'rxjs';
 import { first } from 'rxjs/operators';
-import { UserModel } from 'src/app/models/user';
-import { AuthService } from '../../../../services/auth';
+import { AuthService } from 'src/app/services/auth';
 import { ActivatedRoute, Router } from '@angular/router';
-import { UserType } from '../..';
+import { UserType } from 'src/app/services/auth/auth.service';
 
 @Component({
   selector: 'app-login',
@@ -29,7 +28,7 @@ export class LoginComponent implements OnInit, OnDestroy {
   isLoading$: Observable<boolean>;
 
   // private fields
-  private unsubscribe: Subscription[] = []; // Read more: => https://brianflove.com/2016/12/11/anguar-2-unsubscribe-observables/
+  private unsubscribe: Subscription[] = [];
 
   constructor(
     private fb: UntypedFormBuilder,

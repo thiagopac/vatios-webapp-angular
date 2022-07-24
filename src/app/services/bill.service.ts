@@ -1,4 +1,4 @@
-import { IUserInvoice } from './../../models/user_invoice';
+import { IUserInvoice } from '../models/user_invoice';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { HttpClient } from '@angular/common/http';

@@ -6,11 +6,17 @@
           firstInputLabel
         }}</span>
         <div
-          class="d-flex border border-gray-300 align-items-center min-w-125px rounded px-10 py-2 my-4 justify-content-between"
+          class="d-flex border align-items-center min-w-125px rounded px-10 py-2 my-4 justify-content-between"
+          [ngClass]="
+            firstInput < firstInputMin ? 'border-danger' : 'border-gray-300'
+          "
         >
           <input
             appInputRestriction="noSpecialChars"
             type="number"
+            [ngClass]="
+              firstInput < firstInputMin ? 'text-danger' : 'text-gray-800'
+            "
             class="form-control gray-800 border-0 text-end fs-2hx fw-bolder"
             [min]="firstInputMin"
             [max]="maxAllowed"
@@ -85,8 +91,17 @@
     </button>
   </div>
 </div>
-<div class="row g-xl-12 mt-20">
+<div class="row g-xl-12 mt-10">
   <div class="col-12">
+    <div
+      [ngClass]="firstInput < firstInputMin ? 'text-danger' : 'text-gray-400'"
+      class="fs-6 fw-normal d-flex mb-5 justify-content-end"
+    >
+      Valor mínimo para operação:
+      <span class="ms-2 fw-boldest"
+        >{{ firstInputMinInt }} {{ firstInputAsset }}</span
+      >
+    </div>
     <div
       class="alert alert-warning rounded-4 bg-light-warning d-flex align-items-center p-5 mb-10"
     >

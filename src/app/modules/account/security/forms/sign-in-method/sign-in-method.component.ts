@@ -4,7 +4,7 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { BehaviorSubject, Subscription } from 'rxjs';
 import { AuthService, UserType } from 'src/app/modules/auth';
 import { AlertMessageService } from 'src/app/services/alert-message.service';
-import { UserService } from 'src/app/services/user/user.service';
+import { UserService } from 'src/app/services/user.service';
 import { PasswordMatchValitador } from 'src/app/validators/password-match.validator';
 
 @Component({

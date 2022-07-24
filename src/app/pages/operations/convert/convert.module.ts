@@ -1,3 +1,4 @@
+import { PipesModule } from 'src/app/pipes/pipes.module';
 import { OperationsComponentsModule } from '../../../modules/operations/operations-components.module';
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
@@ -17,6 +18,7 @@ import { InlineSVGModule } from 'ng-inline-svg-2';
       },
     ]),
     OperationsComponentsModule,
+    PipesModule,
   ],
 })
 export class ConvertModule {}

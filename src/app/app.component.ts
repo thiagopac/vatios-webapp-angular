@@ -5,7 +5,7 @@ import { locale as ptBRLang } from './modules/i18n/vocabs/pt-br';
 import { locale as enLang } from './modules/i18n/vocabs/en';
 
 // spinner service
-import { SpinnerHandlerService } from 'src/app/services/spinner-handler.service';
+import { SpinnerHandlerService } from 'src/app/services/spinner/spinner-handler.service';
 import { NgxSpinnerService } from 'ngx-spinner';
 
 @Component({

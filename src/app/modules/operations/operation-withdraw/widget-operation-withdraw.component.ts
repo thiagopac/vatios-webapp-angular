@@ -18,14 +18,19 @@ export class OperationWithdrawComponent implements OnInit {
   maxAllowed: number;
   input: number;
 
+  inputMinInt: number;
+
   @Output() triggeredAction = new EventEmitter();
 
   constructor() {}
 
   ngOnInit(): void {
+    this.inputMinInt = this.inputMin;
     this.inputMin = this.currencyIntToCurrencyFloat(this.inputMin);
     this.inputMax = this.currencyIntToCurrencyFloat(this.inputMax);
     this.maxAllowed = this.inputMax;
+    this.input =
+      this.inputMin < this.maxAllowed ? this.inputMin : this.maxAllowed;
   }
 
   updateInput(value: number = 0) {

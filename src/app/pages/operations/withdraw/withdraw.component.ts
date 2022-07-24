@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { Observable } from 'rxjs';
+import { BalanceType, GeneralService } from 'src/app/services/general.service';
 
 @Component({
   selector: 'app-withdraw',
@@ -6,9 +8,13 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./withdraw.component.scss'],
 })
 export class WithdrawComponent implements OnInit {
-  constructor() {}
+  balance$: Observable<BalanceType>;
 
-  ngOnInit(): void {}
+  constructor(private generalService: GeneralService) {}
+
+  ngOnInit(): void {
+    this.balance$ = this.generalService.getUserBalance();
+  }
 
   triggeredActionCaptured(content: number): void {
     console.log('triggeredActionCaptured - content:', content);

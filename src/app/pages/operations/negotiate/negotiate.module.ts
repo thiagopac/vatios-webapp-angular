@@ -5,6 +5,7 @@ import { SaleComponent } from './sale/sale.component';
 import { OperationsComponentsModule } from '../../../modules/operations/operations-components.module';
 import { RouterModule } from '@angular/router';
 import { InlineSVGModule } from 'ng-inline-svg-2';
+import { PipesModule } from 'src/app/pipes/pipes.module';
 
 @NgModule({
   declarations: [PurchaseComponent, SaleComponent],
@@ -22,6 +23,7 @@ import { InlineSVGModule } from 'ng-inline-svg-2';
       },
     ]),
     OperationsComponentsModule,
+    PipesModule,
   ],
   exports: [PurchaseComponent, SaleComponent],
 })

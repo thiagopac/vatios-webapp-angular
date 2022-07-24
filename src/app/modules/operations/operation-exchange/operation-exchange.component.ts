@@ -18,7 +18,6 @@ export class OperationExchangeComponent implements OnInit {
   @Input() firstInputMin: number;
   @Input() firstInputMax: number;
   @Input() firstInputDecimals: number;
-  @Input() firstInputMask: string;
 
   @Input() secondInputLabel: string;
   @Input() secondInputAsset: string;
@@ -36,13 +35,21 @@ export class OperationExchangeComponent implements OnInit {
   secondInput: number;
   secondInputStr: string;
 
+  firstInputMinInt: number;
+
   @Output() triggeredAction = new EventEmitter();
 
   constructor() {}
 
   ngOnInit(): void {
+    if (this.firstInputDecimals)
+      this.firstInputMax = this.firstInputMax / 10 ** this.firstInputDecimals;
+    this.firstInputMinInt = this.firstInputMin;
     this.maxAllowed = this.firstInputMax;
-    this.firstInput = this.firstInputMin;
+    this.firstInput =
+      this.firstInputMin < this.maxAllowed
+        ? this.firstInputMin
+        : this.maxAllowed;
     this.updateAllInputStr();
   }
 
