@@ -1,66 +1,18 @@
-import { Component, Input, OnInit, OnDestroy } from '@angular/core';
-import {
-  UntypedFormBuilder,
-  UntypedFormGroup,
-  Validators,
-} from '@angular/forms';
-import { Subscription } from 'rxjs';
-import { ICreateAccount } from '../../create-account.helper';
+import { Component, Input, OnInit } from '@angular/core';
+
+import { Observable, Subscription } from 'rxjs';
+import { IUserInvoiceCompensationDetails } from 'src/app/models/user_invoice';
 
 @Component({
   selector: 'app-step4',
   templateUrl: './step4.component.html',
 })
-export class Step4Component implements OnInit, OnDestroy {
-  @Input() updateParentModel: (
-    part: Partial<ICreateAccount>,
-    isFormValid: boolean
-  ) => void;
-  form: UntypedFormGroup;
-  @Input() defaultValues: Partial<ICreateAccount>;
+export class Step4Component implements OnInit {
 
-  private unsubscribe: Subscription[] = [];
+  @Input() invoiceCompensationDetails$: Observable<IUserInvoiceCompensationDetails>;
 
-  constructor(private fb: UntypedFormBuilder) {}
+  constructor() {}
 
-  ngOnInit() {
-    this.initForm();
-    this.updateParentModel({}, this.checkForm());
-  }
+  ngOnInit() {}
 
-  initForm() {
-    this.form = this.fb.group({
-      nameOnCard: [this.defaultValues.nameOnCard, [Validators.required]],
-      cardNumber: [this.defaultValues.cardNumber, [Validators.required]],
-      cardExpiryMonth: [
-        this.defaultValues.cardExpiryMonth,
-        [Validators.required],
-      ],
-      cardExpiryYear: [
-        this.defaultValues.cardExpiryYear,
-        [Validators.required],
-      ],
-      cardCvv: [this.defaultValues.cardCvv, [Validators.required]],
-      saveCard: ['1'],
-    });
-
-    const formChangesSubscr = this.form.valueChanges.subscribe((val) => {
-      this.updateParentModel(val, this.checkForm());
-    });
-    this.unsubscribe.push(formChangesSubscr);
-  }
-
-  checkForm() {
-    return !(
-      this.form.get('nameOnCard')?.hasError('required') ||
-      this.form.get('cardNumber')?.hasError('required') ||
-      this.form.get('cardExpiryMonth')?.hasError('required') ||
-      this.form.get('cardExpiryYear')?.hasError('required') ||
-      this.form.get('cardCvv')?.hasError('required')
-    );
-  }
-
-  ngOnDestroy() {
-    this.unsubscribe.forEach((sb) => sb.unsubscribe());
-  }
 }

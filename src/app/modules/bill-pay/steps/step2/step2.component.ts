@@ -1,51 +1,31 @@
 import { Component, Input, OnInit, OnDestroy } from '@angular/core';
-import {
-  UntypedFormBuilder,
-  UntypedFormGroup,
-  Validators,
-} from '@angular/forms';
-import { Subscription } from 'rxjs';
-import { ICreateAccount } from '../../create-account.helper';
+import { Observable, Subscription } from 'rxjs';
+import { UserInvoiceType } from 'src/app/services/bill.service';
+import { IPayBill } from '../../pay-bill.helper';
 
 @Component({
   selector: 'app-step2',
   templateUrl: './step2.component.html',
 })
 export class Step2Component implements OnInit, OnDestroy {
+
+  selectedUserInvoice: UserInvoiceType;
+
   @Input() updateParentModel: (
-    part: Partial<ICreateAccount>,
-    isFormValid: boolean
+    part: Partial<IPayBill>,
+    step: number
   ) => void;
-  form: UntypedFormGroup;
-  @Input() defaultValues: Partial<ICreateAccount>;
 
   private unsubscribe: Subscription[] = [];
 
-  constructor(private fb: UntypedFormBuilder) {}
+  @Input() invoices$: Observable<UserInvoiceType[]>;
 
-  ngOnInit() {
-    this.initForm();
-    this.updateParentModel({}, this.checkForm());
-  }
+  constructor() {}
 
-  initForm() {
-    this.form = this.fb.group({
-      accountTeamSize: [
-        this.defaultValues.accountTeamSize,
-        [Validators.required],
-      ],
-      // accountName: [this.defaultValues.accountName, [Validators.required]],
-      accountPlan: [this.defaultValues.accountPlan, [Validators.required]],
-    });
+  ngOnInit() {}
 
-    const formChangesSubscr = this.form.valueChanges.subscribe((val) => {
-      this.updateParentModel(val, this.checkForm());
-    });
-    this.unsubscribe.push(formChangesSubscr);
-  }
-
-  checkForm() {
-    return !this.form.get('accountName')?.hasError('required');
+  updateSelectedUserInvoice(userInvoice: UserInvoiceType) {
+    this.updateParentModel({ userInvoice }, 2);
   }
 
   ngOnDestroy() {

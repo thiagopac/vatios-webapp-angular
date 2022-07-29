@@ -107,32 +107,30 @@
         <ng-container *ngIf="currentStep$.value === 1">
           <app-step1
             class="w-100"
-            [updateParentModel]="updateAccount"
-            [defaultValues]="account$.value"
+            [consumerUnits$]="consumerUnits$"
+            [updateParentModel]="updateProcess"
           ></app-step1>
         </ng-container>
 
         <ng-container *ngIf="currentStep$.value === 2">
           <app-step2
             class="w-100"
-            [updateParentModel]="updateAccount"
-            [defaultValues]="account$.value"
+            [invoices$]="invoices$"
+            [updateParentModel]="updateProcess"
           ></app-step2>
         </ng-container>
 
         <ng-container *ngIf="currentStep$.value === 3">
           <app-step3
             class="w-100"
-            [updateParentModel]="updateAccount"
-            [defaultValues]="account$.value"
+            [invoiceCompensationDetails$]="invoiceCompensationDetails$"
           ></app-step3>
         </ng-container>
 
         <ng-container *ngIf="currentStep$.value === 4">
           <app-step4
             class="w-100"
-            [updateParentModel]="updateAccount"
-            [defaultValues]="account$.value"
+            [invoiceCompensationDetails$]="invoiceCompensationDetails$"
           ></app-step4>
         </ng-container>
 

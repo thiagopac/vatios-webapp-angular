@@ -1,41 +1,31 @@
 import { Component, Input, OnDestroy, OnInit } from '@angular/core';
-import {
-  UntypedFormBuilder,
-  UntypedFormGroup,
-  Validators,
-} from '@angular/forms';
-import { Subscription } from 'rxjs';
-import { ICreateAccount } from '../../create-account.helper';
+import { Observable, Subscription } from 'rxjs';
+import { ConsumerUnitType } from 'src/app/services/bill.service';
+import { IPayBill } from '../../pay-bill.helper';
 
 @Component({
   selector: 'app-step1',
   templateUrl: './step1.component.html',
 })
 export class Step1Component implements OnInit, OnDestroy {
+  
+  selectedConsumerUnit: ConsumerUnitType;
+
   @Input() updateParentModel: (
-    part: Partial<ICreateAccount>,
-    isFormValid: boolean
+    part: Partial<IPayBill>,
+    step: number
   ) => void;
-  form: UntypedFormGroup;
-  @Input() defaultValues: Partial<ICreateAccount>;
+  
   private unsubscribe: Subscription[] = [];
 
-  constructor(private fb: UntypedFormBuilder) {}
+  @Input() consumerUnits$: Observable<ConsumerUnitType[]>;
 
-  ngOnInit() {
-    this.initForm();
-    this.updateParentModel({}, true);
-  }
+  constructor() {}
 
-  initForm() {
-    this.form = this.fb.group({
-      accountType: [this.defaultValues.accountType, [Validators.required]],
-    });
+  ngOnInit() {}
 
-    const formChangesSubscr = this.form.valueChanges.subscribe((val) => {
-      this.updateParentModel(val, true);
-    });
-    this.unsubscribe.push(formChangesSubscr);
+  updateSelectedConsumerUnit(consumerUnit: ConsumerUnitType) {
+    this.updateParentModel({ consumerUnit }, 1);
   }
 
   ngOnDestroy() {

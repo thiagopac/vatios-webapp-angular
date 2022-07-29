@@ -1,65 +1,17 @@
-import { Component, Input, OnInit, OnDestroy } from '@angular/core';
-import {
-  UntypedFormBuilder,
-  UntypedFormGroup,
-  Validators,
-} from '@angular/forms';
-import { Subscription } from 'rxjs';
-import { ICreateAccount } from '../../create-account.helper';
+import { Component, Input, OnInit } from '@angular/core';
+import { Observable, Subscription } from 'rxjs';
+import { IUserInvoiceCompensationDetails } from 'src/app/models/user_invoice';
 
 @Component({
   selector: 'app-step3',
   templateUrl: './step3.component.html',
 })
-export class Step3Component implements OnInit, OnDestroy {
-  @Input() updateParentModel: (
-    part: Partial<ICreateAccount>,
-    isFormValid: boolean
-  ) => void;
-  form: UntypedFormGroup;
-  @Input() defaultValues: Partial<ICreateAccount>;
+export class Step3Component implements OnInit {
 
-  private unsubscribe: Subscription[] = [];
+  @Input() invoiceCompensationDetails$: Observable<IUserInvoiceCompensationDetails>;
 
-  constructor(private fb: UntypedFormBuilder) {}
+  constructor() {}
 
-  ngOnInit() {
-    this.initForm();
-    this.updateParentModel({}, this.checkForm());
-  }
+  ngOnInit() {}
 
-  initForm() {
-    this.form = this.fb.group({
-      businessName: [this.defaultValues.businessName, [Validators.required]],
-      businessDescriptor: [
-        this.defaultValues.businessDescriptor,
-        [Validators.required],
-      ],
-      businessType: [this.defaultValues.businessType, [Validators.required]],
-      businessDescription: [this.defaultValues.businessDescription],
-      businessEmail: [
-        this.defaultValues.businessEmail,
-        [Validators.required, Validators.email],
-      ],
-    });
-
-    const formChangesSubscr = this.form.valueChanges.subscribe((val) => {
-      this.updateParentModel(val, this.checkForm());
-    });
-    this.unsubscribe.push(formChangesSubscr);
-  }
-
-  checkForm() {
-    return !(
-      this.form.get('businessName')?.hasError('required') ||
-      this.form.get('businessDescriptor')?.hasError('required') ||
-      this.form.get('businessType')?.hasError('required') ||
-      this.form.get('businessEmail')?.hasError('required') ||
-      this.form.get('businessEmail')?.hasError('email')
-    );
-  }
-
-  ngOnDestroy() {
-    this.unsubscribe.forEach((sb) => sb.unsubscribe());
-  }
 }

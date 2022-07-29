@@ -4,7 +4,7 @@
 
 <div class="table-responsive">
   <table class="table table-row-bordered gy-7">
-    <tbody>
+    <tbody *ngIf="invoiceCompensationDetails$ | async as _invoiceCompensationDetails">
       <tr>
         <td>
           <div class="ms-4">
@@ -16,8 +16,8 @@
         </td>
         <td>
           <div class="d-flex mt-5 me-4 align-items-baseline">
-            <div class="fs-1 text-gray-700 fw-bolder me-1">635</div>
-            <div class="fs-3 text-gray-700">kWh</div>
+            <div class="fs-1 text-gray-700 fw-bolder me-1">{{ _invoiceCompensationDetails.consumption | intToCurrency }}</div>
+            <div class="fs-3 text-gray-700">{{ 'energy' | assetDescToAbbr }}</div>
           </div>
         </td>
       </tr>
@@ -32,8 +32,8 @@
         </td>
         <td>
           <div class="d-flex mt-5 me-4 align-items-baseline">
-            <div class="fs-1 text-gray-700 fw-bolder me-1">110</div>
-            <div class="fs-3 text-gray-700">DEC</div>
+            <div class="fs-1 text-gray-700 fw-bolder me-1">{{ _invoiceCompensationDetails.current_balance_crypto | intToCurrency }}</div>
+            <div class="fs-3 text-gray-700">{{ 'crypto' | assetDescToAbbr }}</div>
           </div>
         </td>
       </tr>
@@ -49,8 +49,8 @@
         </td>
         <td>
           <div class="d-flex mt-5 me-4 align-items-baseline">
-            <div class="fs-1 text-gray-700 fw-bolder me-1">525</div>
-            <div class="fs-3 text-gray-700">DEC</div>
+            <div class="fs-1 text-gray-700 fw-bolder me-1">{{ _invoiceCompensationDetails.complementary_crypto_used | intToCurrency }}</div>
+            <div class="fs-3 text-gray-700">{{ 'crypto' | assetDescToAbbr }}</div>
           </div>
         </td>
       </tr>
@@ -67,7 +67,7 @@
         <td>
           <div class="d-flex mt-5 me-4 align-items-baseline">
             <div class="fs-3 text-gray-700 fw-bolder me-1">R$</div>
-            <div class="fs-2x text-gray-900 fw-boldest">498,75</div>
+            <div class="fs-2x text-gray-900 fw-boldest">{{ _invoiceCompensationDetails.complementary_crypto_cost | intToCurrency:false }}</div>
           </div>
         </td>
       </tr>

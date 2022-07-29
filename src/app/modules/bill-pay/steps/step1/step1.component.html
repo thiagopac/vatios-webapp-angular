@@ -23,41 +23,38 @@
   </div>
 </div>
 
-<div class="fv-row" [formGroup]="form">
+<div class="fv-row">
   <label class="d-flex align-items-center form-label mb-5 fs-5">
     Selecione a unidade consumidora referente à conta de energia que você deseja
     pagar
   </label>
 
-  <div class="row">
-    <div class="col-lg-6" *ngFor="let item of [1, 2, 3]">
+  <div class="row" *ngIf="consumerUnits$">
+    <div class="col-lg-6" *ngFor="let consumerUnit of consumerUnits$ | async">
       <input
-        formControlName="accountType"
-        name="accountType"
         type="radio"
         class="btn-check"
-        id="uc_{{ item }}"
-        value="{{ item }}"
+        name="uc-opt"
+        id="uc-{{ consumerUnit?.uuid }}"
+        value="{{ consumerUnit }}"
+        (change)="updateSelectedConsumerUnit(consumerUnit)"
       />
       <label
         class="btn btn-rounded btn-outline btn-outline-dashed btn-outline-default p-7 d-flex align-items-center mb-10"
-        for="uc_{{ item }}"
+        for="uc-{{ consumerUnit?.uuid }}"
       >
-        <i class="bi bi-house fs-1 me-2 opacity-75"></i>
+        <i class="fa-solid fa-hashtag fs-4 me-2 text-primary align-self-start mt-4"></i>
         <span class="d-block fw-bold text-start">
           <span class="text-dark fw-bolder d-block fs-4 mb-2">
-            Minha casa {{ item }}
-            <span class="fs-sm-8 text-gray-400 d-flex">1/1111111111-1</span>
+            {{ consumerUnit!.name }}
+            <span class="fs-sm-8 text-gray-400 d-flex">{{ consumerUnit!.code | mask: '0/0000000000-0' }}</span>
           </span>
           <span class="text-gray-400 fw-bold fs-6">
-            Rua Dr. Júlio Otaviano Ferreira 1048, Belo Horizonte/MG
+            {{ consumerUnit!.address }} {{ consumerUnit!.number }}, {{ consumerUnit!.city.name }}/{{ consumerUnit!.city.state_letter }}
           </span>
         </span>
       </label>
     </div>
-
-    <div class="fv-plugins-message-container invalid-feedback">
-      <!-- <ErrorMessage name='accountType' /> -->
-    </div>
   </div>
+
 </div>

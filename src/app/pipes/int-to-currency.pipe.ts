@@ -18,6 +18,8 @@ export class IntToCurrencyPipe implements PipeTransform {
       strValue.length - 2,
       strValue.length
     );
+    
+    if (integerPart === '') integerPart = '0';
     const full = `${integerPart},${fractionalPart}`;
 
     if (fractionalPart === '00' && clip === true) {
