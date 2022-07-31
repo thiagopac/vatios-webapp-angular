@@ -1,4 +1,8 @@
-import { IPaymentStatusEnum, IUserInvoice, IUserInvoiceCompensationDetails } from '../models/user_invoice';
+import {
+  IPaymentStatusEnum,
+  IUserInvoice,
+  IUserInvoiceCompensationDetails,
+} from '../models/user_invoice';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { HttpClient } from '@angular/common/http';
@@ -64,10 +68,16 @@ export class BillService {
     });
   }
 
-  getUserInvoicesForConsumerUnitWithPaymentStatus(consumerUnit: string, paymentStatus: IPaymentStatusEnum): Observable<UserInvoiceType[]> {
-    return this.http.get<UserInvoiceType[]>(`${API_BILL_URL}/invoices/consumer-unit/${consumerUnit}/${paymentStatus}`, {
-      headers: this.authService.headerSigned(),
-    });
+  getUserInvoicesForConsumerUnitWithPaymentStatus(
+    consumerUnit: string,
+    paymentStatus: IPaymentStatusEnum
+  ): Observable<UserInvoiceType[]> {
+    return this.http.get<UserInvoiceType[]>(
+      `${API_BILL_URL}/invoices/consumer-unit/${consumerUnit}/${paymentStatus}`,
+      {
+        headers: this.authService.headerSigned(),
+      }
+    );
   }
 
   getUserInvoice(uuid: string): Observable<UserInvoiceType> {
@@ -76,10 +86,14 @@ export class BillService {
     });
   }
 
-  getUserInvoiceCompensationDetails(uuid: string): Observable<IUserInvoiceCompensationDetails> {
-    return this.http.get<IUserInvoiceCompensationDetails>(`${API_BILL_URL}/invoice/compensation-details/${uuid}`, {
-      headers: this.authService.headerSigned(),
-    });
+  getUserInvoiceCompensationDetails(
+    uuid: string
+  ): Observable<IUserInvoiceCompensationDetails> {
+    return this.http.get<IUserInvoiceCompensationDetails>(
+      `${API_BILL_URL}/invoice/compensation-details/${uuid}`,
+      {
+        headers: this.authService.headerSigned(),
+      }
+    );
   }
-
 }

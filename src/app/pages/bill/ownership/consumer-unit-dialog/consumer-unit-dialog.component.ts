@@ -49,6 +49,7 @@ export class ConsumerUnitDialogComponent implements OnInit, OnDestroy {
       const state_id = this.data.consumerUnit.city.state_id;
       this.data.consumerUnit.state_id = state_id;
       this.cities$ = this.locationService.getCitiesByState(state_id);
+      console.log(this.data.consumerUnit);
 
       this.fg.patchValue(this.data.consumerUnit);
     }

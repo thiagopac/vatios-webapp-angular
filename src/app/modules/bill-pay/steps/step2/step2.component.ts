@@ -8,13 +8,9 @@ import { IPayBill } from '../../pay-bill.helper';
   templateUrl: './step2.component.html',
 })
 export class Step2Component implements OnInit, OnDestroy {
-
   selectedUserInvoice: UserInvoiceType;
 
-  @Input() updateParentModel: (
-    part: Partial<IPayBill>,
-    step: number
-  ) => void;
+  @Input() updateParentModel: (part: Partial<IPayBill>, step: number) => void;
 
   private unsubscribe: Subscription[] = [];
 

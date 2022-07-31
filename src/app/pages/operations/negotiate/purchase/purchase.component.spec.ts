@@ -1,6 +1,7 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
-
+import { HttpClient, HttpHandler } from '@angular/common/http';
 import { PurchaseComponent } from './purchase.component';
+import { RouterTestingModule } from '@angular/router/testing';
 
 describe('PurchaseComponent', () => {
   let component: PurchaseComponent;
@@ -9,6 +10,8 @@ describe('PurchaseComponent', () => {
   beforeEach(async () => {
     await TestBed.configureTestingModule({
       declarations: [PurchaseComponent],
+      providers: [HttpClient, HttpHandler],
+      imports: [RouterTestingModule],
     }).compileComponents();
   });
 

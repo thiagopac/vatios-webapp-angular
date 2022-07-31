@@ -8,11 +8,10 @@ import { IUserInvoiceCompensationDetails } from 'src/app/models/user_invoice';
   templateUrl: './step4.component.html',
 })
 export class Step4Component implements OnInit {
-
-  @Input() invoiceCompensationDetails$: Observable<IUserInvoiceCompensationDetails>;
+  @Input()
+  invoiceCompensationDetails$: Observable<IUserInvoiceCompensationDetails>;
 
   constructor() {}
 
   ngOnInit() {}
-
 }

@@ -8,14 +8,10 @@ import { IPayBill } from '../../pay-bill.helper';
   templateUrl: './step1.component.html',
 })
 export class Step1Component implements OnInit, OnDestroy {
-  
   selectedConsumerUnit: ConsumerUnitType;
 
-  @Input() updateParentModel: (
-    part: Partial<IPayBill>,
-    step: number
-  ) => void;
-  
+  @Input() updateParentModel: (part: Partial<IPayBill>, step: number) => void;
+
   private unsubscribe: Subscription[] = [];
 
   @Input() consumerUnits$: Observable<ConsumerUnitType[]>;

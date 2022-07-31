@@ -43,18 +43,22 @@
         class="btn btn-rounded btn-outline btn-outline-dashed btn-outline-default p-7 d-flex align-items-center mb-10"
         for="uc-{{ consumerUnit?.uuid }}"
       >
-        <i class="fa-solid fa-hashtag fs-4 me-2 text-primary align-self-start mt-4"></i>
+        <i
+          class="fa-solid fa-hashtag fs-4 me-2 text-primary align-self-start mt-4"
+        ></i>
         <span class="d-block fw-bold text-start">
           <span class="text-dark fw-bolder d-block fs-4 mb-2">
             {{ consumerUnit!.name }}
-            <span class="fs-sm-8 text-gray-400 d-flex">{{ consumerUnit!.code | mask: '0/0000000000-0' }}</span>
+            <span class="fs-sm-8 text-gray-400 d-flex">{{
+              consumerUnit!.code | mask: '0/0000000000-0'
+            }}</span>
           </span>
           <span class="text-gray-400 fw-bold fs-6">
-            {{ consumerUnit!.address }} {{ consumerUnit!.number }}, {{ consumerUnit!.city.name }}/{{ consumerUnit!.city.state_letter }}
+            {{ consumerUnit!.address }} {{ consumerUnit!.number }},
+            {{ consumerUnit!.city.name }}/{{ consumerUnit!.city.state_letter }}
           </span>
         </span>
       </label>
     </div>
   </div>
-
 </div>

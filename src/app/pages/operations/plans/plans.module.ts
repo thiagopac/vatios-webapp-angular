@@ -4,6 +4,7 @@ import { PlansComponent } from './plans.component';
 import { RouterModule } from '@angular/router';
 import { InlineSVGModule } from 'ng-inline-svg-2';
 import { FormsModule } from '@angular/forms';
+import { PipesModule } from 'src/app/pipes/pipes.module';
 
 @NgModule({
   declarations: [PlansComponent],
@@ -17,6 +18,7 @@ import { FormsModule } from '@angular/forms';
       },
     ]),
     FormsModule,
+    PipesModule,
   ],
 })
 export class PlansModule {}

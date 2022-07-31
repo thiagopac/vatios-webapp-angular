@@ -15,35 +15,72 @@
         <tbody>
           <tr class="fw-bolder text-gray-700 fs-5 text-end">
             <td class="text-start">Valor total da fatura de energia</td>
-            <td class="text-dark fw-boldest">R$ {{ _invoiceCompensationDetails.invoice_value | intToCurrency:false }}</td>
+            <td class="text-dark fw-boldest">
+              R$
+              {{
+                _invoiceCompensationDetails.invoice_value | intToCurrency: false
+              }}
+            </td>
           </tr>
           <tr class="fw-bolder text-gray-700 fs-5 text-end">
             <td class="text-start">Consumo compensável da fatura</td>
-            <td class="text-dark fw-boldest">{{ _invoiceCompensationDetails.consumption | intToCurrency }} {{ 'energy' | assetDescToAbbr }}</td>
+            <td class="text-dark fw-boldest">
+              {{ _invoiceCompensationDetails.consumption | intToCurrency }}
+              {{ 'energy' | assetDescToAbbr }}
+            </td>
           </tr>
           <tr>
             <td></td>
           </tr>
           <tr class="fw-bolder text-gray-700 fs-5 text-end">
-            <td class="text-start">Saldo de {{ 'crypto' | assetDescToAbbr }} utilizado</td>
-            <td class="text-dark fw-boldest balance-crypto">{{ _invoiceCompensationDetails.balance_crypto_used | intToCurrency }} {{ 'crypto' | assetDescToAbbr }}</td>
+            <td class="text-start">
+              Saldo de {{ 'crypto' | assetDescToAbbr }} utilizado
+            </td>
+            <td class="text-dark fw-boldest balance-crypto">
+              {{
+                _invoiceCompensationDetails.balance_crypto_used | intToCurrency
+              }}
+              {{ 'crypto' | assetDescToAbbr }}
+            </td>
           </tr>
           <tr class="fw-bolder text-gray-700 fs-5 text-end">
-            <td class="text-start">{{ 'crypto' | assetDescToAbbr }} complementares</td>
-            <td class="text-dark fw-boldest complementary-crypto">{{ _invoiceCompensationDetails.complementary_crypto_used | intToCurrency }} {{ 'crypto' | assetDescToAbbr }}</td>
+            <td class="text-start">
+              {{ 'crypto' | assetDescToAbbr }} complementares
+            </td>
+            <td class="text-dark fw-boldest complementary-crypto">
+              {{
+                _invoiceCompensationDetails.complementary_crypto_used
+                  | intToCurrency
+              }}
+              {{ 'crypto' | assetDescToAbbr }}
+            </td>
           </tr>
           <tr>
             <td></td>
           </tr>
           <tr class="fw-bolder text-gray-700 fs-5 text-end">
-            <td class="text-start">Custo dos {{ 'crypto' | assetDescToAbbr }} complementares</td>
-            <td class="text-dark fw-boldest">R$ {{ _invoiceCompensationDetails.complementary_crypto_cost | intToCurrency:false }}</td>
+            <td class="text-start">
+              Custo dos {{ 'crypto' | assetDescToAbbr }} complementares
+            </td>
+            <td class="text-dark fw-boldest">
+              R$
+              {{
+                _invoiceCompensationDetails.complementary_crypto_cost
+                  | intToCurrency: false
+              }}
+            </td>
           </tr>
           <tr class="fw-bolder text-gray-700 fs-5 text-end">
             <td class="text-start">
               Taxas não compensáveis da fatura de energia
             </td>
-            <td class="text-dark fw-boldest">R$ {{ _invoiceCompensationDetails.non_compensating_charges | intToCurrency:false }}</td>
+            <td class="text-dark fw-boldest">
+              R$
+              {{
+                _invoiceCompensationDetails.non_compensating_charges
+                  | intToCurrency: false
+              }}
+            </td>
           </tr>
           <tr>
             <td></td>
@@ -55,25 +92,37 @@
       <div class="d-flex align-items-center fs-1 fw-boldest text-gray-900">
         Total a pagar
       </div>
-      <div class="fs-1 text-dark fw-boldest total-payable">R$ {{ _invoiceCompensationDetails.total_to_pay | intToCurrency:false }}</div>
+      <div class="fs-1 text-dark fw-boldest total-payable">
+        R$ {{ _invoiceCompensationDetails.total_to_pay | intToCurrency: false }}
+      </div>
     </div>
     <div class="d-flex justify-content-end">
       <div class="mw-300px">
         <div class="d-flex flex-stack mb-3">
           <div class="fw-bold pe-10 text-gray-600 fs-7">
-            Custo do kWh nesta fatura:
+            Custo do {{ 'energy' | assetDescToAbbr }} nesta fatura:
           </div>
-          <div class="text-end fw-bolder fs-6 text-gray-800">R$ {{ _invoiceCompensationDetails.kwh_value | intToCurrency:false }}</div>
+          <div class="text-end fw-bolder fs-6 text-gray-800">
+            R$
+            {{ _invoiceCompensationDetails.kwh_value | intToCurrency: false }}
+          </div>
         </div>
         <div class="d-flex flex-stack mb-3">
           <div class="fw-bold pe-10 text-gray-600 fs-7">
             Preço médio dos seus {{ 'crypto' | assetDescToAbbr }}:
           </div>
-          <div class="text-end fw-bolder fs-6 text-gray-800">R$ {{ _invoiceCompensationDetails.average_crypto_cost | intToCurrency:false }}</div>
+          <div class="text-end fw-bolder fs-6 text-gray-800">
+            R$
+            {{
+              _invoiceCompensationDetails.average_crypto_cost
+                | intToCurrency: false
+            }}
+          </div>
         </div>
-        <div class="d-flex flex-stack mb-3" *ngIf="false" >
+        <div class="d-flex flex-stack mb-3" *ngIf="false">
           <div class="my-2 fw-bold text-gray-600 fs-7 text-gray-500">
-            Pague R$ 0,86 por {{ 'crypto' | assetDescToAbbr }} no plano anual de créditos.
+            Pague R$ 0,86 por {{ 'crypto' | assetDescToAbbr }} no plano anual de
+            créditos.
             <a
               href="http://127.0.0.1:8000/operations/plan"
               class="fw-bolder"
@@ -93,8 +142,15 @@
     <div class="d-flex flex-column">
       <h4 class="mb-1 text-info">Parabéns!</h4>
       <span
-        >Ao pagar esta fatura de energia com {{ 'crypto' | assetDescToAbbr }}, você economizará
-        <span class="fw-boldest">R$ {{ _invoiceCompensationDetails.invoice_total_savings | intToCurrency:false }}</span>
+        >Ao pagar esta fatura de energia com {{ 'crypto' | assetDescToAbbr }},
+        você economizará
+        <span class="fw-boldest"
+          >R$
+          {{
+            _invoiceCompensationDetails.invoice_total_savings
+              | intToCurrency: false
+          }}</span
+        >
       </span>
     </div>
   </div>

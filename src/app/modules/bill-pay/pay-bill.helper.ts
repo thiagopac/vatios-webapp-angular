@@ -1,5 +1,5 @@
-import { IConsumerUnit } from "src/app/models/consumer_unit";
-import { IUserInvoice } from "src/app/models/user_invoice";
+import { IConsumerUnit } from 'src/app/models/consumer_unit';
+import { IUserInvoice } from 'src/app/models/user_invoice';
 
 interface IPayBill {
   consumerUnit?: IConsumerUnit;

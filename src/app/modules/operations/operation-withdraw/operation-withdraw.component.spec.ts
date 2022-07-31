@@ -1,5 +1,5 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
-
+import { PipesModule } from 'src/app/pipes/pipes.module';
 import { OperationWithdrawComponent } from './widget-operation-withdraw.component';
 
 describe('OperationWithdrawComponent', () => {
@@ -9,6 +9,7 @@ describe('OperationWithdrawComponent', () => {
   beforeEach(async () => {
     await TestBed.configureTestingModule({
       declarations: [OperationWithdrawComponent],
+      imports: [PipesModule],
     }).compileComponents();
   });
 

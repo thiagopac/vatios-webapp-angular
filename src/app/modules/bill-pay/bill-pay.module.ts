@@ -34,7 +34,7 @@ import { PipesModule } from 'src/app/pipes/pipes.module';
     InlineSVGModule,
     NgbTooltipModule,
     NgxMaskModule.forRoot(),
-    PipesModule
+    PipesModule,
   ],
 })
 export class BillPayModule {}

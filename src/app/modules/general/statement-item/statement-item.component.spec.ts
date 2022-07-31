@@ -1,5 +1,5 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
-
+import { PipesModule } from 'src/app/pipes/pipes.module';
 import { StatementItemComponent } from './statement-item.component';
 
 describe('StatementItemComponent', () => {
@@ -9,6 +9,7 @@ describe('StatementItemComponent', () => {
   beforeEach(async () => {
     await TestBed.configureTestingModule({
       declarations: [StatementItemComponent],
+      imports: [PipesModule],
     }).compileComponents();
   });
 

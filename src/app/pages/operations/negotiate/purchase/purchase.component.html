@@ -30,7 +30,9 @@
                   <div class="fs-1 fw-bolder counted">
                     {{ _balance.crypto | intToCurrency }}
                   </div>
-                  <span class="fs-1 text-gray-500 mx-2">DEC</span>
+                  <span class="fs-1 text-gray-500 mx-2">{{
+                    'crypto' | assetDescToAbbr
+                  }}</span>
                   <span
                     [inlineSVG]="
                       './assets/media/icons/duotune/vatios/crypto.svg'
@@ -46,7 +48,7 @@
         <app-operation-exchange-component
           *ngIf="fiatToCrypto$ | async as _fiatToCrypto"
           firstInputLabel="Quantidade a comprar"
-          firstInputAsset="DEC"
+          firstInputAsset="{{ 'crypto' | assetDescToAbbr }}"
           [firstInputMin]="50"
           [firstInputMax]="max(_balance.fiat, _fiatToCrypto.rate)"
           [firstInputDecimals]="0"

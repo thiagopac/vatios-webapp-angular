@@ -1,6 +1,7 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
-
+import { HttpClient, HttpHandler } from '@angular/common/http';
 import { WithdrawComponent } from './withdraw.component';
+import { RouterTestingModule } from '@angular/router/testing';
 
 describe('WithdrawComponent', () => {
   let component: WithdrawComponent;
@@ -9,6 +10,8 @@ describe('WithdrawComponent', () => {
   beforeEach(async () => {
     await TestBed.configureTestingModule({
       declarations: [WithdrawComponent],
+      providers: [HttpClient, HttpHandler],
+      imports: [RouterTestingModule],
     }).compileComponents();
   });
 

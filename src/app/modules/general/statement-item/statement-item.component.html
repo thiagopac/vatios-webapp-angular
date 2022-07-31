@@ -3,10 +3,10 @@
   <div class="symbol-label bg-light">
     <span
       inlineSVG="{{
-        (transaction.status | friendlyTransactionStatusIconPipe).icon
+        (transaction?.status | friendlyTransactionStatusIconPipe).icon
       }}"
       class="svg-icon svg-icon-2x svg-icon-{{
-        (transaction.status | friendlyTransactionStatusIconPipe).color
+        (transaction?.status | friendlyTransactionStatusIconPipe).color
       }}"
     ></span>
   </div>

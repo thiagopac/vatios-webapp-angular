@@ -7,7 +7,7 @@ import { Injectable, Pipe, PipeTransform } from '@angular/core';
   providedIn: 'root',
 })
 export class FriendlyTransactionStatusIconPipe implements PipeTransform {
-  transform(status: string): { icon: string; color: string } {
+  transform(status?: string): { icon: string; color: string } {
     let output: { icon: string; color: string } = { icon: '', color: '' };
 
     switch (status) {

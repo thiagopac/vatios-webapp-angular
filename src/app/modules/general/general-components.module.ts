@@ -6,25 +6,20 @@ import { NgbDropdownModule } from '@ng-bootstrap/ng-bootstrap';
 import { FormsModule } from '@angular/forms';
 import { RouterModule } from '@angular/router';
 
-import { LastTransactionsComponent } from '../widgets/widget-last-transactions/last-transactions/last-transactions.component';
 import { AssetComponent } from './asset-component/asset.component';
 import { StatementBalanceComponent } from './statement-balance/statement-balance.component';
 import { StatementItemComponent } from './statement-item/statement-item.component';
 import { StatementCellComponent } from './statement-cell/statement-cell.component';
 import { PipesModule } from 'src/app/pipes/pipes.module';
-import { LastTransactionsCellComponent } from '../widgets/widget-last-transactions/last-transactions-cell/last-transactions-cell.component';
-import { LastTransactionsEventsComponent } from '../widgets/widget-last-transactions/last-transactions-events/last-transactions-events.component';
 import { ContentLoaderModule } from '@ngneat/content-loader';
+import { WidgetsModule } from 'src/app/modules/widgets/widgets.module';
 
 @NgModule({
   declarations: [
-    LastTransactionsComponent,
     AssetComponent,
     StatementBalanceComponent,
     StatementItemComponent,
     StatementCellComponent,
-    LastTransactionsCellComponent,
-    LastTransactionsEventsComponent,
   ],
   imports: [
     CommonModule,
@@ -35,9 +30,9 @@ import { ContentLoaderModule } from '@ngneat/content-loader';
     RouterModule,
     PipesModule,
     ContentLoaderModule,
+    WidgetsModule,
   ],
   exports: [
-    LastTransactionsComponent,
     AssetComponent,
     StatementBalanceComponent,
     StatementItemComponent,

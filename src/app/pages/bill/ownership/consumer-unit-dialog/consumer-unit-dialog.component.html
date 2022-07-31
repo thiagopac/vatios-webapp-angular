@@ -32,7 +32,7 @@
       </div>
       <div class="col-md-6 fv-row">
         <label class="required fs-5 fw-bold mb-2">Tipo</label>
-        <ng-select formControlName="type">
+        <ng-select formControlName="type" ngDefaultControl>
           <ng-option value="residence">Residencial</ng-option>
           <ng-option value="business">Comercial</ng-option>
           <ng-option value="property">Propriedade em geral</ng-option>
@@ -110,6 +110,7 @@
           bindValue="id"
           (change)="selectedState($event)"
           formControlName="state_id"
+          ngDefaultControl
         >
         </ng-select>
         <mat-error
@@ -127,6 +128,7 @@
           bindLabel="name"
           bindValue="id"
           formControlName="city_id"
+          ngDefaultControl
         >
         </ng-select>
         <mat-error

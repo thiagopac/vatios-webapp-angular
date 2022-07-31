@@ -1,5 +1,5 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
-
+import { PipesModule } from 'src/app/pipes/pipes.module';
 import { LastTransactionsCellComponent } from './last-transactions-cell.component';
 
 describe('LastTransactionsCellComponent', () => {
@@ -9,6 +9,7 @@ describe('LastTransactionsCellComponent', () => {
   beforeEach(async () => {
     await TestBed.configureTestingModule({
       declarations: [LastTransactionsCellComponent],
+      imports: [PipesModule],
     }).compileComponents();
 
     fixture = TestBed.createComponent(LastTransactionsCellComponent);

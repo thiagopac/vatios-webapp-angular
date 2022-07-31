@@ -29,7 +29,8 @@
                   Converter
                 </a>
                 <div class="fs-6 fw-bold text-muted">
-                  Transforme seus créditos energéticos em DEC
+                  Transforme seus créditos energéticos em
+                  {{ 'crypto' | assetDescToAbbr }}
                 </div>
               </div>
             </div>
@@ -56,7 +57,7 @@
                   Comercializar
                 </a>
                 <div class="fs-6 fw-bold text-muted">
-                  Compre ou venda tokens DEC
+                  Compre ou venda tokens {{ 'crypto' | assetDescToAbbr }}
                 </div>
               </div>
             </div>
@@ -132,9 +133,13 @@
             <div class="col-lg-4">
               <app-asset-component
                 value="{{ _balance.energy | intToCurrency: true }}"
-                assetName="kWh"
+                assetName="{{ 'energy' | assetDescToAbbr }}"
                 assetType="energy"
-                description="Créditos em kWh disponíveis para conversão em DEC"
+                description="Créditos em {{
+                  'energy' | assetDescToAbbr
+                }} disponíveis para conversão em {{
+                  'crypto' | assetDescToAbbr
+                }}"
                 buttonLink="/operations/convert"
                 buttonText="Converter créditos"
               >
@@ -143,7 +148,7 @@
             <div class="col-lg-4">
               <app-asset-component
                 value="{{ _balance.crypto | intToCurrency: true }}"
-                assetName="DEC"
+                assetName="{{ 'crypto' | assetDescToAbbr }}"
                 assetType="crypto"
                 description="Disponível para venda ou abatimentos da conta de luz"
                 buttonLink="/operations/negotiate/sale"
@@ -154,7 +159,7 @@
             <div class="col-lg-4">
               <app-asset-component
                 value="{{ _balance.fiat | intToCurrency: false }}"
-                assetName="BRL"
+                assetName="{{ 'fiat' | assetDescToAbbr }}"
                 assetType="fiat"
                 description="Disponível para saque ou pagamento de contas"
                 buttonLink="/operations/withdraw"

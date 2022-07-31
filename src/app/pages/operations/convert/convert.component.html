@@ -23,7 +23,9 @@
                   <div class="fs-1 fw-bolder counted">
                     {{ _balance.energy | intToCurrency }}
                   </div>
-                  <span class="fs-3 text-gray-500 mx-2">kWh</span>
+                  <span class="fs-3 text-gray-500 mx-2">{{
+                    'energy' | assetDescToAbbr
+                  }}</span>
                   <span
                     [inlineSVG]="
                       './assets/media/icons/duotune/vatios/energy.svg'
@@ -39,12 +41,12 @@
         <app-operation-exchange-component
           *ngIf="energyToCrypto$ | async as _energyToCrypto"
           firstInputLabel="Créditos para conversão"
-          firstInputAsset="kWh"
+          firstInputAsset="{{ 'energy' | assetDescToAbbr }}"
           [firstInputMin]="10"
           [firstInputMax]="_balance.energy"
           [firstInputDecimals]="2"
           secondInputLabel="Saldo equivalente"
-          secondInputAsset="DEC"
+          secondInputAsset="{{ 'crypto' | assetDescToAbbr }}"
           [secondInputDecimals]="0"
           [operationRatio]="_energyToCrypto.rate"
           icon="./assets/media/icons/duotune/arrows/arr080.svg"

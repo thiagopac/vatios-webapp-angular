@@ -1,6 +1,5 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { IEvent } from 'src/app/models/event';
-import { ITransaction } from 'src/app/models/transaction';
 import { TransactionType } from 'src/app/services/general.service';
 
 @Component({
@@ -16,7 +15,10 @@ export class LastTransactionsCellComponent implements OnInit {
   date: string;
   events: IEvent[];
 
-  @Input() transaction: TransactionType;
+  @Input() transaction: TransactionType = {
+    type: '',
+    status: '',
+  } as TransactionType;
 
   constructor() {}
 
