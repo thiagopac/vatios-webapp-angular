@@ -1,0 +1,63 @@
+<div class="flex m-5" *ngIf="admin$ | async as _admin">
+  <mat-card class="mat-elevation-z1 d-flex justify-content-between align-items-start">
+    <div>
+      <mat-card-title class="fs-3">
+        Controle de transações
+      </mat-card-title>
+      <mat-card-subtitle class="subtitle">
+          Listagem
+      </mat-card-subtitle>
+    </div>
+    <div class="table-filter">
+      <input
+        class="form-control form-control-solid w-250px rounded-4 h-40px text-start ps-5"
+        placeholder="Filtrar"
+        matInput
+        type="text"
+        (keyup)="applyFilter($event)"
+      />
+    </div>
+  </mat-card>
+
+  <mat-card class="mat-elevation-z1 mt-5">
+    <mat-table [dataSource]="dataSource" class="my-4">
+      <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+      <mat-row *matRowDef="let row; columns: displayedColumns"></mat-row>
+
+      <ng-container matColumnDef="uuid">
+        <mat-header-cell *matHeaderCellDef>Transaction ID</mat-header-cell>
+        <mat-cell *matCellDef="let element">{{ element.transaction_uuid }}</mat-cell>
+      </ng-container>
+
+      <ng-container matColumnDef="type">
+        <mat-header-cell *matHeaderCellDef
+          >Tipo</mat-header-cell
+        >
+        <mat-cell style="text-align: left !important" *matCellDef="let element"
+          >{{ element.type }}</mat-cell
+        >
+      </ng-container>
+
+      <ng-container matColumnDef="status">
+        <mat-header-cell *matHeaderCellDef>status</mat-header-cell>
+        <mat-cell
+          *matCellDef="let element"
+          [innerHtml]="element.status"
+        ></mat-cell>
+      </ng-container>
+
+      <ng-container matColumnDef="created_at">
+        <mat-header-cell *matHeaderCellDef>Criado em</mat-header-cell>
+        <mat-cell *matCellDef="let element">{{ element.transaction_created_at }}</mat-cell>
+      </ng-container>
+
+    </mat-table>
+
+    <mat-paginator
+      [pageSizeOptions]="[10, 20, 50]"
+      showFirstLastButtons
+    ></mat-paginator>
+
+  </mat-card>
+
+</div>

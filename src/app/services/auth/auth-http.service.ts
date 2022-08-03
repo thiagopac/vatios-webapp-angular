@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
-import { IUserModel } from 'src/app/models/user';
+import { IUser } from 'src/app/models/user';
 import { environment } from '../../../environments/environment';
 import { AuthModel, AuthRegisterModel } from 'src/app/models/auth';
 
@@ -20,8 +20,8 @@ export class AuthHTTPService {
     });
   }
 
-  createUser(reg: AuthRegisterModel): Observable<IUserModel> {
-    return this.http.post<IUserModel>(`${API_AUTH_URL}/register`, reg);
+  createUser(reg: AuthRegisterModel): Observable<IUser> {
+    return this.http.post<IUser>(`${API_AUTH_URL}/register`, reg);
   }
 
   // Server must check email => If email exists send link to the user and return true | If email doesn't exist return false
@@ -31,11 +31,11 @@ export class AuthHTTPService {
     });
   }
 
-  getUserByToken(token: string): Observable<IUserModel> {
+  getUserByToken(token: string): Observable<IUser> {
     const httpHeaders = new HttpHeaders({
       Authorization: `Bearer ${token}`,
     });
-    return this.http.get<IUserModel>(`${API_AUTH_URL}/me`, {
+    return this.http.get<IUser>(`${API_AUTH_URL}/me`, {
       headers: httpHeaders,
     });
   }

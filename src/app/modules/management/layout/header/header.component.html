@@ -1,0 +1,24 @@
+<mat-toolbar class="header mat-elevation-z1">
+    <ng-container *ngIf="admin$ | async as _admin">
+        <span>
+            <a routerLink="/data-management/home">
+              <img
+              src="./assets/media/logos/logo-1-blue.svg"
+              class="h-35px"
+              alt="logo"
+            />
+            </a>
+        </span>
+        <div>
+          <div [matMenuTriggerFor]="menu" class="d-flex align-items-center text-white">
+            <mat-icon>account_circle_full</mat-icon>
+            <span class="ms-2 fs-5">{{ _admin.email }}</span>
+          </div>
+          <mat-menu #menu class="menu">
+            <button mat-menu-item (click)="logout()">
+              <mat-icon>exit_to_app</mat-icon>Sair
+            </button>
+          </mat-menu>
+        </div>
+    </ng-container>
+</mat-toolbar>

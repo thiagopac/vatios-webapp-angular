@@ -1,16 +1,15 @@
 import { ICity } from 'src/app/models/city';
-import { AuthModel } from './auth';
 
-export interface IUserModel {
+export interface IUser {
   uuid: string;
   email: string;
   password: string;
   created_at: Date;
   updated_at: Date;
-  info: IInfo;
+  info: IUserInfo;
 }
 
-export interface IInfo {
+export interface IUserInfo {
   uuid: string;
   first_name: string;
   last_name: string;
@@ -20,22 +19,4 @@ export interface IInfo {
   created_at: Date;
   updated_at: Date;
   city: ICity;
-}
-
-export class UserModel extends AuthModel implements IUserModel {
-  public uuid: string;
-  public email: string;
-  public password: string;
-  public info: IInfo;
-  created_at: Date;
-  updated_at: Date;
-
-  setUser(_user: unknown) {
-    const user = _user as UserModel;
-    this.uuid = user.uuid;
-    this.email = user.email || '';
-    this.password = user.password || '';
-    this.created_at = user.created_at || '';
-    this.updated_at = user.updated_at || '';
-  }
 }

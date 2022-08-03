@@ -5,7 +5,8 @@
 export const environment = {
   production: false,
   appVersion: 'v1.0.0',
-  userDataKey: 'authf649fc9a5f55',
+  adminUserDataKey: 'admin-auth-6cd1acfe5d67',
+  userDataKey: 'auth-f649fc9a5f55',
   hostUrl: 'http://localhost:4200',
   apiUrl: 'http://localhost:3333/api',
   binanceExplorerUrl: 'https://testnet.bscscan.com',

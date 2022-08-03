@@ -1,0 +1,64 @@
+<div class="flex m-5" *ngIf="admin$ | async as _admin">
+  <mat-card class="mat-elevation-z1 d-flex justify-content-between align-items-start">
+    <div>
+      <mat-card-title class="fs-3">
+        Controle de administradores
+      </mat-card-title>
+      <mat-card-subtitle class="subtitle">
+          Listagem
+      </mat-card-subtitle>
+    </div>
+    <div class="table-filter">
+      <input
+        class="form-control form-control-solid w-250px rounded-4 h-40px text-start ps-5"
+        placeholder="Filtrar"
+        matInput
+        type="text"
+        (keyup)="applyFilter($event)"
+      />
+    </div>
+  </mat-card>
+
+  <mat-card class="mat-elevation-z1 mt-5">
+    <mat-table [dataSource]="dataSource" class="my-4">
+      <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+      <mat-row *matRowDef="let row; columns: displayedColumns"></mat-row>
+
+      <ng-container matColumnDef="uuid">
+        <mat-header-cell *matHeaderCellDef>Admin ID</mat-header-cell>
+        <mat-cell *matCellDef="let element">{{ element.uuid }}</mat-cell>
+      </ng-container>
+
+      <ng-container matColumnDef="name">
+        <mat-header-cell *matHeaderCellDef
+          >Nome</mat-header-cell
+        >
+        <mat-cell style="text-align: left !important" *matCellDef="let element"
+          >{{ element | userFullnamePipe }}</mat-cell
+        >
+      </ng-container>
+
+      <ng-container matColumnDef="email">
+        <mat-header-cell *matHeaderCellDef
+          >E-mail</mat-header-cell
+        >
+        <mat-cell style="text-align: left !important" *matCellDef="let element"
+          >{{ element.email }}</mat-cell
+        >
+      </ng-container>
+
+      <ng-container matColumnDef="created_at">
+        <mat-header-cell *matHeaderCellDef>Criado em</mat-header-cell>
+        <mat-cell *matCellDef="let element">{{ element.created_at | date:'dd/MM/yyyy HH:mm:ss' }}</mat-cell>
+      </ng-container>
+
+    </mat-table>
+
+    <mat-paginator
+      [pageSizeOptions]="[10, 20, 50]"
+      showFirstLastButtons
+    ></mat-paginator>
+
+  </mat-card>
+
+</div>

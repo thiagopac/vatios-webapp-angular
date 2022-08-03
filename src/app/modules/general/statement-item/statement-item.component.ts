@@ -13,10 +13,7 @@ export class StatementItemComponent implements OnInit {
   date: string;
   events: IEvent[];
 
-  @Input() transaction: TransactionType = {
-    type: '',
-    status: '',
-  } as TransactionType;
+  @Input() transaction: TransactionType;
 
   constructor() {}
 

@@ -12,12 +12,22 @@ import { AppComponent } from './app.component';
 import { AuthService } from './services/auth';
 import { NgxSpinnerModule } from 'ngx-spinner';
 import { GlobalErrorHandlerService } from 'src/app/services/global-error-handler.service';
+import { AdminAuthService } from 'src/app/services/admin-auth';
 
 function appInitializer(authService: AuthService) {
   return () => {
     return new Promise((resolve) => {
       // @ts-ignore
       authService.getUserByToken().subscribe().add(resolve);
+    });
+  };
+}
+
+function appInitializerAdmin(adminAuthService: AdminAuthService) {
+  return () => {
+    return new Promise((resolve) => {
+      // @ts-ignore
+      adminAuthService.getUserByToken().subscribe().add(resolve);
     });
   };
 }
@@ -41,6 +51,12 @@ function appInitializer(authService: AuthService) {
       useFactory: appInitializer,
       multi: true,
       deps: [AuthService],
+    },
+    {
+      provide: APP_INITIALIZER,
+      useFactory: appInitializerAdmin,
+      multi: true,
+      deps: [AdminAuthService],
     },
     {
       provide: HTTP_INTERCEPTORS,

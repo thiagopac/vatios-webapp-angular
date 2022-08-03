@@ -1,6 +1,3 @@
-import { OwnershipModule } from './bill/ownership/ownership.module';
-import { OwnershipComponent } from './bill/ownership/ownership.component';
-import { WithdrawModule } from './operations/withdraw/withdraw.module';
 import { Routes } from '@angular/router';
 
 const Routing: Routes = [

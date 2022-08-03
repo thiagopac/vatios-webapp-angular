@@ -5,6 +5,7 @@
 export const environment = {
   production: true,
   appVersion: 'v1.0.0',
+  adminUserDataKey: 'admin-user-data-key-em-prod',
   userDataKey: 'user-data-key-em-prod',
   hostUrl: 'https://url-do-app-em-prod/',
   apiUrl: 'https://url-da-api-em-prod:3333/api',

@@ -1,7 +1,6 @@
-import { FriendlyInvoiceStatusPipe } from './../../../pipes/friendly-invoice-status.pipe';
+import { FriendlyInvoiceStatusPipe } from 'src/app/pipes/friendly-invoice-status.pipe';
 import { FlatObjectPipe } from 'src/app/pipes/flat-object.pipe';
-import { pipe, Subscription } from 'rxjs';
-import { tap, mergeAll } from 'rxjs/operators';
+import { Subscription } from 'rxjs';
 import { BillService, UserInvoiceType } from 'src/app/services/bill.service';
 import { Component, OnInit, ViewChild, OnDestroy } from '@angular/core';
 import { MatTableDataSource } from '@angular/material/table';

@@ -18,6 +18,10 @@ export class EnvironmentService {
     return environment.apiUrl;
   }
 
+  public getAdminUserDataKey(): string {
+    return environment.adminUserDataKey;
+  }
+
   public getUserDataKey(): string {
     return environment.userDataKey;
   }
