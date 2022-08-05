@@ -8,16 +8,20 @@ import { Injectable, Pipe, PipeTransform } from '@angular/core';
 })
 export class FlatObjectPipe implements PipeTransform {
   transform(obj: any): any {
-    const flattened:any = {}
+    const flattened: any = {};
     Object.keys(obj).forEach((key) => {
-      const value = obj[key]
-      if (typeof value === 'object' && value !== null && !Array.isArray(value)) {
-        Object.assign(flattened, this.transform(value))
+      const value = obj[key];
+      if (
+        typeof value === 'object' &&
+        value !== null &&
+        !Array.isArray(value)
+      ) {
+        Object.assign(flattened, this.transform(value));
       } else {
-        flattened[key] = value
+        flattened[key] = value;
       }
-    })
-    return flattened
+    });
+    return flattened;
   }
   // transform(obj: any): any {
   //   let res:any = {};

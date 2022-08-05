@@ -1,6 +1,6 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { IEvent } from 'src/app/models/event';
-import { TransactionType } from 'src/app/services/general.service';
+import { TransactionType } from 'src/app/models/transaction';
 
 @Component({
   // eslint-disable-next-line @angular-eslint/component-selector

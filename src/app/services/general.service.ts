@@ -1,17 +1,13 @@
 import { Injectable } from '@angular/core';
-import { Observable, of } from 'rxjs';
+import { Observable } from 'rxjs';
 import { HttpClient } from '@angular/common/http';
 import { environment } from 'src/environments/environment';
-import { IBalance } from 'src/app/models/balance';
-import { ITransaction } from 'src/app/models/transaction';
-import { IWalletFiduciaryValuesDTO } from 'src/app/models/wallet.dto';
+import { BalanceType } from 'src/app/models/balance';
+import { ITransaction, TransactionType } from 'src/app/models/transaction';
+import { WalletFiduciaryValuesType } from 'src/app/models/wallet.dto';
 import { AuthService } from 'src/app/modules/auth';
 
 const API_GENERAL_URL = `${environment.apiUrl}/general`;
-
-export type BalanceType = IBalance | undefined;
-export type TransactionType = ITransaction | undefined;
-export type WalletFiduciaryValuesType = IWalletFiduciaryValuesDTO | undefined;
 
 @Injectable({
   providedIn: 'root',

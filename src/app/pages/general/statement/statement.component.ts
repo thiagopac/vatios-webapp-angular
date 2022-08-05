@@ -1,11 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { BehaviorSubject, combineLatest, Observable, switchMap } from 'rxjs';
 import { scan } from 'rxjs/operators';
-import {
-  BalanceType,
-  GeneralService,
-  TransactionType,
-} from 'src/app/services/general.service';
+import { BalanceType } from 'src/app/models/balance';
+import { TransactionType } from 'src/app/models/transaction';
+import { GeneralService } from 'src/app/services/general.service';
 
 @Component({
   selector: 'app-statement',

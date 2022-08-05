@@ -1,19 +1,16 @@
 import {
   IPaymentStatusEnum,
-  IUserInvoice,
   IUserInvoiceCompensationDetails,
+  UserInvoiceType,
 } from '../models/user_invoice';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { HttpClient } from '@angular/common/http';
 import { environment } from 'src/environments/environment';
 import { AuthService } from 'src/app/modules/auth';
-import { IConsumerUnit } from 'src/app/models/consumer_unit';
+import { ConsumerUnitType } from 'src/app/models/consumer_unit';
 
 const API_BILL_URL = `${environment.apiUrl}/bill`;
-
-export type ConsumerUnitType = IConsumerUnit | undefined;
-export type UserInvoiceType = IUserInvoice | undefined;
 
 @Injectable({
   providedIn: 'root',

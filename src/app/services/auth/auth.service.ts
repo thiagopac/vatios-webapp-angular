@@ -2,13 +2,11 @@ import { EnvironmentService } from './../environment.service';
 import { Injectable, OnDestroy } from '@angular/core';
 import { Observable, BehaviorSubject, of, Subscription } from 'rxjs';
 import { map, catchError, switchMap, finalize } from 'rxjs/operators';
-import { IUser } from 'src/app/models/user';
+import { UserType } from 'src/app/models/user';
 import { AuthModel, AuthRegisterModel } from 'src/app/models/auth';
 import { AuthHTTPService } from './auth-http.service';
 import { Router } from '@angular/router';
 import { HttpHeaders } from '@angular/common/http';
-
-export type UserType = IUser | undefined;
 
 @Injectable({
   providedIn: 'root',

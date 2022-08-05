@@ -1,3 +1,5 @@
+export type CityType = ICity | undefined;
+
 export interface ICity {
   id: number;
   name: string;

@@ -1,9 +1,7 @@
 import { Component, OnInit, OnDestroy } from '@angular/core';
 import { Observable, Subscription } from 'rxjs';
-import {
-  GeneralService,
-  WalletFiduciaryValuesType,
-} from 'src/app/services/general.service';
+import { WalletFiduciaryValuesType } from 'src/app/models/wallet.dto';
+import { GeneralService } from 'src/app/services/general.service';
 
 @Component({
   selector: 'app-wallet',

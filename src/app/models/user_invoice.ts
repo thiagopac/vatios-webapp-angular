@@ -1,5 +1,7 @@
 import { IConsumerUnit } from 'src/app/models/consumer_unit';
 
+export type UserInvoiceType = IUserInvoice | undefined;
+
 export interface IUserInvoice {
   uuid: string;
   due_date: Date;

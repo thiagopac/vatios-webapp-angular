@@ -1,11 +1,12 @@
 import { FriendlyInvoiceStatusPipe } from 'src/app/pipes/friendly-invoice-status.pipe';
 import { FlatObjectPipe } from 'src/app/pipes/flat-object.pipe';
 import { Subscription } from 'rxjs';
-import { BillService, UserInvoiceType } from 'src/app/services/bill.service';
+import { BillService } from 'src/app/services/bill.service';
 import { Component, OnInit, ViewChild, OnDestroy } from '@angular/core';
 import { MatTableDataSource } from '@angular/material/table';
 import { MatPaginator } from '@angular/material/paginator';
 import { DatePipe } from '@angular/common';
+import { UserInvoiceType } from 'src/app/models/user_invoice';
 
 @Component({
   selector: 'app-history',

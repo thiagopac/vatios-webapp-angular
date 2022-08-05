@@ -1,16 +1,14 @@
-import { UserService, InfoType } from 'src/app/services/user.service';
+import { UserService } from 'src/app/services/user.service';
 import { ChangeDetectorRef, Component, OnInit, OnDestroy } from '@angular/core';
 import { BehaviorSubject, Observable, Subscription } from 'rxjs';
 import { NgSelectConfig } from '@ng-select/ng-select';
 import { AlertMessageService } from 'src/app/services/alert-message.service';
-import {
-  CityType,
-  LocationService,
-  StateType,
-} from 'src/app/services/location.service';
+import { LocationService } from 'src/app/services/location.service';
 import { AsyncPipe } from '@angular/common';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-import { AuthService, UserType } from 'src/app/modules/auth';
+import { AuthService, InfoType, UserType } from 'src/app/modules/auth';
+import { StateType } from 'src/app/models/state';
+import { CityType } from 'src/app/models/city';
 
 @Component({
   selector: 'app-profile-details',

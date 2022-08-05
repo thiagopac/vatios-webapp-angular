@@ -6,13 +6,12 @@ import { AdminType } from 'src/app/modules/admin-auth';
 @Component({
   selector: 'app-header',
   templateUrl: './header.component.html',
-  styleUrls: ['./header.component.scss']
+  styleUrls: ['./header.component.scss'],
 })
 export class HeaderComponent implements OnInit {
-
   admin$: Observable<AdminType>;
 
-  constructor(private adminAuth: AdminAuthService) { }
+  constructor(private adminAuth: AdminAuthService) {}
 
   ngOnInit(): void {
     this.admin$ = this.adminAuth.currentAdminUserSubject.asObservable();

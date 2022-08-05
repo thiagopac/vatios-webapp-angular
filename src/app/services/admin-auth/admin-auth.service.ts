@@ -113,7 +113,10 @@ export class AdminAuthService implements OnDestroy {
   private setAuthFromLocalStorage(auth: AuthModel): boolean {
     // store auth token/type/epiresIn in local storage to keep user logged in between page refreshes
     if (auth && auth.token) {
-      localStorage.setItem(this.adminAuthLocalStorageToken, JSON.stringify(auth));
+      localStorage.setItem(
+        this.adminAuthLocalStorageToken,
+        JSON.stringify(auth)
+      );
       return true;
     }
     return false;

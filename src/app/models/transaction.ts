@@ -1,5 +1,7 @@
 import { IEvent } from './event';
 
+export type TransactionType = ITransaction | undefined;
+
 export interface ITransaction {
   uuid: string;
   type: ITransactionTypeEnum;

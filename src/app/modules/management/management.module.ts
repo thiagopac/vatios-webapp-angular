@@ -7,12 +7,12 @@ import { HeaderComponent } from 'src/app/modules/management/layout/header/header
 import { FooterComponent } from 'src/app/modules/management/layout/footer/footer.component';
 
 import { MatToolbarModule } from '@angular/material/toolbar';
-import { MatSidenavModule } from  '@angular/material/sidenav';
-import { MatCardModule } from  '@angular/material/card';
+import { MatSidenavModule } from '@angular/material/sidenav';
+import { MatCardModule } from '@angular/material/card';
 import { MatListModule } from '@angular/material/list';
-import { MatButtonModule } from  '@angular/material/button';
-import { MatSnackBarModule } from  '@angular/material/snack-bar';
-import { HttpClientModule } from  '@angular/common/http';
+import { MatButtonModule } from '@angular/material/button';
+import { MatSnackBarModule } from '@angular/material/snack-bar';
+import { HttpClientModule } from '@angular/common/http';
 
 import { FormsModule } from '@angular/forms';
 import { MatFormFieldModule } from '@angular/material/form-field';
@@ -40,7 +40,7 @@ import { ManagementAdminsComponent } from 'src/app/modules/management/modules/ma
     ManagementHomeComponent,
     ManagementTransactionsComponent,
     ManagementUsersComponent,
-    ManagementAdminsComponent
+    ManagementAdminsComponent,
   ],
   imports: [
     CommonModule,
@@ -63,6 +63,6 @@ import { ManagementAdminsComponent } from 'src/app/modules/management/modules/ma
     NgxSpinnerModule,
     ManagementRoutingModule,
   ],
-  providers: [DatePipe]
+  providers: [DatePipe],
 })
-export class ManagementModule { }
+export class ManagementModule {}

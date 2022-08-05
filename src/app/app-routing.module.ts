@@ -12,7 +12,9 @@ export const routes: Routes = [
   {
     path: 'admin-auth',
     loadChildren: () =>
-      import('./modules/admin-auth/admin-auth.module').then((m) => m.AdminAuthModule),
+      import('./modules/admin-auth/admin-auth.module').then(
+        (m) => m.AdminAuthModule
+      ),
   },
   {
     path: 'error',
@@ -30,7 +32,9 @@ export const routes: Routes = [
     // canActivate: [AdminAuthGuard],
     canActivate: [AdminAuthGuard],
     loadChildren: () =>
-      import('./modules/management/management.module').then((m) => m.ManagementModule),
+      import('./modules/management/management.module').then(
+        (m) => m.ManagementModule
+      ),
   },
   { path: '**', redirectTo: 'error/404' },
 ];

@@ -1,17 +1,15 @@
-import {
-  BillService,
-  ConsumerUnitType,
-  UserInvoiceType,
-} from 'src/app/services/bill.service';
+import { BillService } from 'src/app/services/bill.service';
 import { Component, OnInit, OnDestroy } from '@angular/core';
 import { BehaviorSubject, Observable, Subscription } from 'rxjs';
 import { IPayBill, inits } from '../pay-bill.helper';
-import { BalanceType, GeneralService } from 'src/app/services/general.service';
+import { GeneralService } from 'src/app/services/general.service';
 import {
   IPaymentStatusEnum,
-  IUserInvoice,
   IUserInvoiceCompensationDetails,
+  UserInvoiceType,
 } from 'src/app/models/user_invoice';
+import { BalanceType } from 'src/app/models/balance';
+import { ConsumerUnitType } from 'src/app/models/consumer_unit';
 
 @Component({
   selector: 'app-wizard-bill-pay',

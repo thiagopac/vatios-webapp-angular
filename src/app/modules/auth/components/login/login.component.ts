@@ -1,4 +1,4 @@
-import { Component, OnInit, OnDestroy, ChangeDetectorRef } from '@angular/core';
+import { Component, OnInit, OnDestroy } from '@angular/core';
 import {
   UntypedFormBuilder,
   UntypedFormGroup,
@@ -8,7 +8,7 @@ import { Subscription, Observable } from 'rxjs';
 import { first } from 'rxjs/operators';
 import { AuthService } from 'src/app/services/auth';
 import { ActivatedRoute, Router } from '@angular/router';
-import { UserType } from 'src/app/services/auth/auth.service';
+import { UserType } from 'src/app/models/user';
 
 @Component({
   selector: 'app-login',

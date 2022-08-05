@@ -22,5 +22,4 @@ export class AdminAuthGuard implements CanActivate {
     this.adminAuthService.logout();
     return false;
   }
-
 }

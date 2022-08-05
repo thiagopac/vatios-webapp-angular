@@ -69,7 +69,7 @@ export class OperationExchangeComponent implements OnInit {
   }
 
   actionBtnClick(): void {
-    this.triggeredAction.emit(this.firstInput);
+    this.triggeredAction.emit(this.fullInt(this.firstInput));
   }
 
   checkInvalidInput(): boolean {
@@ -77,5 +77,9 @@ export class OperationExchangeComponent implements OnInit {
       this.firstInput <= this.firstInputMax
       ? false
       : true;
+  }
+
+  fullInt(value: number): number {
+    return value * 100;
   }
 }

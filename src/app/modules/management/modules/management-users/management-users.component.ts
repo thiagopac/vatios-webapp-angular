@@ -9,19 +9,13 @@ import { UserType } from 'src/app/modules/auth';
 @Component({
   selector: 'app-management-users',
   templateUrl: './management-users.component.html',
-  styleUrls: ['./management-users.component.scss']
+  styleUrls: ['./management-users.component.scss'],
 })
 export class ManagementUsersComponent implements OnInit, OnDestroy {
-
   admin$: Observable<AdminType>;
 
   dataSource: MatTableDataSource<UserType>;
-  displayedColumns: string[] = [
-    'uuid',
-    'name',
-    'email',
-    'created_at',
-  ];
+  displayedColumns: string[] = ['uuid', 'name', 'email', 'created_at'];
 
   private unsubscribe: Subscription[] = [];
   private sub: Subscription;
@@ -30,7 +24,7 @@ export class ManagementUsersComponent implements OnInit, OnDestroy {
 
   constructor(
     private adminAuth: AdminAuthService,
-    private managementService: ManagementService,
+    private managementService: ManagementService
   ) {}
 
   ngOnInit(): void {
@@ -56,5 +50,4 @@ export class ManagementUsersComponent implements OnInit, OnDestroy {
   ngOnDestroy() {
     this.unsubscribe.forEach((sb) => sb.unsubscribe());
   }
-
 }

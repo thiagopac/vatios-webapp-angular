@@ -1,3 +1,5 @@
+export type WalletFiduciaryValuesType = IWalletFiduciaryValuesDTO | undefined;
+
 export interface IWalletFiduciaryValuesDTO {
   total: number;
   assets: IWalletFiduciaryValuesAsset[];

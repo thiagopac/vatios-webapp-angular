@@ -1,15 +1,14 @@
 import { AlertMessageService } from 'src/app/services/alert-message.service';
-import { ConsumerUnitType, BillService } from 'src/app/services/bill.service';
+import { BillService } from 'src/app/services/bill.service';
 import { Component, Inject, OnInit, OnDestroy } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
-import {
-  LocationService,
-  StateType,
-  CityType,
-} from 'src/app/services/location.service';
+import { LocationService } from 'src/app/services/location.service';
 import { Observable, Subscription } from 'rxjs';
 import { NgSelectConfig } from '@ng-select/ng-select';
+import { ConsumerUnitType } from 'src/app/models/consumer_unit';
+import { StateType } from 'src/app/models/state';
+import { CityType } from 'src/app/models/city';
 
 @Component({
   selector: 'app-consumer-unit-dialog',

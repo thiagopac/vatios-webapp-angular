@@ -1,5 +1,8 @@
 import { ICity } from 'src/app/models/city';
 
+export type UserType = IUser | undefined;
+export type InfoType = IUserInfo | undefined;
+
 export interface IUser {
   uuid: string;
   email: string;

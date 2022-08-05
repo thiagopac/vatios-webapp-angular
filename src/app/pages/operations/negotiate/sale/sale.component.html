@@ -19,7 +19,7 @@
                     [inlineSVG]="'./assets/media/icons/duotune/vatios/fiat.svg'"
                     class="svg-icon svg-icon-4x"
                   ></span>
-                  <div class="fs-1 fw-bolder counted">
+                  <div class="fs-1 fw-bolder counted" #balanceFiatContainer>
                     R$ {{ _balance.fiat | intToCurrency: false }}
                   </div>
                 </div>
@@ -27,7 +27,7 @@
                   >Saldos</span
                 >
                 <div class="d-flex align-items-center">
-                  <div class="fs-1 fw-bolder counted">
+                  <div class="fs-1 fw-bolder counted" #balanceCryptoContainer>
                     {{ _balance.crypto | intToCurrency }}
                   </div>
                   <span class="fs-1 text-gray-500 mx-2">{{
@@ -58,9 +58,10 @@
           [secondInputDecimals]="2"
           [operationRatio]="_cryptoToFiat.rate"
           icon="./assets/media/icons/duotune/ecommerce/ecm001.svg"
-          iconColor="gray"
-          themeColor="warning"
+          iconColor="success"
+          themeColor="success"
           actionLabel="Solicitar venda"
+          (triggeredAction)="triggeredActionCaptured($event)"
         >
         </app-operation-exchange-component>
       </div>

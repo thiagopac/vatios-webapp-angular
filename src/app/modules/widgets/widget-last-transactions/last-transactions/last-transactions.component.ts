@@ -1,9 +1,7 @@
 import { Component, OnInit, OnDestroy } from '@angular/core';
 import { Observable, Subscription } from 'rxjs';
-import {
-  GeneralService,
-  TransactionType,
-} from 'src/app/services/general.service';
+import { TransactionType } from 'src/app/models/transaction';
+import { GeneralService } from 'src/app/services/general.service';
 
 @Component({
   selector: 'app-last-transactions-component',

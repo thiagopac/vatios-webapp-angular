@@ -1,6 +1,6 @@
 import { Component, Input, OnInit, OnDestroy } from '@angular/core';
 import { Observable, Subscription } from 'rxjs';
-import { UserInvoiceType } from 'src/app/services/bill.service';
+import { UserInvoiceType } from 'src/app/models/user_invoice';
 import { IPayBill } from '../../pay-bill.helper';
 
 @Component({

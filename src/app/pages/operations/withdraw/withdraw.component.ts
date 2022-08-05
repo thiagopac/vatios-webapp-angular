@@ -1,6 +1,15 @@
-import { Component, OnInit } from '@angular/core';
+import {
+  ChangeDetectorRef,
+  Component,
+  ElementRef,
+  OnInit,
+  ViewChild,
+} from '@angular/core';
 import { Observable } from 'rxjs';
-import { BalanceType, GeneralService } from 'src/app/services/general.service';
+import { BalanceType } from 'src/app/models/balance';
+import { AlertMessageService } from 'src/app/services/alert-message.service';
+import { GeneralService } from 'src/app/services/general.service';
+import { TransactionService } from 'src/app/services/transaction.service';
 
 @Component({
   selector: 'app-withdraw',
@@ -10,13 +19,35 @@ import { BalanceType, GeneralService } from 'src/app/services/general.service';
 export class WithdrawComponent implements OnInit {
   balance$: Observable<BalanceType>;
 
-  constructor(private generalService: GeneralService) {}
+  @ViewChild('balanceFiatContainer', { static: false })
+  balanceFiatContainer: ElementRef;
+
+  constructor(
+    private generalService: GeneralService,
+    private transactionService: TransactionService,
+    private alertMessageService: AlertMessageService,
+    private changeDetector: ChangeDetectorRef
+  ) {}
 
   ngOnInit(): void {
-    this.balance$ = this.generalService.getUserBalance();
+    this.getBalance();
   }
 
-  triggeredActionCaptured(content: number): void {
-    console.log('triggeredActionCaptured - content:', content);
+  triggeredActionCaptured(value: number): void {
+    this.transactionService
+      .createTransactionOperationWithdrawFiat(value)
+      .subscribe(() => {
+        this.alertMessageService.showToast(
+          'Solicitação de saque enviada com sucesso!',
+          'success'
+        );
+
+        this.getBalance();
+      });
+  }
+
+  getBalance() {
+    this.balance$ = this.generalService.getUserBalance();
+    this.changeDetector.detectChanges();
   }
 }

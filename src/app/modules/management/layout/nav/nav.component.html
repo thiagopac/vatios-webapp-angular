@@ -1,29 +1,71 @@
 <mat-sidenav-container>
-    <mat-sidenav class="sidenav" style="padding-top: 72px;" mode="side" fixedInViewport="true" scrollTo="bottom" opened>
-        <mat-nav-list class="nav-list">
-            <a class="text-active-dark bg-active-primary" mat-list-item routerLinkActive="active" routerLink="./home">
-                Início
-            </a>
-            <a class="text-active-dark bg-active-primary" mat-list-item routerLinkActive="active" mat-list-item routerLink="./transactions">
-              Transações
-            </a>
-            <a class="text-active-dark bg-active-primary" mat-list-item routerLinkActive="active" mat-list-item routerLink="./users">
-              Usuários
-            </a>
-            <a class="text-active-dark bg-active-primary" mat-list-item routerLinkActive="active" mat-list-item routerLink="./admins">
-              Administradores
-            </a>
-            <a class="text-active-dark bg-active-primary" mat-list-item routerLinkActive="active" mat-list-item href="{{ tokenHolderChartUrl }}" target="_blank">
-              Token holders
-            </a>
-            <a class="text-active-dark bg-active-primary" mat-list-item routerLinkActive="active" mat-list-item href="{{ allUsersTransfersUrl }}" target="_blank">
-              Token transfers
-            </a>
-        </mat-nav-list>
-    </mat-sidenav>
-    <mat-sidenav-content>
-        <router-outlet></router-outlet>
-    </mat-sidenav-content>
+  <mat-sidenav
+    class="sidenav"
+    style="padding-top: 72px"
+    mode="side"
+    fixedInViewport="true"
+    scrollTo="bottom"
+    opened
+  >
+    <mat-nav-list class="nav-list">
+      <a
+        class="text-active-dark bg-active-primary"
+        mat-list-item
+        routerLinkActive="active"
+        routerLink="./home"
+      >
+        Início
+      </a>
+      <a
+        class="text-active-dark bg-active-primary"
+        mat-list-item
+        routerLinkActive="active"
+        mat-list-item
+        routerLink="./transactions"
+      >
+        Transações
+      </a>
+      <a
+        class="text-active-dark bg-active-primary"
+        mat-list-item
+        routerLinkActive="active"
+        mat-list-item
+        routerLink="./users"
+      >
+        Usuários
+      </a>
+      <a
+        class="text-active-dark bg-active-primary"
+        mat-list-item
+        routerLinkActive="active"
+        mat-list-item
+        routerLink="./admins"
+      >
+        Administradores
+      </a>
+      <a
+        class="text-active-dark bg-active-primary"
+        mat-list-item
+        routerLinkActive="active"
+        mat-list-item
+        href="{{ tokenHolderChartUrl }}"
+        target="_blank"
+      >
+        Token holders
+      </a>
+      <a
+        class="text-active-dark bg-active-primary"
+        mat-list-item
+        routerLinkActive="active"
+        mat-list-item
+        href="{{ allUsersTransfersUrl }}"
+        target="_blank"
+      >
+        Token transfers
+      </a>
+    </mat-nav-list>
+  </mat-sidenav>
+  <mat-sidenav-content>
+    <router-outlet></router-outlet>
+  </mat-sidenav-content>
 </mat-sidenav-container>
-
-

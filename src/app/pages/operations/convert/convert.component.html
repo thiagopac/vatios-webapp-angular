@@ -20,7 +20,7 @@
                   >
                 </div>
                 <div class="d-flex align-items-center">
-                  <div class="fs-1 fw-bolder counted">
+                  <div class="fs-1 fw-bolder counted" #balanceEnergyContainer>
                     {{ _balance.energy | intToCurrency }}
                   </div>
                   <span class="fs-3 text-gray-500 mx-2">{{
@@ -51,7 +51,7 @@
           [operationRatio]="_energyToCrypto.rate"
           icon="./assets/media/icons/duotune/arrows/arr080.svg"
           iconColor="warning"
-          themeColor="primary"
+          themeColor="warning"
           actionLabel="Solicitar conversão"
           (triggeredAction)="triggeredActionCaptured($event)"
         >

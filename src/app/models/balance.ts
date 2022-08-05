@@ -1,3 +1,5 @@
+export type BalanceType = IBalance | undefined;
+
 export interface IBalance {
   fiat: number;
   energy: number;

@@ -13,19 +13,19 @@ export const routes: Routes = [
     children: [
       {
         path: 'home',
-        component: ManagementHomeComponent
+        component: ManagementHomeComponent,
       },
       {
         path: 'transactions',
-        component: ManagementTransactionsComponent
+        component: ManagementTransactionsComponent,
       },
       {
         path: 'users',
-        component: ManagementUsersComponent
+        component: ManagementUsersComponent,
       },
       {
         path: 'admins',
-        component: ManagementAdminsComponent
+        component: ManagementAdminsComponent,
       },
     ],
   },

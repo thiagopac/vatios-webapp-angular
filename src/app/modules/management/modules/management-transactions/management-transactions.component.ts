@@ -2,29 +2,24 @@ import { Component, OnDestroy, OnInit, ViewChild } from '@angular/core';
 import { Observable, Subscription } from 'rxjs';
 import { AdminAuthService, AdminType } from 'src/app/modules/admin-auth';
 import { MatTableDataSource } from '@angular/material/table';
-import { ManagementService, TransactionType } from 'src/app/services/management.service';
+import { ManagementService } from 'src/app/services/management.service';
 import { FlatObjectPipe } from 'src/app/pipes/flat-object.pipe';
 import { DatePipe } from '@angular/common';
 import { MatPaginator } from '@angular/material/paginator';
 import { FriendlyTransactionStatusPipe } from 'src/app/pipes/friendly-transaction-status.pipe';
 import { FriendlyTransactionDescriptionPipe } from 'src/app/pipes/friendly-transaction-description.pipe';
+import { TransactionType } from 'src/app/models/transaction';
 
 @Component({
   selector: 'app-management-transactions',
   templateUrl: './management-transactions.component.html',
-  styleUrls: ['./management-transactions.component.scss']
+  styleUrls: ['./management-transactions.component.scss'],
 })
 export class ManagementTransactionsComponent implements OnInit, OnDestroy {
-
   admin$: Observable<AdminType>;
 
   dataSource: MatTableDataSource<TransactionType>;
-  displayedColumns: string[] = [
-    'uuid',
-    'type',
-    'status',
-    'created_at',
-  ];
+  displayedColumns: string[] = ['uuid', 'type', 'status', 'created_at'];
 
   flattenedObjects: any[] = [];
 
@@ -39,34 +34,38 @@ export class ManagementTransactionsComponent implements OnInit, OnDestroy {
     private datePipe: DatePipe,
     private flatObjectPipe: FlatObjectPipe,
     private friendlyTransactionDescriptionPipe: FriendlyTransactionDescriptionPipe,
-    private friendlyTransactionStatusPipe: FriendlyTransactionStatusPipe,
+    private friendlyTransactionStatusPipe: FriendlyTransactionStatusPipe
   ) {}
 
   ngOnInit(): void {
     this.admin$ = this.adminAuth.currentAdminUserSubject.asObservable();
 
-    this.sub = this.managementService.getTransactions(0).subscribe((transactions) => {
+    this.sub = this.managementService
+      .getTransactions(0)
+      .subscribe((transactions) => {
+        transactions.map((transaction) => {
+          let transactionAny: any = {};
 
-      transactions.map((transaction) => {
-        let transactionAny: any = {};
+          //transformations for the search to work properly
+          transactionAny = this.flatObjectPipe.transform(transaction);
+          transactionAny.transaction_uuid = transaction?.uuid;
+          transactionAny.transaction_created_at = this.datePipe.transform(
+            transaction!.created_at,
+            'dd/MM/yyyy HH:mm:ss'
+          );
+          transactionAny.type =
+            this.friendlyTransactionDescriptionPipe.transform(
+              transaction!.type
+            );
+          transactionAny.status = this.friendlyTransactionStatusPipe.transform(
+            transaction!.status
+          );
 
-        //transformations for the search to work properly
-        transactionAny = this.flatObjectPipe.transform(transaction);
-        transactionAny.transaction_uuid = transaction?.uuid;
-        transactionAny.transaction_created_at = this.datePipe.transform(
-          transaction!.created_at,
-          'dd/MM/yyyy HH:mm:ss'
-        );
-        transactionAny.type = this.friendlyTransactionDescriptionPipe.transform(transaction!.type)
-        transactionAny.status = this.friendlyTransactionStatusPipe.transform(
-          transaction!.status
-        );
+          this.flattenedObjects.push(transactionAny);
+        });
 
-        this.flattenedObjects.push(transactionAny);
+        this.fillTable(this.flattenedObjects);
       });
-
-      this.fillTable(this.flattenedObjects);
-    });
 
     this.unsubscribe.push(this.sub);
   }
@@ -84,5 +83,4 @@ export class ManagementTransactionsComponent implements OnInit, OnDestroy {
   ngOnDestroy() {
     this.unsubscribe.forEach((sb) => sb.unsubscribe());
   }
-
 }

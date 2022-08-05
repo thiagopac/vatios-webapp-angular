@@ -1,11 +1,11 @@
 <div class="flex m-5" *ngIf="admin$ | async as _admin">
-    <mat-card class="mat-elevation-z1">
-      <mat-card-title class="fs-3">
-          <!-- {{ _admin.info.first_name }} -->
-          Olá, seja bem-vindo(a)!
-      </mat-card-title>
-      <mat-card-subtitle class="subtitle">
-        {{ date | date:'dd/MM/yyyy' }}
-      </mat-card-subtitle>
+  <mat-card class="mat-elevation-z1">
+    <mat-card-title class="fs-3">
+      <!-- {{ _admin.info.first_name }} -->
+      Olá, seja bem-vindo(a)!
+    </mat-card-title>
+    <mat-card-subtitle class="subtitle">
+      {{ date | date: 'dd/MM/yyyy' }}
+    </mat-card-subtitle>
   </mat-card>
 </div>

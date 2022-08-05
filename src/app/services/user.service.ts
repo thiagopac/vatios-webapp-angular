@@ -3,12 +3,9 @@ import { Observable } from 'rxjs';
 import { HttpClient } from '@angular/common/http';
 import { environment } from 'src/environments/environment';
 import { AuthService } from 'src/app/modules/auth';
-import { IUser, IUserInfo } from 'src/app/models/user';
+import { InfoType, UserType } from 'src/app/models/user';
 
 const API_USERS_URL = `${environment.apiUrl}/users`;
-
-export type UserType = IUser | undefined;
-export type InfoType = IUserInfo | undefined;
 
 @Injectable({
   providedIn: 'root',

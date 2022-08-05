@@ -1,4 +1,6 @@
-import { IAssetTypeEnum } from "src/app/models/asset_type";
+import { IAssetTypeEnum } from 'src/app/models/asset_type';
+
+export type ExchangeRateType = IExchangeRate | undefined;
 
 export interface IExchangeRate {
   uuid: string;

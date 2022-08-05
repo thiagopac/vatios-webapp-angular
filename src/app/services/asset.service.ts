@@ -1,13 +1,11 @@
 import { Injectable } from '@angular/core';
-import { Observable, of } from 'rxjs';
+import { Observable } from 'rxjs';
 import { HttpClient } from '@angular/common/http';
 import { environment } from 'src/environments/environment';
 import { AuthService } from 'src/app/modules/auth';
-import { IExchangeRate } from 'src/app/models/exchange_rate';
+import { ExchangeRateType } from 'src/app/models/exchange_rate';
 
 const API_LOCATION_URL = `${environment.apiUrl}/assets`;
-
-export type ExchangeRateType = IExchangeRate | undefined;
 
 @Injectable({
   providedIn: 'root',

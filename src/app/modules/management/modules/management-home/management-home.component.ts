@@ -6,20 +6,16 @@ import { AdminAuthService } from 'src/app/services/admin-auth';
 @Component({
   selector: 'app-home',
   templateUrl: './management-home.component.html',
-  styleUrls: ['./management-home.component.scss']
+  styleUrls: ['./management-home.component.scss'],
 })
 export class ManagementHomeComponent implements OnInit {
-
   admin$: Observable<AdminType>;
   date: Date;
 
-  constructor(
-    private adminAuth: AdminAuthService
-    ) {}
+  constructor(private adminAuth: AdminAuthService) {}
 
   ngOnInit(): void {
     this.admin$ = this.adminAuth.currentAdminUserSubject.asObservable();
     this.date = new Date();
   }
-
 }
