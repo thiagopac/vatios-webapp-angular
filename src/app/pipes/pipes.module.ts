@@ -9,6 +9,7 @@ import { CommonModule } from '@angular/common';
 import { IntToCurrencyPipe } from 'src/app/pipes/int-to-currency.pipe';
 import { FriendlyTransactionDescriptionPipe } from 'src/app/pipes/friendly-transaction-description.pipe';
 import { FriendlyTransactionStatusIconPipe } from 'src/app/pipes/friendly-transaction-status-icon.pipe';
+import { FriendlyEventStatusPipe } from 'src/app/pipes/friendly-event-status.pipe';
 
 @NgModule({
   declarations: [
@@ -21,6 +22,7 @@ import { FriendlyTransactionStatusIconPipe } from 'src/app/pipes/friendly-transa
     FriendlyTransactionDescriptionPipe,
     FriendlyTransactionStatusIconPipe,
     FlatObjectPipe,
+    FriendlyEventStatusPipe
   ],
   imports: [CommonModule],
   exports: [
@@ -33,6 +35,7 @@ import { FriendlyTransactionStatusIconPipe } from 'src/app/pipes/friendly-transa
     FriendlyTransactionDescriptionPipe,
     FriendlyTransactionStatusIconPipe,
     FlatObjectPipe,
+    FriendlyEventStatusPipe
   ],
 })
 export class PipesModule {}

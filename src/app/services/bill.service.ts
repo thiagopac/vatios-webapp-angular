@@ -9,6 +9,8 @@ import { HttpClient } from '@angular/common/http';
 import { environment } from 'src/environments/environment';
 import { AuthService } from 'src/app/modules/auth';
 import { ConsumerUnitType } from 'src/app/models/consumer_unit';
+import { IPayBill } from 'src/app/models/pay_bill.helper';
+import { InvoicePaymentType } from 'src/app/models/invoice_payment';
 
 const API_BILL_URL = `${environment.apiUrl}/bill`;
 
@@ -88,6 +90,16 @@ export class BillService {
   ): Observable<IUserInvoiceCompensationDetails> {
     return this.http.get<IUserInvoiceCompensationDetails>(
       `${API_BILL_URL}/invoice/compensation-details/${uuid}`,
+      {
+        headers: this.authService.headerSigned(),
+      }
+    );
+  }
+
+  createPayment(payBill: IPayBill): Observable<InvoicePaymentType> {
+    return this.http.post<InvoicePaymentType>(
+      `${API_BILL_URL}/invoice/create-payment`,
+      { invoice: payBill.userInvoice?.uuid, method: payBill.paymentMethod },
       {
         headers: this.authService.headerSigned(),
       }

@@ -2,16 +2,16 @@ import { Component, OnDestroy, OnInit, ViewChild } from '@angular/core';
 import { Observable, Subscription } from 'rxjs';
 import { AdminAuthService, AdminType } from 'src/app/modules/admin-auth';
 import { MatTableDataSource } from '@angular/material/table';
-import { ManagementService } from 'src/app/services/management.service';
+import { ManagerService } from 'src/app/services/manager.service';
 import { MatPaginator } from '@angular/material/paginator';
 import { UserType } from 'src/app/modules/auth';
 
 @Component({
-  selector: 'app-management-users',
-  templateUrl: './management-users.component.html',
-  styleUrls: ['./management-users.component.scss'],
+  selector: 'app-manager-users',
+  templateUrl: './manager-users.component.html',
+  styleUrls: ['./manager-users.component.scss'],
 })
-export class ManagementUsersComponent implements OnInit, OnDestroy {
+export class ManagerUsersComponent implements OnInit, OnDestroy {
   admin$: Observable<AdminType>;
 
   dataSource: MatTableDataSource<UserType>;
@@ -24,13 +24,13 @@ export class ManagementUsersComponent implements OnInit, OnDestroy {
 
   constructor(
     private adminAuth: AdminAuthService,
-    private managementService: ManagementService
+    private managerService: ManagerService
   ) {}
 
   ngOnInit(): void {
     this.admin$ = this.adminAuth.currentAdminUserSubject.asObservable();
 
-    this.sub = this.managementService.getUsers(0).subscribe((users) => {
+    this.sub = this.managerService.getUsers(0).subscribe((users) => {
       this.fillTable(users);
     });
 

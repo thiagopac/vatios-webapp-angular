@@ -22,6 +22,7 @@
 
           <div class="stepper-label">
             <h3 class="stepper-title">Unidade consumidora</h3>
+            <!-- <label *ngIf="updatedProcess?.consumerUnit">{{ updatedProcess.consumerUnit!.code | mask: '0/0000000000-0' }}</label> -->
           </div>
         </div>
 
@@ -41,6 +42,7 @@
 
           <div class="stepper-label">
             <h3 class="stepper-title">Conta de energia</h3>
+            <!-- <label *ngIf="updatedProcess?.userInvoice">{{ updatedProcess.userInvoice!.due_date | date: 'dd/MM/yyyy' }} R${{ updatedProcess.userInvoice!.value | intToCurrency:false }}</label> -->
           </div>
         </div>
 
@@ -137,7 +139,10 @@
         </ng-container>
 
         <ng-container *ngIf="currentStep$.value === 5">
-          <app-step5 class="w-100"></app-step5>
+          <app-step5
+          class="w-100"
+          [updateParentModel]="updateProcess"
+          ></app-step5>
         </ng-container>
 
         <ng-container *ngIf="currentStep$.value === 6">
@@ -149,9 +154,11 @@
         <div class="mr-2">
           <ng-container
             *ngIf="
-              currentStep$.value !== 1 && currentStep$.value !== formsCount
+              currentStep$.value !== 1
             "
+
           >
+          <!-- currentStep$.value !== 1 && currentStep$.value !== formsCount -->
             <button
               type="button"
               class="btn btn-rounded btn-lg btn-light-primary me-3"
@@ -172,11 +179,11 @@
               type="button"
               class="btn btn-rounded btn-lg btn-primary me-3"
               [disabled]="!isCurrentFormValid$.value"
-              (click)="nextStep()"
+              (click)="currentStep$.value !== 5 ? nextStep() : finished()"
             >
               <span class="indicator-label">
                 <ng-container *ngIf="currentStep$.value < formsCount - 1">
-                  Avançar {{ ' ' }}
+                  Avançar
                   <span
                     [inlineSVG]="
                       './assets/media/icons/duotune/arrows/arr064.svg'

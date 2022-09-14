@@ -49,7 +49,7 @@
           *ngIf="fiatToCrypto$ | async as _fiatToCrypto"
           firstInputLabel="Quantidade a comprar"
           firstInputAsset="{{ 'crypto' | assetDescToAbbr }}"
-          [firstInputMin]="50"
+          [firstInputMin]="5000"
           [firstInputMax]="max(_balance.fiat, _fiatToCrypto.rate)"
           [firstInputDecimals]="0"
           firstInputMask="99999"

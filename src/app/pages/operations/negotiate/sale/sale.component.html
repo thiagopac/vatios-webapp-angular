@@ -50,7 +50,7 @@
           firstInputLabel="Quantidade a vender"
           firstInputAsset="{{ 'crypto' | assetDescToAbbr }}"
           [firstInputMin]="100"
-          [firstInputMax]="max(_balance.crypto)"
+          [firstInputMax]="_balance.crypto"
           [firstInputDecimals]="0"
           firstInputMask="99999"
           secondInputLabel="Valor total da venda"

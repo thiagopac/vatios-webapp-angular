@@ -6,8 +6,13 @@ interface IPayBill {
   userInvoice?: IUserInvoice;
   balanceCryptoUsed?: number;
   complementaryCryptoUsed?: number;
-  paymentMethod?: 'pix' | 'bank-slip';
+  paymentMethod?: IPaymentMethodEnum;
   totalPayable?: number;
+}
+
+export enum IPaymentMethodEnum {
+  pix = 'pix',
+  bankSlip = 'bank-slip',
 }
 
 const inits: IPayBill = {

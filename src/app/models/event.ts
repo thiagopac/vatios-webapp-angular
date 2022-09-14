@@ -1,8 +1,12 @@
 import { IAssetTypeEnum } from 'src/app/models/asset_type';
+import { ITransaction } from 'src/app/models/transaction';
+
+export type EventType = IEvent | undefined;
 
 export interface IEvent {
   uuid: string;
   movement: IEventMovementEnum;
+  transaction?: ITransaction;
   asset: IAssetTypeEnum;
   value: number;
   status: IEventStatusEnum;

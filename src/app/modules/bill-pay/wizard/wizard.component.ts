@@ -1,8 +1,7 @@
 import { BillService } from 'src/app/services/bill.service';
-import { Component, OnInit, OnDestroy } from '@angular/core';
+import { Component, OnInit, OnDestroy, ChangeDetectorRef } from '@angular/core';
 import { BehaviorSubject, Observable, Subscription } from 'rxjs';
-import { IPayBill, inits } from '../pay-bill.helper';
-import { GeneralService } from 'src/app/services/general.service';
+import { IPayBill, inits } from 'src/app/models/pay_bill.helper';
 import {
   IPaymentStatusEnum,
   IUserInvoiceCompensationDetails,
@@ -32,7 +31,7 @@ export class WizardComponent implements OnInit, OnDestroy {
 
   constructor(
     private billService: BillService,
-    private generalService: GeneralService
+    private changeDetector: ChangeDetectorRef
   ) {}
 
   ngOnInit(): void {
@@ -40,10 +39,6 @@ export class WizardComponent implements OnInit, OnDestroy {
     this.currentStep$ = new BehaviorSubject(1);
     this.getDataForStep(1);
   }
-
-  // getConsumerUnits() {
-  //   this.consumerUnits$ = this.billService.getUserConsumerUnits();
-  // }
 
   getDataForStep(step: number) {
     switch (step) {
@@ -68,6 +63,10 @@ export class WizardComponent implements OnInit, OnDestroy {
     }
   }
 
+  doesStepHaveInput(step: number):boolean {
+    return (step === 1 || step === 2 || step === 5) ? true : false;
+  }
+
   updateProcess = (part: Partial<IPayBill>, currentStep: number) => {
     console.log('part:', part);
 
@@ -80,7 +79,9 @@ export class WizardComponent implements OnInit, OnDestroy {
   };
 
   nextStep() {
+    this.isCurrentFormValid$.next(false);
     const nextStep = this.currentStep$.value + 1;
+    this.isCurrentFormValid$.next(!this.doesStepHaveInput(nextStep));
     if (nextStep > this.formsCount) {
       return;
     }
@@ -89,10 +90,18 @@ export class WizardComponent implements OnInit, OnDestroy {
 
   prevStep() {
     const prevStep = this.currentStep$.value - 1;
+    this.isCurrentFormValid$.next(!this.doesStepHaveInput(prevStep));
     if (prevStep === 0) {
       return;
     }
     this.currentStep$.next(prevStep);
+  }
+
+  finished() {
+    this.billService.createPayment(this.updatedProcess).subscribe((res) => {
+      this.nextStep();
+      this.changeDetector.detectChanges();
+    })
   }
 
   ngOnDestroy() {

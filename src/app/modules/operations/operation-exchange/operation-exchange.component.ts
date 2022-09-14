@@ -42,8 +42,12 @@ export class OperationExchangeComponent implements OnInit {
   constructor() {}
 
   ngOnInit(): void {
+    this.firstInputMin = Math.floor(this.firstInputMin / 100);
+    this.firstInputMax = Math.floor(this.firstInputMax / 100);
+
     if (this.firstInputDecimals)
       this.firstInputMax = this.firstInputMax / 10 ** this.firstInputDecimals;
+
     this.firstInputMinInt = this.firstInputMin;
     this.maxAllowed = this.firstInputMax;
     this.firstInput =

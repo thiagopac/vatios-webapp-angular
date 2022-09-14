@@ -10,11 +10,12 @@
   <div class="row mt-20 mb-10">
     <div class="col-lg-6">
       <input
-        name="accountType"
+        name="paymentMethod"
         type="radio"
         class="btn-check"
         id="type_boleto"
-        value="bankslip"
+        value="bank-slip"
+        (change)="updateSelectedMethod(IPaymentMethodEnum.bankSlip)"
       />
       <label
         class="btn btn-rounded btn-outline btn-outline-dashed btn-outline-default p-7 d-flex align-items-center"
@@ -33,11 +34,12 @@
 
     <div class="col-lg-6">
       <input
-        name="accountType"
+        name="paymentMethod"
         type="radio"
         class="btn-check"
         id="type_pix"
         value="pix"
+        (change)="updateSelectedMethod(IPaymentMethodEnum.pix)"
       />
       <label
         class="btn btn-rounded btn-outline btn-outline-dashed btn-outline-default p-7 d-flex align-items-center"

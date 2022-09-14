@@ -1,0 +1,112 @@
+<div class="dialog-header">
+  <h2 mat-dialog-title>Eventos</h2>
+  <button
+    class="btn btn-sm btn-icon btn-active-color-primary close-button"
+    tabindex="-1"
+    (click)="close()"
+    [ngStyle]="{ float: 'right', top: '-10px', right: '-10px' }"
+  >
+    <mat-icon class="close-icon">close</mat-icon>
+  </button>
+</div>
+<mat-divider></mat-divider>
+<mat-dialog-content>
+  <div class="py-5">
+    <div
+      *ngIf="transaction!.status === 'awaiting-approval'"
+      class="alert alert-warning bg-light-warning d-flex align-items-center"
+    >
+      <span
+        inlineSVG="./assets/media/icons/duotune/general/gen044.svg"
+        class="svg-icon svg-icon-2x svg-icon-warning me-3"
+      ></span>
+      <div class="d-flex flex-column">
+        <span>Esta transação está <strong>Aguardando aprovação</strong></span>
+      </div>
+    </div>
+    <div class="table-responsive">
+      <table class="table table-row-dashed table-row-gray-300 gy-7">
+        <thead>
+          <tr class="fw-bold fs-6 text-gray-800">
+            <th class="text-center">Event ID</th>
+            <th class="text-center">Movimentação</th>
+            <th class="text-center">Valor</th>
+            <th class="text-center">Status</th>
+            <th
+              class="text-center"
+              *ngIf="transaction!.status === 'ready-to-process'"
+            >
+              Ação
+            </th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let event of events">
+            <td class="text-center">{{ event?.uuid }}</td>
+            <td class="text-center">
+              {{ event!.movement === 'outgoing' ? 'Saída' : 'Entrada' }} de
+              {{ event!.asset | assetDescToAbbr }}
+            </td>
+            <td class="text-center">
+              {{ event!.asset !== 'fiat' ? '' : 'R$' }}
+              {{ event!.value | intToCurrency: event!.asset !== 'fiat' }}
+              {{ event!.asset | assetDescToAbbr }}
+            </td>
+            <td
+              class="text-center"
+              [innerHtml]="event!.status | friendlyEventStatusPipe"
+            ></td>
+            <td class="text-center" *ngIf="event!.status === 'awaiting-run'">
+              <button
+                type="button"
+                class="btn btn-sm btn-primary py-1 px-3 btn-rounded"
+                (click)="runEvent(event!)"
+                *ngIf="event?.status === 'awaiting-run'"
+              >
+                <ng-container *ngIf="!isLoading">Processar</ng-container>
+                <ng-container *ngIf="isLoading">
+                  <span class="indicator-progress" [style.display]="'block'">
+                    Aguarde...
+                    <span
+                      class="spinner-border spinner-border-sm align-middle ms-2"
+                    ></span>
+                  </span>
+                </ng-container>
+              </button>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</mat-dialog-content>
+<mat-divider></mat-divider>
+<mat-dialog-actions class="justify-content-between">
+  <div>
+    <ng-container *ngIf="transaction!.status === 'awaiting-approval'">
+      <button
+        class="btn btn-rounded btn-danger me-3"
+        tabindex="-1"
+        (click)="disapproveTransaction()"
+      >
+        Reprovar
+      </button>
+      <button
+        class="btn btn-rounded btn-success me-3"
+        tabindex="-1"
+        (click)="approveTransaction()"
+      >
+        Aprovar
+      </button>
+    </ng-container>
+  </div>
+  <div class="text-end">
+    <button
+      class="btn btn-rounded btn-white me-3"
+      tabindex="-1"
+      (click)="close()"
+    >
+      Fechar
+    </button>
+  </div>
+</mat-dialog-actions>

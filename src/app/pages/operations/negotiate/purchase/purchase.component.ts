@@ -40,14 +40,14 @@ export class PurchaseComponent implements OnInit {
   }
 
   max(stValue: number, ndValue: number): number {
-    return Math.floor(stValue / ndValue / 100);
+    return Math.floor(stValue / ndValue);
   }
 
   triggeredActionCaptured(value: number): void {
     this.transactionService
       .createTransactionOperationFiatToCrypto(value)
       .subscribe(() => {
-        this.alertMessageService.showToast(
+        this.alertMessageService.showAlert(
           'Solicitação de compra de tokens enviada com sucesso!',
           'success'
         );

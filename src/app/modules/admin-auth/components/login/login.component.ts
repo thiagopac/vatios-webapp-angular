@@ -39,7 +39,7 @@ export class LoginComponent implements OnInit, OnDestroy {
     this.isLoading$ = this.adminAuthService.isLoading$;
     // redirect to home if already logged in
     if (this.adminAuthService.currentAdminUserValue) {
-      this.router.navigate(['/data-management/home']);
+      this.router.navigate(['/manager/home']);
     }
   }
 
@@ -51,7 +51,7 @@ export class LoginComponent implements OnInit, OnDestroy {
     // get return url from route parameters or default to '/'
     this.returnUrl =
       this.route.snapshot.queryParams['returnUrl'.toString()] ||
-      '/data-management/home';
+      '/manager/home';
   }
 
   // convenience getter for easy access to form fields

@@ -1,10 +1,10 @@
 import { NgModule } from '@angular/core';
 import { CommonModule, DatePipe } from '@angular/common';
 
-import { ManagementComponent } from './management.component';
-import { NavComponent } from 'src/app/modules/management/layout/nav/nav.component';
-import { HeaderComponent } from 'src/app/modules/management/layout/header/header.component';
-import { FooterComponent } from 'src/app/modules/management/layout/footer/footer.component';
+import { ManagerComponent } from './manager.component';
+import { NavComponent } from 'src/app/modules/manager/layout/nav/nav.component';
+import { HeaderComponent } from 'src/app/modules/manager/layout/header/header.component';
+import { FooterComponent } from 'src/app/modules/manager/layout/footer/footer.component';
 
 import { MatToolbarModule } from '@angular/material/toolbar';
 import { MatSidenavModule } from '@angular/material/sidenav';
@@ -22,28 +22,34 @@ import { MatPaginatorModule } from '@angular/material/paginator';
 import { MatSortModule } from '@angular/material/sort';
 
 import { PipesModule } from 'src/app/pipes/pipes.module';
-import { ManagementHomeComponent } from 'src/app/modules/management/modules/management-home/management-home.component';
+import { ManagerHomeComponent } from 'src/app/modules/manager/modules/manager-home/manager-home.component';
 import { NgxSpinnerModule } from 'ngx-spinner';
 import { MatMenuModule } from '@angular/material/menu';
 import { MatIconModule } from '@angular/material/icon';
-import { ManagementTransactionsComponent } from 'src/app/modules/management/modules/management-transactions/management-transactions.component';
-import { ManagementRoutingModule } from 'src/app/modules/management/management-routing.module';
-import { ManagementUsersComponent } from 'src/app/modules/management/modules/management-users/management-users.component';
-import { ManagementAdminsComponent } from 'src/app/modules/management/modules/management-admins/management-admins.component';
+import { ManagerTransactionsComponent } from 'src/app/modules/manager/modules/manager-transactions/manager-transactions.component';
+import { ManagerRoutingModule } from 'src/app/modules/manager/manager-routing.module';
+import { ManagerUsersComponent } from 'src/app/modules/manager/modules/manager-users/manager-users.component';
+import { ManagerAdminsComponent } from 'src/app/modules/manager/modules/manager-admins/manager-admins.component';
+import { MatDividerModule } from '@angular/material/divider';
+import { ManagerTransactionsDialogComponent } from 'src/app/modules/manager/modules/manager-transactions/manager-transactions-dialog/manager-transactions-dialog.component';
+import { MatDialogModule } from '@angular/material/dialog';
+import { InlineSVGModule } from 'ng-inline-svg-2';
 
 @NgModule({
   declarations: [
-    ManagementComponent,
+    ManagerComponent,
     HeaderComponent,
     FooterComponent,
     NavComponent,
-    ManagementHomeComponent,
-    ManagementTransactionsComponent,
-    ManagementUsersComponent,
-    ManagementAdminsComponent,
+    ManagerHomeComponent,
+    ManagerTransactionsComponent,
+    ManagerUsersComponent,
+    ManagerAdminsComponent,
+    ManagerTransactionsDialogComponent,
   ],
   imports: [
     CommonModule,
+    InlineSVGModule,
     MatToolbarModule,
     MatSidenavModule,
     MatListModule,
@@ -61,8 +67,10 @@ import { ManagementAdminsComponent } from 'src/app/modules/management/modules/ma
     MatSortModule,
     PipesModule,
     NgxSpinnerModule,
-    ManagementRoutingModule,
+    ManagerRoutingModule,
+    MatDividerModule,
+    MatDialogModule,
   ],
   providers: [DatePipe],
 })
-export class ManagementModule {}
+export class ManagerModule {}

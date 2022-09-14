@@ -4,11 +4,11 @@ import { AdminType } from 'src/app/modules/admin-auth';
 import { AdminAuthService } from 'src/app/services/admin-auth';
 
 @Component({
-  selector: 'app-home',
-  templateUrl: './management-home.component.html',
-  styleUrls: ['./management-home.component.scss'],
+  selector: 'app-manager-home',
+  templateUrl: './manager-home.component.html',
+  styleUrls: ['./manager-home.component.scss'],
 })
-export class ManagementHomeComponent implements OnInit {
+export class ManagerHomeComponent implements OnInit {
   admin$: Observable<AdminType>;
   date: Date;
 

@@ -38,10 +38,11 @@ export class ConvertComponent implements OnInit {
   }
 
   triggeredActionCaptured(value: number): void {
+
     this.transactionService
       .createTransactionOperationEnergyToCrypto(value)
       .subscribe(() => {
-        this.alertMessageService.showToast(
+        this.alertMessageService.showAlert(
           'Solicitação de conversão de créditos de energia enviada com sucesso!',
           'success'
         );

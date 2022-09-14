@@ -39,15 +39,11 @@ export class SaleComponent implements OnInit {
     this.getBalance();
   }
 
-  max(stValue: number): number {
-    return stValue / 100;
-  }
-
   triggeredActionCaptured(value: number): void {
     this.transactionService
       .createTransactionOperationCryptoToFiat(value)
       .subscribe(() => {
-        this.alertMessageService.showToast(
+        this.alertMessageService.showAlert(
           'Solicitação de venda de tokens enviada com sucesso!',
           'success'
         );

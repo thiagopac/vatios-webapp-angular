@@ -1,0 +1,18 @@
+* {
+  font-family: Poppins, Helvetica, 'sans-serif' !important;
+}
+
+mat-cell {
+  // font-family: monospace !important;
+  font-size: 1rem;
+}
+
+.mat-column-uuid {
+  flex: none;
+  width: 20%;
+}
+
+.mat-column-type {
+  flex: none;
+  width: 20%;
+}

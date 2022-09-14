@@ -28,12 +28,12 @@ export const routes: Routes = [
       import('./template/layout/layout.module').then((m) => m.LayoutModule),
   },
   {
-    path: 'data-management',
+    path: 'manager',
     // canActivate: [AdminAuthGuard],
     canActivate: [AdminAuthGuard],
     loadChildren: () =>
-      import('./modules/management/management.module').then(
-        (m) => m.ManagementModule
+      import('./modules/manager/manager.module').then(
+        (m) => m.ManagerModule
       ),
   },
   { path: '**', redirectTo: 'error/404' },

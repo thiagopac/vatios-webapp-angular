@@ -1,7 +1,7 @@
 import { Component, Input, OnDestroy, OnInit } from '@angular/core';
 import { Observable, Subscription } from 'rxjs';
 import { ConsumerUnitType } from 'src/app/models/consumer_unit';
-import { IPayBill } from '../../pay-bill.helper';
+import { IPayBill } from 'src/app/models/pay_bill.helper';
 
 @Component({
   selector: 'app-step1',

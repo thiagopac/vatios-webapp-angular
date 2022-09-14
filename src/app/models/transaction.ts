@@ -1,3 +1,4 @@
+import { IUser } from 'src/app/models/user';
 import { IEvent } from './event';
 
 export type TransactionType = ITransaction | undefined;
@@ -9,6 +10,7 @@ export interface ITransaction {
   created_at: Date;
   updated_at: Date;
   events?: IEvent[];
+  user?: IUser;
 }
 
 export enum ITransactionTypeEnum {

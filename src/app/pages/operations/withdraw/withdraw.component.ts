@@ -37,7 +37,7 @@ export class WithdrawComponent implements OnInit {
     this.transactionService
       .createTransactionOperationWithdrawFiat(value)
       .subscribe(() => {
-        this.alertMessageService.showToast(
+        this.alertMessageService.showAlert(
           'Solicitação de saque enviada com sucesso!',
           'success'
         );
