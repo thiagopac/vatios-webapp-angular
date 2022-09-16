@@ -1,5 +1,5 @@
 import { Component, OnDestroy, OnInit, ViewChild } from '@angular/core';
-import { BehaviorSubject, Observable, Subscription } from 'rxjs';
+import { BehaviorSubject, map, Observable, Subscription } from 'rxjs';
 import { AdminAuthService, AdminType } from 'src/app/modules/admin-auth';
 import { MatTableDataSource } from '@angular/material/table';
 import { ManagerService } from 'src/app/services/manager.service';
@@ -12,6 +12,9 @@ import { TransactionType } from 'src/app/models/transaction';
 import { MatDialog, MatDialogConfig } from '@angular/material/dialog';
 import { auto } from '@popperjs/core';
 import { ManagerTransactionsDialogComponent } from 'src/app/modules/manager/modules/manager-transactions/manager-transactions-dialog/manager-transactions-dialog.component';
+import { SocketService } from 'src/app/services/socket.service';
+import { AlertMessageService } from 'src/app/services/alert-message.service';
+import { EventType } from 'src/app/models/event';
 
 @Component({
   selector: 'app-manager-transactions',
@@ -47,12 +50,22 @@ export class ManagerTransactionsComponent implements OnInit, OnDestroy {
     private flatObjectPipe: FlatObjectPipe,
     private friendlyTransactionDescriptionPipe: FriendlyTransactionDescriptionPipe,
     private friendlyTransactionStatusPipe: FriendlyTransactionStatusPipe,
-    private dialog: MatDialog
+    private dialog: MatDialog,
+    private alertMessageService: AlertMessageService,
+    private socketService: SocketService
   ) {}
 
   ngOnInit(): void {
     this.admin$ = this.adminAuth.currentAdminUserSubject.asObservable();
     this.getTransactions();
+
+    this.socketService.onEventFinished().subscribe((data: any) => {
+      this.getTransactions();
+      this.alertMessageService.showToast(
+        `O evento ${data.event.uuid} foi processado com sucesso!`,
+        'success'
+      );
+    });
   }
 
   getTransactions() {

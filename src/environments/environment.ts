@@ -5,12 +5,14 @@
 export const environment = {
   production: false,
   appVersion: 'v1.0.0',
-  adminUserDataKey: 'admin-auth-6cd1acfe5d67',
+  adminAuthDataKey: 'admin-auth-6cd1acfe5d67',
+  adminUserDataKey: 'admin-user-d4c4d6a1473f',
   userDataKey: 'auth-f649fc9a5f55',
   hostUrl: 'http://localhost:4200',
   apiUrl: 'http://localhost:3333/api',
   binanceExplorerUrl: 'https://testnet.bscscan.com',
   smartContractAddress: '0x7ebD0d25c37B5fba25509CC849866660d7Dc6955',
+  socketUrl: 'http://localhost:3333',
 };
 
 /*

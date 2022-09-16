@@ -4,7 +4,9 @@
   >
     <div>
       <mat-card-title class="fs-3">Controle de transações</mat-card-title>
-      <mat-card-subtitle class="subtitle">Clique para obter detalhes</mat-card-subtitle>
+      <mat-card-subtitle class="subtitle"
+        >Clique para obter detalhes</mat-card-subtitle
+      >
     </div>
     <div class="table-filter">
       <input
@@ -20,7 +22,11 @@
   <mat-card class="mat-elevation-z1 mt-5">
     <mat-table [dataSource]="dataSource" class="my-4">
       <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
-      <mat-row *matRowDef="let row; columns: displayedColumns" (click)="openDialog(row)" class="cursor-pointer"></mat-row>
+      <mat-row
+        *matRowDef="let row; columns: displayedColumns"
+        (click)="openDialog(row)"
+        class="cursor-pointer"
+      ></mat-row>
 
       <ng-container matColumnDef="uuid">
         <mat-header-cell *matHeaderCellDef>Transaction ID</mat-header-cell>
@@ -67,7 +73,7 @@
       <ng-container matColumnDef="created_at">
         <mat-header-cell *matHeaderCellDef>Criado em</mat-header-cell>
         <mat-cell *matCellDef="let element">{{
-          element.transaction.created_at | date:'dd/MM/yyyy HH:mm:ss'
+          element.transaction.created_at | date: 'dd/MM/yyyy HH:mm:ss'
         }}</mat-cell>
       </ng-container>
     </mat-table>

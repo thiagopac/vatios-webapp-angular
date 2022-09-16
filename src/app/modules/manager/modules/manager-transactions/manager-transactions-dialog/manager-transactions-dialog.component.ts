@@ -5,6 +5,7 @@ import { Subscription } from 'rxjs';
 import { TransactionType } from 'src/app/models/transaction';
 import { EventType, IEvent } from 'src/app/models/event';
 import { ManagerService } from 'src/app/services/manager.service';
+import { SocketService } from 'src/app/services/socket.service';
 
 @Component({
   selector: 'app-manager-transactions-dialog',
@@ -17,11 +18,13 @@ export class ManagerTransactionsDialogComponent implements OnInit, OnDestroy {
   transaction: TransactionType;
   events: EventType[] | undefined;
   isLoading: boolean;
+  indexRowLoading: number;
 
   constructor(
     private dialogRef: MatDialogRef<ManagerTransactionsDialogComponent>,
     private alertMessageService: AlertMessageService,
     private managerService: ManagerService,
+    private socketService: SocketService,
     @Inject(MAT_DIALOG_DATA) private data: any
   ) {}
 
@@ -30,6 +33,16 @@ export class ManagerTransactionsDialogComponent implements OnInit, OnDestroy {
       this.transaction = this.data.transaction;
       this.events = this.transaction!.events;
     }
+
+    this.socketService.onEventFinished().subscribe((data: any) => {
+      this.isLoading = false;
+      this.indexRowLoading = 9999;
+      this.loadEvents(this.transaction);
+      this.alertMessageService.showToast(
+        `O evento ${data.event.uuid} foi processado com sucesso!`,
+        'success'
+      );
+    });
   }
 
   loadEvents(transaction: TransactionType) {
@@ -58,13 +71,20 @@ export class ManagerTransactionsDialogComponent implements OnInit, OnDestroy {
       });
   }
 
+  indexRowLoadingChange(index: number) {
+    this.indexRowLoading = index;
+  }
+
+  runEventWebsocket(event: IEvent) {
+    this.isLoading = true;
+    this.alertMessageService.showToast('Evento em processamento!', 'info');
+    this.socketService.runEvent(event);
+  }
+
   runEvent(event: IEvent) {
     this.isLoading = true;
-    this.alertMessageService.showToast(
-      'Evento em processamento! Aguarde alguns segundos...',
-      'info'
-    );
-    this.sub = this.managerService.runEvent(event.uuid).subscribe((event) => {
+    this.alertMessageService.showToast('Evento em processamento!', 'info');
+    this.sub = this.managerService.runEvent(event.uuid).subscribe(() => {
       this.isLoading = false;
       this.alertMessageService.showToast(
         'Evento processado com sucesso!',

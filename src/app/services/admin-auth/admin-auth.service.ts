@@ -16,7 +16,8 @@ export type AdminType = IAdmin | undefined;
 export class AdminAuthService implements OnDestroy {
   // private fields
   private unsubscribe: Subscription[] = [];
-  private adminAuthLocalStorageToken = `${this.environmentService.getVersion()}-${this.environmentService.getAdminUserDataKey()}`;
+  private adminAuthLocalStorageToken = `${this.environmentService.getVersion()}-${this.environmentService.getAdminAuthDataKey()}`;
+  private adminUserLocalStorageToken = `${this.environmentService.getVersion()}-${this.environmentService.getAdminUserDataKey()}`;
 
   // public fields
   currentAdminUser$: Observable<AdminType>;
@@ -83,6 +84,7 @@ export class AdminAuthService implements OnDestroy {
     return this.adminAuthHttpService.getUserByToken(auth.token).pipe(
       map((user: AdminType) => {
         if (user) {
+          this.setAdminFromLocalStorage(user);
           this.currentAdminUserSubject.next(user);
         } else {
           this.logout();
@@ -122,9 +124,36 @@ export class AdminAuthService implements OnDestroy {
     return false;
   }
 
+  private setAdminFromLocalStorage(admin: AdminType): boolean {
+    // store auth token/type/epiresIn in local storage to keep user logged in between page refreshes
+    if (admin) {
+      localStorage.setItem(
+        this.adminUserLocalStorageToken,
+        JSON.stringify(admin)
+      );
+      return true;
+    }
+    return false;
+  }
+
   getAuthFromLocalStorage(): AuthModel | undefined {
     try {
       const lsValue = localStorage.getItem(this.adminAuthLocalStorageToken);
+      if (!lsValue) {
+        return undefined;
+      }
+
+      const authData = JSON.parse(lsValue);
+      return authData;
+    } catch (error) {
+      console.error(error);
+      return undefined;
+    }
+  }
+
+  getAdminFromLocalStorage(): AdminType | undefined {
+    try {
+      const lsValue = localStorage.getItem(this.adminUserLocalStorageToken);
       if (!lsValue) {
         return undefined;
       }

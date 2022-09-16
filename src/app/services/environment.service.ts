@@ -17,6 +17,10 @@ export class EnvironmentService {
     return environment.apiUrl;
   }
 
+  public getAdminAuthDataKey(): string {
+    return environment.adminAuthDataKey;
+  }
+
   public getAdminUserDataKey(): string {
     return environment.adminUserDataKey;
   }

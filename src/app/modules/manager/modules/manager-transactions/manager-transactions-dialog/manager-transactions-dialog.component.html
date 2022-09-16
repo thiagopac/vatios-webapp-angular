@@ -41,7 +41,7 @@
           </tr>
         </thead>
         <tbody>
-          <tr *ngFor="let event of events">
+          <tr *ngFor="let event of events; let i = index">
             <td class="text-center">{{ event?.uuid }}</td>
             <td class="text-center">
               {{ event!.movement === 'outgoing' ? 'Saída' : 'Entrada' }} de
@@ -54,17 +54,25 @@
             </td>
             <td
               class="text-center"
-              [innerHtml]="event!.status | friendlyEventStatusPipe"
+              [innerHtml]="
+                isLoading && indexRowLoading === i
+                  ? ('running' | friendlyEventStatusPipe)
+                  : (event!.status | friendlyEventStatusPipe)
+              "
             ></td>
             <td class="text-center" *ngIf="event!.status === 'awaiting-run'">
               <button
                 type="button"
                 class="btn btn-sm btn-primary py-1 px-3 btn-rounded"
-                (click)="runEvent(event!)"
+                (click)="runEventWebsocket(event!); indexRowLoadingChange(i)"
                 *ngIf="event?.status === 'awaiting-run'"
+                [disabled]="isLoading === true"
               >
-                <ng-container *ngIf="!isLoading">Processar</ng-container>
-                <ng-container *ngIf="isLoading">
+                <ng-container
+                  *ngIf="!isLoading || (isLoading && indexRowLoading !== i)"
+                  >Processar</ng-container
+                >
+                <ng-container *ngIf="isLoading && indexRowLoading === i">
                   <span class="indicator-progress" [style.display]="'block'">
                     Aguarde...
                     <span
